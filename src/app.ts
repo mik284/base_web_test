@@ -14,3 +14,45 @@ export const layout = () => {
     },
   };
 };
+
+export const antd = {
+  theme: {
+    token: {
+      colorPrimary: '#1F2B5D', // navy
+      colorSuccess: '#8AFEA7', // mint
+      colorInfo: '#0800F0', // electric
+      colorWarning: '#F7B344', // orange
+      colorError: '#ff4d4f',
+      fontFamily: 'Outfit, sans-serif',
+      borderRadius: 12,
+      colorTextBase: '#1F2B5D',
+      colorBgBase: '#ffffff',
+      colorLink: '#0800F0',
+    },
+    components: {
+      Button: {
+        controlHeightLG: 48,
+        fontWeight: 600,
+        borderRadius: 12,
+        borderRadiusLG: 16,
+      },
+      Segmented: {
+        itemSelectedBg: '#1F2B5D',
+        itemSelectedColor: '#ffffff',
+        borderRadius: 12,
+        controlHeight: 48,
+      },
+      Card: {
+        borderRadiusLG: 24,
+      },
+      Input: {
+        borderRadius: 12,
+        controlHeight: 40,
+      },
+      Select: {
+        borderRadius: 12,
+        controlHeight: 40,
+      },
+    },
+  },
+};
