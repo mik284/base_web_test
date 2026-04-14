@@ -17,7 +17,7 @@ export interface Feature {
   title: string;
   description: string;
   iconKey: string;
-  iconBg: string;    // rgba CSS value
+  iconBg: string; // rgba CSS value
   iconColor: string; // hex CSS value
 }
 
@@ -66,7 +66,7 @@ export interface UseCase {
   title: string;
   description: string;
   iconKey: string;
-  iconBg: string;      // hex colour for the icon circle background
+  iconBg: string; // hex colour for the icon circle background
   hoverBorder: string; // Tailwind class for hover border colour
 }
 
@@ -141,7 +141,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: 'david',
     quote:
-      '"The M-Pesa integration in BaseStore is flawless. Reconciliation used to take us hours every evening. Now it\'s done automatically. Highly recommended for any growing retail chain."',
+      '"The M-Pesa integration in Duka is flawless. Reconciliation used to take us hours every evening. Now it\'s done automatically. Highly recommended for any growing retail chain."',
     name: 'David Ochieng',
     role: 'Manager, TechMart Ltd',
     initials: 'DO',
@@ -163,10 +163,16 @@ export const TESTIMONIALS: Testimonial[] = [
 // ─── Footer Links ────────────────────────────────────────────────────────────
 export const FOOTER_PRODUCTS = [
   'BasePesa',
-  'BaseStore POS',
-  'Duka1 Ecommerce',
-  'BaseTeams',
-  'Loyalty System',
+  'BaseDuka',
+  'BaseCRM',
+  'Bandu',
+  'Duka1',
 ];
 
-export const FOOTER_COMPANY = ['About Us', 'Careers', 'Blog', 'Contact', 'Partners'];
+export const FOOTER_COMPANY = [
+  'About Us',
+  'Careers',
+  'Blog',
+  'Contact',
+  'Partners',
+];

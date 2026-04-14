@@ -37,7 +37,7 @@ const LandingPage: React.FC = () => {
       {/* 3. Payment integrations scrolling marquee */}
       <IntegrationsMarquee />
 
-      {/* 4. Product cards (BasePesa, BaseStore, BaseTeams, Duka1, Loyalty) */}
+      {/* 4. Product cards (BasePesa, Duka1, Bandu, Duka1, Loyalty) */}
       <Products />
 
       {/* 5. Enterprise features (dark navy section) */}

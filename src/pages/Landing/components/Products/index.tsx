@@ -11,10 +11,10 @@ import React from 'react';
 /* ── Icon map ────────────────────────────────────────────────────── */
 const ICON_MAP: Record<string, React.ReactNode> = {
   Calculator: <CalculatorOutlined style={{ fontSize: 28 }} />,
-  Shop:       <ShopOutlined       style={{ fontSize: 28 }} />,
-  Team:       <TeamOutlined       style={{ fontSize: 28 }} />,
-  Global:     <GlobalOutlined     style={{ fontSize: 28 }} />,
-  Star:       <StarOutlined       style={{ fontSize: 28 }} />,
+  Shop: <ShopOutlined style={{ fontSize: 28 }} />,
+  Team: <TeamOutlined style={{ fontSize: 28 }} />,
+  Global: <GlobalOutlined style={{ fontSize: 28 }} />,
+  Star: <StarOutlined style={{ fontSize: 28 }} />,
 };
 
 /* ── Data ────────────────────────────────────────────────────────── */
@@ -45,11 +45,11 @@ const PRODUCTS: ProductData[] = [
     ctaColor: '#5CE07A',
   },
   {
-    id: 'basestore',
-    name: 'BaseStore',
+    id: 'baseduka',
+    name: 'BaseDuka',
     description:
       'Next-gen POS and multi-channel inventory management. Sell in-store, online, or on social media with one central inventory system.',
-    cta: 'Explore BaseStore',
+    cta: 'Explore BaseDuka',
     iconKey: 'Shop',
     accentColor: 'rgba(247,179,68,0.1)',
     iconBorderColor: 'rgba(247,179,68,0.3)',
@@ -58,11 +58,11 @@ const PRODUCTS: ProductData[] = [
     isWide: true,
   },
   {
-    id: 'baseteams',
-    name: 'BaseTeams',
+    id: 'bandu',
+    name: 'Bandu',
     description:
       'Manage staff roles, track shifts, and calculate payroll automatically based on sales performance.',
-    cta: 'Explore BaseTeams',
+    cta: 'Explore Bandu',
     iconKey: 'Team',
     accentColor: 'rgba(8,0,240,0.1)',
     iconBorderColor: 'rgba(8,0,240,0.2)',
@@ -72,7 +72,8 @@ const PRODUCTS: ProductData[] = [
   {
     id: 'duka1',
     name: 'Duka1',
-    description: 'Launch a beautiful, mobile-optimized online storefront in minutes. No coding skills required.',
+    description:
+      'Launch a beautiful, mobile-optimized online storefront in minutes. No coding skills required.',
     cta: 'Explore Duka1',
     iconKey: 'Global',
     accentColor: 'rgba(255,231,0,0.2)',
@@ -81,11 +82,11 @@ const PRODUCTS: ProductData[] = [
     ctaColor: '#ca8a04',
   },
   {
-    id: 'loyalty',
-    name: 'Loyalty & Rewards',
+    id: 'basecrm',
+    name: 'BaseCRM',
     description:
       'Keep customers coming back with built-in point systems, custom discounts, and SMS marketing campaigns.',
-    cta: 'Explore Loyalty',
+    cta: 'Explore BaseCRM',
     iconKey: 'Star',
     accentColor: 'rgba(128,228,241,0.2)',
     iconBorderColor: 'rgba(128,228,241,0.4)',
@@ -117,13 +118,20 @@ const ProductCard: React.FC<{ product: ProductData }> = ({ product }) => {
         }}
       />
 
-      <div className={`relative z-10 ${isWide ? 'flex flex-col lg:flex-row gap-8 items-center h-full' : ''}`}>
+      <div
+        className={`relative z-10 ${
+          isWide ? 'flex flex-col lg:flex-row gap-8 items-center h-full' : ''
+        }`}
+      >
         {/* Text block */}
         <div className={isWide ? 'w-full lg:w-1/2' : ''}>
           {/* Icon */}
           <div
             className="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6"
-            style={{ border: `1px solid ${product.iconBorderColor}`, color: product.iconTextColor }}
+            style={{
+              border: `1px solid ${product.iconBorderColor}`,
+              color: product.iconTextColor,
+            }}
           >
             {ICON_MAP[product.iconKey]}
           </div>
@@ -150,22 +158,31 @@ const ProductCard: React.FC<{ product: ProductData }> = ({ product }) => {
           </a>
         </div>
 
-        {/* BaseStore only: mini sales preview */}
+        {/* Duka1 only: mini sales preview */}
         {isWide && (
           <div
             className="w-full lg:w-1/2 h-40 bg-white rounded-2xl p-4 hidden sm:flex flex-col justify-center"
-            style={{ border: '1px solid #F0F3F8', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}
+            style={{
+              border: '1px solid #F0F3F8',
+              boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
+            }}
           >
             <div
               className="flex items-center justify-between mb-4 pb-2"
               style={{ borderBottom: '1px solid #F0F3F8' }}
             >
-              <span className="text-sm font-semibold font-outfit" style={{ color: '#1F2B5D' }}>
+              <span
+                className="text-sm font-semibold font-outfit"
+                style={{ color: '#1F2B5D' }}
+              >
                 Recent Sales
               </span>
               <span
                 className="text-xs px-2 py-1 rounded font-outfit"
-                style={{ color: '#5CE07A', backgroundColor: 'rgba(138,254,167,0.1)' }}
+                style={{
+                  color: '#5CE07A',
+                  backgroundColor: 'rgba(138,254,167,0.1)',
+                }}
               >
                 +14%
               </span>
@@ -173,8 +190,14 @@ const ProductCard: React.FC<{ product: ProductData }> = ({ product }) => {
             <div className="space-y-3">
               {[24, 32, 20].map((w, i) => (
                 <div key={i} className="flex justify-between items-center">
-                  <div className="h-2 rounded" style={{ width: `${w * 4}px`, backgroundColor: '#F0F3F8' }} />
-                  <div className="h-2 w-12 rounded" style={{ backgroundColor: 'rgba(31,43,93,0.2)' }} />
+                  <div
+                    className="h-2 rounded"
+                    style={{ width: `${w * 4}px`, backgroundColor: '#F0F3F8' }}
+                  />
+                  <div
+                    className="h-2 w-12 rounded"
+                    style={{ backgroundColor: 'rgba(31,43,93,0.2)' }}
+                  />
                 </div>
               ))}
             </div>
@@ -208,8 +231,8 @@ const Products: React.FC = () => {
             className="max-w-2xl mx-auto text-lg font-outfit"
             style={{ color: 'rgba(31,43,93,0.6)' }}
           >
-            Powerful standalone products that work even better together. Build your perfect
-            business stack.
+            Powerful standalone products that work even better together. Build
+            your perfect business stack.
           </p>
         </div>
 
