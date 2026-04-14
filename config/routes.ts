@@ -1,7 +1,17 @@
 export const routes = [
     {
         path: '/',
-        component: './Landing',
+        component: '@/layouts/LandingLayout',
         layout: false,
+        routes: [
+            {
+                path: '/',
+                component: './Landing',
+            },
+            {
+                path: '/pricing',
+                component: './Pricing',
+            }
+        ]
     }
 ];  

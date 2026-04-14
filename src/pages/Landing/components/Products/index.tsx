@@ -96,8 +96,15 @@ const PRODUCTS: ProductData[] = [
 ];
 
 /* ── Single product card ─────────────────────────────────────────── */
+import { history } from '@umijs/max';
+
 const ProductCard: React.FC<{ product: ProductData }> = ({ product }) => {
   const isWide = !!product.isWide;
+
+  const handleCta = (e: React.MouseEvent) => {
+    e.preventDefault();
+    history.push('/pricing');
+  };
 
   return (
     <div
@@ -149,7 +156,8 @@ const ProductCard: React.FC<{ product: ProductData }> = ({ product }) => {
             {product.description}
           </p>
           <a
-            href="#"
+            href="/pricing"
+            onClick={handleCta}
             className="inline-flex items-center gap-2 font-semibold font-outfit group-hover:gap-3 transition-all"
             style={{ color: product.ctaColor, textDecoration: 'none' }}
           >

@@ -5,10 +5,10 @@
 
 // ─── Navigation ─────────────────────────────────────────────────────────────
 export const NAV_LINKS = [
-  { label: 'Products', href: '#products' },
-  { label: 'Features', href: '#features' },
-  { label: 'Solutions', href: '#usecases' },
-  { label: 'Pricing', href: '#pricing' },
+  { label: 'Products', href: '/#products' },
+  { label: 'Features', href: '/#features' },
+  { label: 'Solutions', href: '/#usecases' },
+  { label: 'Pricing', href: '/pricing' },
 ];
 
 // ─── Features ────────────────────────────────────────────────────────────────
