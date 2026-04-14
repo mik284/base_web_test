@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 import { NAV_LINKS } from '@/constants/landingData';
 
-import { history } from '@umijs/max';
+import { history, Link } from '@umijs/max';
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
 
   const handleNav = (href: string) => {
     setMobileOpen(false);
-    
+
     if (href.startsWith('/#')) {
       const anchor = href.substring(1);
       if (window.location.pathname === '/') {
@@ -58,35 +58,34 @@ const Navbar: React.FC = () => {
   return (
     <>
       <nav
-        className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-card border-b border-surfaceAlt'
-            : 'bg-white/80 backdrop-blur-md border-b border-gray-100'
-        }`}
+        className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-card border-b border-surfaceAlt'
+          : 'bg-white/80 backdrop-blur-md border-b border-gray-100'
+          }`}
       >
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 lg:px-6 h-20 flex items-center justify-between">
           {/* Logo */}
-          <a href="/" style={{ textDecoration: 'none' }} className="flex items-center gap-2">
-            <img 
-              src="/logo.png" 
-              alt="BasepointCloud Logo" 
-              className="w-10 h-10 object-contain"
+          <Link to="/" style={{ textDecoration: 'none' }} className="flex items-center gap-2">
+            <img
+              src="/logo.png"
+              alt="BasepointCloud Logo"
+              className="w-8 h-8 lg:w-10 lg:h-10 object-contain"
             />
             <span
-              className="font-bold text-xl tracking-tight font-outfit"
+              className="hidden lg:block font-bold text-[18px] tracking-tight font-outfit"
               style={{ color: '#1F2B5D' }}
             >
               BasepointCloud
             </span>
-          </a>
+          </Link>
 
           {/* Desktop nav links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-4 lg:gap-8">
             {NAV_LINKS.map((link) => (
               <button
                 key={link.label}
                 onClick={() => handleNav(link.href)}
-                className="font-medium font-outfit transition-colors bg-transparent border-0 cursor-pointer"
+                className="font-medium font-outfit transition-colors bg-transparent border-0 cursor-pointer text-sm lg:text-base"
                 style={{ color: 'rgba(31,43,93,0.7)' }}
                 onMouseEnter={(e) => ((e.target as HTMLElement).style.color = '#1F2B5D')}
                 onMouseLeave={(e) =>
@@ -100,7 +99,7 @@ const Navbar: React.FC = () => {
             {/* Country Dropdown */}
             <Dropdown menu={{ items: countryItems }} placement="bottomRight" arrow>
               <button
-                className="font-medium font-outfit transition-colors bg-transparent border-0 cursor-pointer flex items-center gap-1.5"
+                className="font-medium font-outfit transition-colors bg-transparent border-0 cursor-pointer flex items-center gap-1.5 text-sm lg:text-base"
                 style={{ color: 'rgba(31,43,93,0.7)' }}
                 onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = '#1F2B5D')}
                 onMouseLeave={(e) =>
@@ -109,41 +108,40 @@ const Navbar: React.FC = () => {
               >
                 <Space>
                   <span>{countries.find(c => c.label === selectedCountry)?.flag}</span>
-                  <span>{selectedCountry}</span>
-                  <DownOutlined style={{ fontSize: 12 }} />
+                  <span className="hidden xl:inline">{selectedCountry}</span>
+                  <DownOutlined style={{ fontSize: 10 }} />
                 </Space>
               </button>
             </Dropdown>
           </div>
 
           {/* CTA buttons */}
-          <div className="flex items-center gap-4">
-            <a
-              href="#"
+          <div className="flex items-center gap-2 md:gap-4">
+            <Link
+              to="/login"
               className="hidden md:block font-medium font-outfit transition-colors"
               style={{ color: '#1F2B5D', textDecoration: 'none' }}
             >
               Log In
-            </a>
-            <a
-              href="#"
-              className="font-semibold px-6 py-2.5 rounded-full transition-all duration-300 shadow-sm font-outfit"
+            </Link>
+            <Link
+              to="/register"
+              className="font-bold px-4 py-2 md:px-6 md:py-2.5 text-[13px] md:text-base rounded-full transition-all duration-300 shadow-sm font-outfit whitespace-nowrap"
               style={{
                 backgroundColor: '#8AFEA7',
                 color: '#1F2B5D',
                 textDecoration: 'none',
-                display: 'inline-block',
               }}
             >
               Get Started
-            </a>
+            </Link>
             {/* Mobile menu trigger */}
             <button
-              className="md:hidden bg-transparent border-0 cursor-pointer p-1"
+              className="md:hidden bg-transparent border-0 cursor-pointer flex items-center justify-center p-2"
               onClick={() => setMobileOpen(true)}
               style={{ color: '#1F2B5D' }}
             >
-              <MenuOutlined style={{ fontSize: 20 }} />
+              <MenuOutlined style={{ fontSize: 22 }} />
             </button>
           </div>
         </div>
@@ -157,9 +155,9 @@ const Navbar: React.FC = () => {
         width={280}
         title={
           <div className="flex items-center gap-2">
-            <img 
-              src="/logo.png" 
-              alt="Base Logo" 
+            <img
+              src="/logo.png"
+              alt="Base Logo"
               className="w-8 h-8 object-contain"
             />
             <span className="font-bold font-outfit" style={{ color: '#1F2B5D' }}>
@@ -180,7 +178,7 @@ const Navbar: React.FC = () => {
             </button>
           ))}
           <hr className="my-2" style={{ borderColor: '#F0F3F8' }} />
-          
+
           <div className="flex flex-col gap-3">
             <span className="text-xs font-bold uppercase tracking-wider opacity-50 font-outfit">Select Country</span>
             {countries.map((c) => (
