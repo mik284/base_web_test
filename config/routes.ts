@@ -11,6 +11,10 @@ export const routes = [
             {
                 path: '/pricing',
                 component: './Pricing',
+            },
+            {
+                path: '/*',
+                component: './404',
             }
         ]
     }
