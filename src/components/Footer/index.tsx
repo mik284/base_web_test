@@ -57,9 +57,9 @@ const Footer: React.FC = () => {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-6">
-              <img 
-                src="/logo.png" 
-                alt="Base Logo" 
+              <img
+                src="/logo.png"
+                alt="Base Logo"
                 className="w-10 h-10 object-contain"
               />
               <span
@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
               className="mb-6 max-w-xs leading-relaxed font-outfit"
               style={{ color: 'rgba(31,43,93,0.6)' }}
             >
-              Empowering African businesses with modern, unified tools to sell more, manage
+              Empowering businesses with modern, unified tools to sell more, manage
               better, and scale faster.
             </p>
             {/* Social links */}

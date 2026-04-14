@@ -2,7 +2,7 @@ import React from 'react';
 
 const PricingHero: React.FC = () => {
   return (
-    <section className="relative pt-32 pb-4 overflow-hidden bg-white">
+    <section className="relative pt-24 pb-4 overflow-hidden bg-white">
       {/* Background Orbs */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-30 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-mint/40 blur-[120px] rounded-full animate-float" />
@@ -16,7 +16,7 @@ const PricingHero: React.FC = () => {
           </span>
         </div>
 
-        <h1 className="text-4xl md:text-7xl font-bold mb-6 text-navy font-outfit tracking-tight">
+        <h1 className="text-4xl md:text-7xl font-bold mb-6 text-navy font-outfit">
           Scalable plans for <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-navy via-electric to-mint-dark">
             every stage of your business.

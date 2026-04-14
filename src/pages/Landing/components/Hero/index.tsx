@@ -41,7 +41,7 @@ const MiniBarChart: React.FC = () => (
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <section className="relative pt-24 pb-20 md:pt-24 lg:pt-24 lg:pb-32 overflow-hidden">
       {/* Decorative blob backgrounds */}
       <div
         className="blob-bg w-[500px] h-[500px]"
@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
         <div className="w-full lg:w-1/2 flex flex-col items-start text-left">
           {/* Badge */}
           <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
             style={{ background: 'rgba(31,43,93,0.05)', border: '1px solid rgba(31,43,93,0.1)' }}
           >
             <span
@@ -78,10 +78,10 @@ const Hero: React.FC = () => {
 
           {/* Headline */}
           <h1
-            className="text-5xl lg:text-7xl font-bold leading-tight tracking-tight mb-6 font-outfit"
+            className="text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6 font-outfit"
             style={{ color: '#1F2B5D', lineHeight: 1.1 }}
           >
-            One Platform to Run Your{' '}
+            One Platform to Run Your {' '}
             <span
               className="text-transparent bg-clip-text"
               style={{ backgroundImage: 'linear-gradient(to right, #0800F0, #80E4F1)' }}
