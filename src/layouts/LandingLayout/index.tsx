@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import CTASection from '@/components/CTASection';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
 import PageLoader from '@/components/PageLoader';
 import { Outlet, useLocation } from '@umijs/max';
+import React, { useEffect, useState } from 'react';
 
 const LandingLayout: React.FC = () => {
   const { pathname } = useLocation();
@@ -41,10 +41,9 @@ const LandingLayout: React.FC = () => {
       {/* Page Content */}
       <main className="animate-fade-in">
         <Outlet />
+        {/* Shared CTA Section */}
+        <CTASection />
       </main>
-
-      {/* Shared CTA Section */}
-      <CTASection />
 
       {/* Shared Footer */}
       <Footer />
