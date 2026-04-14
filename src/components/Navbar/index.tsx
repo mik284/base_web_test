@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 
 import { NAV_LINKS } from '@/constants/landingData';
 
+import { history } from '@umijs/max';
+
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -35,8 +37,22 @@ const Navbar: React.FC = () => {
 
   const handleNav = (href: string) => {
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    el?.scrollIntoView({ behavior: 'smooth' });
+    
+    if (href.startsWith('/#')) {
+      const anchor = href.substring(1);
+      if (window.location.pathname === '/') {
+        const el = document.querySelector(anchor);
+        el?.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        history.push('/');
+        setTimeout(() => {
+          const el = document.querySelector(anchor);
+          el?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    } else {
+      history.push(href);
+    }
   };
 
   return (
@@ -51,12 +67,11 @@ const Navbar: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           {/* Logo */}
           <a href="/" style={{ textDecoration: 'none' }} className="flex items-center gap-2">
-            <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center"
-              style={{ backgroundColor: '#1F2B5D' }}
-            >
-              <CloudUploadOutlined style={{ color: '#8AFEA7', fontSize: 16 }} />
-            </div>
+            <img 
+              src="/logo.png" 
+              alt="BasepointCloud Logo" 
+              className="w-10 h-10 object-contain"
+            />
             <span
               className="font-bold text-xl tracking-tight font-outfit"
               style={{ color: '#1F2B5D' }}
@@ -142,12 +157,11 @@ const Navbar: React.FC = () => {
         width={280}
         title={
           <div className="flex items-center gap-2">
-            <div
-              className="w-7 h-7 rounded-lg flex items-center justify-center"
-              style={{ backgroundColor: '#1F2B5D' }}
-            >
-              <CloudUploadOutlined style={{ color: '#8AFEA7', fontSize: 13 }} />
-            </div>
+            <img 
+              src="/logo.png" 
+              alt="Base Logo" 
+              className="w-8 h-8 object-contain"
+            />
             <span className="font-bold font-outfit" style={{ color: '#1F2B5D' }}>
               BasepointCloud
             </span>

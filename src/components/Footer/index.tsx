@@ -57,12 +57,11 @@ const Footer: React.FC = () => {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-6">
-              <div
-                className="w-8 h-8 rounded-lg flex items-center justify-center"
-                style={{ backgroundColor: '#1F2B5D' }}
-              >
-                <CloudUploadOutlined style={{ color: '#8AFEA7', fontSize: 16 }} />
-              </div>
+              <img 
+                src="/logo.png" 
+                alt="Base Logo" 
+                className="w-10 h-10 object-contain"
+              />
               <span
                 className="font-bold text-xl tracking-tight font-outfit"
                 style={{ color: '#1F2B5D' }}
@@ -178,7 +177,7 @@ const Footer: React.FC = () => {
           className="flex flex-col md:flex-row items-center justify-between pt-8 text-sm"
           style={{ borderTop: '1px solid #F0F3F8', color: 'rgba(31,43,93,0.4)' }}
         >
-          <p className="font-outfit">© 2024 BasepointCloud Ltd. All rights reserved.</p>
+          <p className="font-outfit">© {new Date().getFullYear()} BasepointCloud Ltd. All rights reserved.</p>
           <div className="flex items-center gap-6 mt-4 md:mt-0">
             {['Privacy Policy', 'Terms of Service'].map((label) => (
               <a
