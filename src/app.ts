@@ -53,6 +53,18 @@ export const antd = {
         borderRadius: 12,
         controlHeight: 40,
       },
+      Typography: {
+        fontSizeHeading1: 61,
+        lineHeightHeading1: 1.05,
+        fontSizeHeading2: 49,
+        lineHeightHeading2: 1.1,
+        fontSizeHeading3: 39,
+        lineHeightHeading3: 1.1,
+        fontSizeHeading4: 31,
+        lineHeightHeading4: 1.2,
+        fontSizeHeading5: 25,
+        lineHeightHeading5: 1.3,
+      },
     },
   },
 };
