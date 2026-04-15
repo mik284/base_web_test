@@ -1,5 +1,5 @@
-import { CloudUploadOutlined, MenuOutlined, DownOutlined } from '@ant-design/icons';
-import { Drawer, Dropdown, Space, MenuProps } from 'antd';
+import { DownOutlined, MenuOutlined } from '@ant-design/icons';
+import { Drawer, Dropdown, MenuProps, Space } from 'antd';
 import React, { useEffect, useState } from 'react';
 
 import { NAV_LINKS } from '@/constants/landingData';
@@ -15,6 +15,8 @@ const Navbar: React.FC = () => {
     { key: 'kenya', label: 'Kenya', flag: '🇰🇪' },
     { key: 'tanzania', label: 'Tanzania', flag: '🇹🇿' },
     { key: 'uganda', label: 'Uganda', flag: '🇺🇬' },
+    { key: 'rwanda', label: 'Rwanda', flag: '🇷🇼' },
+    { key: 'burundi', label: 'Burundi', flag: '🇧🇮' },
   ];
 
   const countryItems: MenuProps['items'] = countries.map((c) => ({
@@ -58,36 +60,38 @@ const Navbar: React.FC = () => {
   return (
     <>
       <nav
-        className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-card border-b border-surfaceAlt'
-          : 'bg-white/80 backdrop-blur-md border-b border-gray-100'
-          }`}
+        className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? 'bg-white/95 backdrop-blur-md shadow-card border-b border-surfaceAlt'
+            : 'bg-white/80 backdrop-blur-md border-b border-gray-100'
+        }`}
       >
         <div className="max-w-7xl mx-auto px-4 lg:px-6 h-20 flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" style={{ textDecoration: 'none' }} className="flex items-center gap-2">
+          <Link
+            to="/"
+            style={{ textDecoration: 'none' }}
+            className="flex items-center gap-2"
+          >
             <img
               src="/logo.png"
               alt="BasepointCloud Logo"
-              className="w-8 h-8 lg:w-10 lg:h-10 object-contain"
+              className="w-20 h-20 lg:w-16 lg:h-16 object-contain"
             />
-            <span
-              className="hidden lg:block font-bold text-[18px] tracking-tight font-outfit"
-              style={{ color: '#1F2B5D' }}
-            >
-              BasepointCloud
-            </span>
           </Link>
 
           {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-4 lg:gap-8">
             {NAV_LINKS.map((link) => (
               <button
+                type="button"
                 key={link.label}
                 onClick={() => handleNav(link.href)}
                 className="font-medium font-outfit transition-colors bg-transparent border-0 cursor-pointer text-sm lg:text-base"
                 style={{ color: 'rgba(31,43,93,0.7)' }}
-                onMouseEnter={(e) => ((e.target as HTMLElement).style.color = '#1F2B5D')}
+                onMouseEnter={(e) =>
+                  ((e.target as HTMLElement).style.color = '#1F2B5D')
+                }
                 onMouseLeave={(e) =>
                   ((e.target as HTMLElement).style.color = 'rgba(31,43,93,0.7)')
                 }
@@ -97,17 +101,27 @@ const Navbar: React.FC = () => {
             ))}
 
             {/* Country Dropdown */}
-            <Dropdown menu={{ items: countryItems }} placement="bottomRight" arrow>
+            <Dropdown
+              menu={{ items: countryItems }}
+              placement="bottomRight"
+              arrow
+            >
               <button
+                type="button"
                 className="font-medium font-outfit transition-colors bg-transparent border-0 cursor-pointer flex items-center gap-1.5 text-sm lg:text-base"
                 style={{ color: 'rgba(31,43,93,0.7)' }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = '#1F2B5D')}
+                onMouseEnter={(e) =>
+                  ((e.currentTarget as HTMLElement).style.color = '#1F2B5D')
+                }
                 onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLElement).style.color = 'rgba(31,43,93,0.7)')
+                  ((e.currentTarget as HTMLElement).style.color =
+                    'rgba(31,43,93,0.7)')
                 }
               >
                 <Space>
-                  <span>{countries.find(c => c.label === selectedCountry)?.flag}</span>
+                  <span>
+                    {countries.find((c) => c.label === selectedCountry)?.flag}
+                  </span>
                   <span className="hidden xl:inline">{selectedCountry}</span>
                   <DownOutlined style={{ fontSize: 10 }} />
                 </Space>
@@ -125,11 +139,11 @@ const Navbar: React.FC = () => {
               Log In
             </Link>
             <Link
-              to="/register"
+              to="/pricing"
               className="font-bold px-4 py-2 md:px-6 md:py-2.5 text-[13px] md:text-base rounded-full transition-all duration-300 shadow-sm font-outfit whitespace-nowrap"
               style={{
-                backgroundColor: '#8AFEA7',
-                color: '#1F2B5D',
+                backgroundColor: '#1F2B5D',
+                color: '#fff',
                 textDecoration: 'none',
               }}
             >
@@ -137,6 +151,7 @@ const Navbar: React.FC = () => {
             </Link>
             {/* Mobile menu trigger */}
             <button
+              type="button"
               className="md:hidden bg-transparent border-0 cursor-pointer flex items-center justify-center p-2"
               onClick={() => setMobileOpen(true)}
               style={{ color: '#1F2B5D' }}
@@ -158,17 +173,15 @@ const Navbar: React.FC = () => {
             <img
               src="/logo.png"
               alt="Base Logo"
-              className="w-8 h-8 object-contain"
+              className="w-20 h-20 object-contain"
             />
-            <span className="font-bold font-outfit" style={{ color: '#1F2B5D' }}>
-              BasepointCloud
-            </span>
           </div>
         }
       >
         <div className="flex flex-col gap-5 pt-2">
           {NAV_LINKS.map((link) => (
             <button
+              type="button"
               key={link.label}
               onClick={() => handleNav(link.href)}
               className="text-lg text-left bg-transparent border-0 cursor-pointer font-medium font-outfit p-0 transition-colors"
@@ -180,17 +193,33 @@ const Navbar: React.FC = () => {
           <hr className="my-2" style={{ borderColor: '#F0F3F8' }} />
 
           <div className="flex flex-col gap-3">
-            <span className="text-xs font-bold uppercase tracking-wider opacity-50 font-outfit">Select Country</span>
+            <span className="text-xs font-bold uppercase tracking-wider opacity-50 font-outfit">
+              Select Country
+            </span>
             {countries.map((c) => (
               <button
+                type="button"
                 key={c.key}
-                onClick={() => { setSelectedCountry(c.label); setMobileOpen(false); }}
+                onClick={() => {
+                  setSelectedCountry(c.label);
+                  setMobileOpen(false);
+                }}
                 className="flex items-center gap-3 bg-transparent border-0 cursor-pointer font-medium font-outfit p-1 transition-colors"
-                style={{ color: selectedCountry === c.label ? '#1F2B5D' : 'rgba(31,43,93,0.6)' }}
+                style={{
+                  color:
+                    selectedCountry === c.label
+                      ? '#1F2B5D'
+                      : 'rgba(31,43,93,0.6)',
+                }}
               >
                 <span className="text-xl">{c.flag}</span>
                 <span>{c.label}</span>
-                {selectedCountry === c.label && <div className="ml-auto w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#8AFEA7' }} />}
+                {selectedCountry === c.label && (
+                  <div
+                    className="ml-auto w-1.5 h-1.5 rounded-full"
+                    style={{ backgroundColor: '#8AFEA7' }}
+                  />
+                )}
               </button>
             ))}
           </div>
@@ -203,18 +232,18 @@ const Navbar: React.FC = () => {
           >
             Log In
           </a>
-          <a
-            href="#"
+          <Link
+            to="/pricing"
             className="text-center font-semibold py-3 rounded-full font-outfit transition-colors"
             style={{
-              backgroundColor: '#8AFEA7',
-              color: '#1F2B5D',
+              backgroundColor: '#1F2B5D',
+              color: '#fff',
               textDecoration: 'none',
               display: 'block',
             }}
           >
             Get Started
-          </a>
+          </Link>
         </div>
       </Drawer>
     </>

@@ -1,5 +1,4 @@
 import {
-  CloudUploadOutlined,
   EnvironmentOutlined,
   InstagramOutlined,
   LinkedinOutlined,
@@ -12,9 +11,21 @@ import React from 'react';
 import { FOOTER_COMPANY, FOOTER_PRODUCTS } from '@/constants/landingData';
 
 const SOCIAL = [
-  { icon: <TwitterOutlined style={{ fontSize: 22 }} />, href: '#', label: 'Twitter' },
-  { icon: <InstagramOutlined style={{ fontSize: 22 }} />, href: '#', label: 'Instagram' },
-  { icon: <LinkedinOutlined style={{ fontSize: 22 }} />, href: '#', label: 'LinkedIn' },
+  {
+    icon: <TwitterOutlined style={{ fontSize: 22 }} />,
+    href: '#',
+    label: 'Twitter',
+  },
+  {
+    icon: <InstagramOutlined style={{ fontSize: 22 }} />,
+    href: '#',
+    label: 'Instagram',
+  },
+  {
+    icon: <LinkedinOutlined style={{ fontSize: 22 }} />,
+    href: '#',
+    label: 'LinkedIn',
+  },
 ];
 
 const CONTACT = [
@@ -53,31 +64,27 @@ const Footer: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
-
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center gap-2">
               <img
                 src="/logo.png"
                 alt="Base Logo"
-                className="w-10 h-10 object-contain"
+                className="w-24 h-24 object-contain"
               />
-              <span
-                className="font-bold text-xl tracking-tight font-outfit"
-                style={{ color: '#1F2B5D' }}
-              >
-                BasepointCloud
-              </span>
             </div>
             <p
               className="mb-6 max-w-xs leading-relaxed font-outfit"
               style={{ color: 'rgba(31,43,93,0.6)' }}
             >
-              Empowering businesses with modern, unified tools to sell more, manage
-              better, and scale faster.
+              Empowering businesses with modern, unified tools to sell more,
+              manage better, and scale faster.
             </p>
             {/* Social links */}
-            <div className="flex items-center gap-4" style={{ color: 'rgba(31,43,93,0.4)' }}>
+            <div
+              className="flex items-center gap-4"
+              style={{ color: 'rgba(31,43,93,0.4)' }}
+            >
               {SOCIAL.map(({ icon, href, label }) => (
                 <a
                   key={label}
@@ -85,8 +92,14 @@ const Footer: React.FC = () => {
                   aria-label={label}
                   className="transition-colors"
                   style={{ color: 'inherit', textDecoration: 'none' }}
-                  onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = '#8AFEA7')}
-                  onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(31,43,93,0.4)')}
+                  onMouseEnter={(e) =>
+                    ((e.currentTarget as HTMLAnchorElement).style.color =
+                      '#8AFEA7')
+                  }
+                  onMouseLeave={(e) =>
+                    ((e.currentTarget as HTMLAnchorElement).style.color =
+                      'rgba(31,43,93,0.4)')
+                  }
                 >
                   {icon}
                 </a>
@@ -108,9 +121,18 @@ const Footer: React.FC = () => {
                   <a
                     href="#"
                     className="transition-colors font-outfit"
-                    style={{ color: 'rgba(31,43,93,0.6)', textDecoration: 'none' }}
-                    onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = '#1F2B5D')}
-                    onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(31,43,93,0.6)')}
+                    style={{
+                      color: 'rgba(31,43,93,0.6)',
+                      textDecoration: 'none',
+                    }}
+                    onMouseEnter={(e) =>
+                      ((e.currentTarget as HTMLAnchorElement).style.color =
+                        '#1F2B5D')
+                    }
+                    onMouseLeave={(e) =>
+                      ((e.currentTarget as HTMLAnchorElement).style.color =
+                        'rgba(31,43,93,0.6)')
+                    }
                   >
                     {item}
                   </a>
@@ -133,9 +155,18 @@ const Footer: React.FC = () => {
                   <a
                     href="#"
                     className="transition-colors font-outfit"
-                    style={{ color: 'rgba(31,43,93,0.6)', textDecoration: 'none' }}
-                    onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = '#1F2B5D')}
-                    onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(31,43,93,0.6)')}
+                    style={{
+                      color: 'rgba(31,43,93,0.6)',
+                      textDecoration: 'none',
+                    }}
+                    onMouseEnter={(e) =>
+                      ((e.currentTarget as HTMLAnchorElement).style.color =
+                        '#1F2B5D')
+                    }
+                    onMouseLeave={(e) =>
+                      ((e.currentTarget as HTMLAnchorElement).style.color =
+                        'rgba(31,43,93,0.6)')
+                    }
                   >
                     {item}
                   </a>
@@ -175,9 +206,15 @@ const Footer: React.FC = () => {
         {/* Bottom bar */}
         <div
           className="flex flex-col md:flex-row items-center justify-between pt-8 text-sm"
-          style={{ borderTop: '1px solid #F0F3F8', color: 'rgba(31,43,93,0.4)' }}
+          style={{
+            borderTop: '1px solid #F0F3F8',
+            color: 'rgba(31,43,93,0.4)',
+          }}
         >
-          <p className="font-outfit">© {new Date().getFullYear()} BasepointCloud Ltd. All rights reserved.</p>
+          <p className="font-outfit">
+            © {new Date().getFullYear()} BasepointCloud Ltd. All rights
+            reserved.
+          </p>
           <div className="flex items-center gap-6 mt-4 md:mt-0">
             {['Privacy Policy', 'Terms of Service'].map((label) => (
               <a
@@ -185,8 +222,14 @@ const Footer: React.FC = () => {
                 href="#"
                 className="transition-colors font-outfit"
                 style={{ color: 'inherit', textDecoration: 'none' }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = '#1F2B5D')}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(31,43,93,0.4)')}
+                onMouseEnter={(e) =>
+                  ((e.currentTarget as HTMLAnchorElement).style.color =
+                    '#1F2B5D')
+                }
+                onMouseLeave={(e) =>
+                  ((e.currentTarget as HTMLAnchorElement).style.color =
+                    'rgba(31,43,93,0.4)')
+                }
               >
                 {label}
               </a>
