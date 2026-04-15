@@ -7,7 +7,7 @@
 export const NAV_LINKS = [
   { label: 'Products', href: '/#products' },
   { label: 'Features', href: '/#features' },
-  { label: 'Solutions', href: '/#usecases' },
+  { label: 'About', href: '/#usecases' },
   { label: 'Pricing', href: '/pricing' },
 ];
 
@@ -162,11 +162,11 @@ export const TESTIMONIALS: Testimonial[] = [
 
 // ─── Footer Links ────────────────────────────────────────────────────────────
 export const FOOTER_PRODUCTS = [
-  'BasePesa',
-  'BaseDuka',
-  'BaseCRM',
+  'Duka',
   'Bandu',
-  'Duka1',
+  'Pesa',
+  'Mteja',
+  'Custom Solutions',
 ];
 
 export const FOOTER_COMPANY = [
