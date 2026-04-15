@@ -33,23 +33,11 @@ interface ProductData {
 
 const PRODUCTS: ProductData[] = [
   {
-    id: 'basepesa',
-    name: 'BasePesa',
-    description:
-      'Automate accounting, invoicing, and tax calculations effortlessly. Stay compliant without the headache.',
-    cta: 'Explore BasePesa',
-    iconKey: 'Calculator',
-    accentColor: 'rgba(138,254,167,0.2)',
-    iconBorderColor: 'rgba(138,254,167,0.3)',
-    iconTextColor: '#5CE07A',
-    ctaColor: '#5CE07A',
-  },
-  {
-    id: 'baseduka',
-    name: 'BaseDuka',
+    id: 'duka',
+    name: 'Duka',
     description:
       'Next-gen POS and multi-channel inventory management. Sell in-store, online, or on social media with one central inventory system.',
-    cta: 'Explore BaseDuka',
+    cta: 'Explore Duka',
     iconKey: 'Shop',
     accentColor: 'rgba(247,179,68,0.1)',
     iconBorderColor: 'rgba(247,179,68,0.3)',
@@ -58,10 +46,22 @@ const PRODUCTS: ProductData[] = [
     isWide: true,
   },
   {
+    id: 'pesa',
+    name: 'Pesa',
+    description:
+      'Automate accounting, invoicing, and tax calculations effortlessly. Stay compliant without the headache.',
+    cta: 'Explore Pesa',
+    iconKey: 'Calculator',
+    accentColor: 'rgba(138,254,167,0.2)',
+    iconBorderColor: 'rgba(138,254,167,0.3)',
+    iconTextColor: '#5CE07A',
+    ctaColor: '#5CE07A',
+  },
+  {
     id: 'bandu',
     name: 'Bandu',
     description:
-      'Manage staff roles, track shifts, and calculate payroll automatically based on sales performance.',
+      'Empower your team with seamless communication and task management. Assign roles, track progress, and manage shifts effortlessly.',
     cta: 'Explore Bandu',
     iconKey: 'Team',
     accentColor: 'rgba(8,0,240,0.1)',
@@ -70,28 +70,28 @@ const PRODUCTS: ProductData[] = [
     ctaColor: '#0800F0',
   },
   {
-    id: 'duka1',
-    name: 'Duka1',
+    id: 'mteja',
+    name: 'Mteja',
     description:
-      'Launch a beautiful, mobile-optimized online storefront in minutes. No coding skills required.',
-    cta: 'Explore Duka1',
-    iconKey: 'Global',
-    accentColor: 'rgba(255,231,0,0.2)',
-    iconBorderColor: 'rgba(255,231,0,0.4)',
-    iconTextColor: '#ca8a04',
-    ctaColor: '#ca8a04',
-  },
-  {
-    id: 'basecrm',
-    name: 'BaseCRM',
-    description:
-      'Keep customers coming back with built-in point systems, custom discounts, and SMS marketing campaigns.',
-    cta: 'Explore BaseCRM',
+      'Turn every transaction into a marketing opportunity. Track customer preferences, reward loyalty, and send targeted promotions that drive repeat business.',
+    cta: 'Explore Mteja',
     iconKey: 'Star',
     accentColor: 'rgba(128,228,241,0.2)',
     iconBorderColor: 'rgba(128,228,241,0.4)',
     iconTextColor: '#0891b2',
     ctaColor: '#0891b2',
+  },
+  {
+    id: 'custom',
+    name: 'Custom',
+    description:
+      'Tailored software solutions designed to meet your unique business needs. From custom integrations to bespoke features, we build technology that works the way you do.',
+    cta: 'Explore Custom',
+    iconKey: 'Global',
+    accentColor: 'rgba(255,231,0,0.2)',
+    iconBorderColor: 'rgba(255,231,0,0.4)',
+    iconTextColor: '#ca8a04',
+    ctaColor: '#ca8a04',
   },
 ];
 
