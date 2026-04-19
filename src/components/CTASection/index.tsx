@@ -1,3 +1,4 @@
+import { Button } from 'antd';
 import React from 'react';
 
 const CTASection: React.FC = () => {
@@ -40,48 +41,26 @@ const CTASection: React.FC = () => {
             className="text-lg mb-10 font-outfit"
             style={{ color: 'rgba(255,255,255,0.7)' }}
           >
-            Join thousands of African businesses using Basepoint to scale their operations,
-            simplify management, and boost sales.
+            Join thousands of African businesses using Basepoint to scale their
+            operations, simplify management, and boost sales.
           </p>
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md mx-auto">
-            <a
-              href="#"
-              className="w-full sm:w-auto text-center font-bold px-8 py-4 rounded-full transition-all duration-300 text-lg font-outfit"
-              style={{
-                backgroundColor: '#8AFEA7',
-                color: '#1F2B5D',
-                textDecoration: 'none',
-                boxShadow: '0 0 30px rgba(138,254,167,0.4)',
-                display: 'block',
-              }}
+            <Button
+              type="primary"
+              size="large"
+              className="w-full sm:w-auto h-auto px-8 py-4 rounded-full font-bold font-outfit bg-mint border-mint text-navy hover:bg-white hover:border-white transition-all shadow-xl shadow-mint/20"
             >
               Create Free Account
-            </a>
-            <a
-              href="#"
-              className="w-full sm:w-auto text-center font-semibold px-8 py-4 rounded-full transition-all duration-300 text-lg font-outfit"
-              style={{
-                backgroundColor: 'transparent',
-                color: '#fff',
-                textDecoration: 'none',
-                border: '1px solid rgba(255,255,255,0.3)',
-                display: 'block',
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = '#fff';
-                (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                  'rgba(255,255,255,0.1)';
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor =
-                  'rgba(255,255,255,0.3)';
-                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent';
-              }}
+            </Button>
+            <Button
+              size="large"
+              ghost
+              className="w-full sm:w-auto h-auto px-8 py-4 rounded-full font-bold font-outfit text-white border-white/30 hover:border-white hover:bg-white/10 transition-all"
             >
               Talk to Sales
-            </a>
+            </Button>
           </div>
 
           <p
