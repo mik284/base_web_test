@@ -3,9 +3,63 @@
  * Keeping data separate from UI makes it easy to update content without touching components.
  */
 
-// ─── Navigation ─────────────────────────────────────────────────────────────
-export const NAV_LINKS = [
-  { label: 'Products', href: '/#products' },
+import {
+  AppstoreOutlined,
+  CreditCardOutlined,
+  RocketOutlined,
+  TeamOutlined,
+  ToolOutlined,
+} from '@ant-design/icons';
+import React, { ReactNode } from 'react';
+
+export interface ProductLink {
+  label: string;
+  href: string;
+  desc: string;
+  icon: ReactNode;
+}
+
+export const PRODUCT_LINKS: ProductLink[] = [
+  {
+    label: 'Duka',
+    href: '/duka',
+    desc: 'Digitize your ledger book and track inventory.',
+    icon: React.createElement(AppstoreOutlined),
+  },
+  {
+    label: 'Pesa',
+    href: '/pesa',
+    desc: 'Seamless payments and auto-reconciliation.',
+    icon: React.createElement(CreditCardOutlined),
+  },
+  {
+    label: 'Bandu',
+    href: '/bandu',
+    desc: 'Fulfill orders with advanced logistics.',
+    icon: React.createElement(RocketOutlined),
+  },
+  {
+    label: 'Mteja',
+    href: '/mteja',
+    desc: 'Grow loyalty with our all-in-one CRM.',
+    icon: React.createElement(TeamOutlined),
+  },
+  {
+    label: 'Custom',
+    href: '/custom',
+    desc: 'Tailor-made solutions to fit your workflows.',
+    icon: React.createElement(ToolOutlined),
+  },
+];
+
+export interface NavLink {
+  label: string;
+  href: string;
+  isDropdown?: boolean;
+}
+
+export const NAV_LINKS: NavLink[] = [
+  { label: 'Products', href: '#', isDropdown: true },
   { label: 'Features', href: '/#features' },
   { label: 'About', href: '/#usecases' },
   { label: 'Pricing', href: '/pricing' },
@@ -162,17 +216,17 @@ export const TESTIMONIALS: Testimonial[] = [
 
 // ─── Footer Links ────────────────────────────────────────────────────────────
 export const FOOTER_PRODUCTS = [
-  'Duka',
-  'Bandu',
-  'Pesa',
-  'Mteja',
-  'Custom Solutions',
+  { label: 'Duka', href: '/duka' },
+  { label: 'Bandu', href: '/bandu' },
+  { label: 'Pesa', href: '/pesa' },
+  { label: 'Mteja', href: '/mteja' },
+  { label: 'Custom Solutions', href: '/custom' },
 ];
 
 export const FOOTER_COMPANY = [
-  'About Us',
-  'Careers',
-  'Blog',
-  'Contact',
-  'Partners',
+  { label: 'About Us', href: '/about' },
+  { label: 'Careers', href: '/careers' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'Partners', href: '/partners' },
 ];
