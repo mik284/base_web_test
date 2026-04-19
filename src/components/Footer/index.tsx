@@ -9,6 +9,7 @@ import {
 import React from 'react';
 
 import { FOOTER_COMPANY, FOOTER_PRODUCTS } from '@/constants/landingData';
+import { Link } from '@umijs/max';
 
 const SOCIAL = [
   {
@@ -116,26 +117,25 @@ const Footer: React.FC = () => {
               Products
             </h5>
             <ul className="space-y-4 list-none p-0 m-0">
-              {FOOTER_PRODUCTS.map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
+              {FOOTER_PRODUCTS.map((item: { label: string; href: string }) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.href}
                     className="transition-colors font-outfit"
                     style={{
                       color: 'rgba(31,43,93,0.6)',
                       textDecoration: 'none',
                     }}
                     onMouseEnter={(e) =>
-                      ((e.currentTarget as HTMLAnchorElement).style.color =
-                        '#1F2B5D')
+                      ((e.currentTarget as HTMLElement).style.color = '#1F2B5D')
                     }
                     onMouseLeave={(e) =>
-                      ((e.currentTarget as HTMLAnchorElement).style.color =
+                      ((e.currentTarget as HTMLElement).style.color =
                         'rgba(31,43,93,0.6)')
                     }
                   >
-                    {item}
-                  </a>
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -150,26 +150,25 @@ const Footer: React.FC = () => {
               Company
             </h5>
             <ul className="space-y-4 list-none p-0 m-0">
-              {FOOTER_COMPANY.map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
+              {FOOTER_COMPANY.map((item: { label: string; href: string }) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.href}
                     className="transition-colors font-outfit"
                     style={{
                       color: 'rgba(31,43,93,0.6)',
                       textDecoration: 'none',
                     }}
                     onMouseEnter={(e) =>
-                      ((e.currentTarget as HTMLAnchorElement).style.color =
-                        '#1F2B5D')
+                      ((e.currentTarget as HTMLElement).style.color = '#1F2B5D')
                     }
                     onMouseLeave={(e) =>
-                      ((e.currentTarget as HTMLAnchorElement).style.color =
+                      ((e.currentTarget as HTMLElement).style.color =
                         'rgba(31,43,93,0.6)')
                     }
                   >
-                    {item}
-                  </a>
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -216,23 +215,25 @@ const Footer: React.FC = () => {
             reserved.
           </p>
           <div className="flex items-center gap-6 mt-4 md:mt-0">
-            {['Privacy Policy', 'Terms of Service'].map((label) => (
-              <a
-                key={label}
-                href="#"
+            {[
+              { label: 'Privacy Policy', href: '/privacy' },
+              { label: 'Terms of Service', href: '/terms' },
+            ].map((item) => (
+              <Link
+                key={item.label}
+                to={item.href}
                 className="transition-colors font-outfit"
                 style={{ color: 'inherit', textDecoration: 'none' }}
                 onMouseEnter={(e) =>
-                  ((e.currentTarget as HTMLAnchorElement).style.color =
-                    '#1F2B5D')
+                  ((e.currentTarget as HTMLElement).style.color = '#1F2B5D')
                 }
                 onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLAnchorElement).style.color =
+                  ((e.currentTarget as HTMLElement).style.color =
                     'rgba(31,43,93,0.4)')
                 }
               >
-                {label}
-              </a>
+                {item.label}
+              </Link>
             ))}
           </div>
         </div>

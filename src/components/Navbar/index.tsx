@@ -2,7 +2,7 @@ import { DownOutlined, MenuOutlined } from '@ant-design/icons';
 import { Drawer, Dropdown, MenuProps, Space } from 'antd';
 import React, { useEffect, useState } from 'react';
 
-import { NAV_LINKS } from '@/constants/landingData';
+import { NAV_LINKS, PRODUCT_LINKS } from '@/constants/landingData';
 
 import { history, Link } from '@umijs/max';
 
@@ -57,6 +57,29 @@ const Navbar: React.FC = () => {
     }
   };
 
+  const productItems: MenuProps['items'] = PRODUCT_LINKS.map((link) => ({
+    key: link.label,
+    label: (
+      <div className="flex items-start gap-3 p-2 py-1 max-w-[240px] font-outfit">
+        <div className="text-xl mt-0.5" style={{ color: '#8AFEA7' }}>
+          {link.icon}
+        </div>
+        <div>
+          <div className="font-bold text-base" style={{ color: '#1F2B5D' }}>
+            {link.label}
+          </div>
+          <div
+            className="text-xs leading-snug mt-1"
+            style={{ color: 'rgba(31,43,93,0.6)' }}
+          >
+            {link.desc}
+          </div>
+        </div>
+      </div>
+    ),
+    onClick: () => handleNav(link.href),
+  }));
+
   return (
     <>
       <nav
@@ -82,23 +105,54 @@ const Navbar: React.FC = () => {
 
           {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-4 lg:gap-8">
-            {NAV_LINKS.map((link) => (
-              <button
-                type="button"
-                key={link.label}
-                onClick={() => handleNav(link.href)}
-                className="font-medium font-outfit transition-colors bg-transparent border-0 cursor-pointer text-sm lg:text-base"
-                style={{ color: 'rgba(31,43,93,0.7)' }}
-                onMouseEnter={(e) =>
-                  ((e.target as HTMLElement).style.color = '#1F2B5D')
-                }
-                onMouseLeave={(e) =>
-                  ((e.target as HTMLElement).style.color = 'rgba(31,43,93,0.7)')
-                }
-              >
-                {link.label}
-              </button>
-            ))}
+            {NAV_LINKS.map((link) => {
+              if (link.isDropdown) {
+                return (
+                  <Dropdown
+                    key={link.label}
+                    menu={{ items: productItems }}
+                    placement="bottom"
+                    arrow
+                  >
+                    <button
+                      type="button"
+                      className="font-medium font-outfit transition-colors bg-transparent border-0 cursor-pointer flex items-center gap-1.5 text-sm lg:text-base"
+                      style={{ color: 'rgba(31,43,93,0.7)' }}
+                      onMouseEnter={(e) =>
+                        ((e.currentTarget as HTMLElement).style.color =
+                          '#1F2B5D')
+                      }
+                      onMouseLeave={(e) =>
+                        ((e.currentTarget as HTMLElement).style.color =
+                          'rgba(31,43,93,0.7)')
+                      }
+                    >
+                      {link.label}
+                      <DownOutlined style={{ fontSize: 10 }} />
+                    </button>
+                  </Dropdown>
+                );
+              }
+
+              return (
+                <button
+                  type="button"
+                  key={link.label}
+                  onClick={() => handleNav(link.href)}
+                  className="font-medium font-outfit transition-colors bg-transparent border-0 cursor-pointer text-sm lg:text-base"
+                  style={{ color: 'rgba(31,43,93,0.7)' }}
+                  onMouseEnter={(e) =>
+                    ((e.target as HTMLElement).style.color = '#1F2B5D')
+                  }
+                  onMouseLeave={(e) =>
+                    ((e.target as HTMLElement).style.color =
+                      'rgba(31,43,93,0.7)')
+                  }
+                >
+                  {link.label}
+                </button>
+              );
+            })}
 
             {/* Country Dropdown */}
             <Dropdown
@@ -179,17 +233,63 @@ const Navbar: React.FC = () => {
         }
       >
         <div className="flex flex-col gap-5 pt-2">
-          {NAV_LINKS.map((link) => (
-            <button
-              type="button"
-              key={link.label}
-              onClick={() => handleNav(link.href)}
-              className="text-lg text-left bg-transparent border-0 cursor-pointer font-medium font-outfit p-0 transition-colors"
-              style={{ color: '#1F2B5D' }}
-            >
-              {link.label}
-            </button>
-          ))}
+          {NAV_LINKS.map((link) => {
+            if (link.isDropdown) {
+              return (
+                <div key={link.label} className="flex flex-col gap-2">
+                  <span
+                    className="text-lg text-left font-medium font-outfit p-0"
+                    style={{ color: 'rgba(31,43,93,0.5)' }}
+                  >
+                    {link.label}
+                  </span>
+                  <div className="flex flex-col gap-3 pl-4">
+                    {PRODUCT_LINKS.map((prod) => (
+                      <button
+                        type="button"
+                        key={prod.label}
+                        onClick={() => handleNav(prod.href)}
+                        className="flex items-start gap-3 text-left bg-transparent border-0 cursor-pointer p-0 transition-colors"
+                      >
+                        <div
+                          className="text-xl mt-0.5"
+                          style={{ color: '#8AFEA7' }}
+                        >
+                          {prod.icon}
+                        </div>
+                        <div>
+                          <div
+                            className="text-base font-bold font-outfit"
+                            style={{ color: '#1F2B5D' }}
+                          >
+                            {prod.label}
+                          </div>
+                          <div
+                            className="text-xs font-outfit leading-snug"
+                            style={{ color: 'rgba(31,43,93,0.6)' }}
+                          >
+                            {prod.desc}
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+
+            return (
+              <button
+                type="button"
+                key={link.label}
+                onClick={() => handleNav(link.href)}
+                className="text-lg text-left bg-transparent border-0 cursor-pointer font-medium font-outfit p-0 transition-colors"
+                style={{ color: '#1F2B5D' }}
+              >
+                {link.label}
+              </button>
+            );
+          })}
           <hr className="my-2" style={{ borderColor: '#F0F3F8' }} />
 
           <div className="flex flex-col gap-3">
