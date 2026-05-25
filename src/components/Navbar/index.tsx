@@ -57,28 +57,44 @@ const Navbar: React.FC = () => {
     }
   };
 
-  const productItems: MenuProps['items'] = PRODUCT_LINKS.map((link) => ({
-    key: link.label,
-    label: (
-      <div className="flex items-start gap-3 p-2 py-1 max-w-[240px] font-outfit">
-        <div className="text-xl mt-0.5" style={{ color: '#8AFEA7' }}>
-          {link.icon}
+  const productItems: MenuProps['items'] = [
+    {
+      key: 'products-grid',
+      label: (
+        <div className="grid grid-cols-2 gap-4 p-4 min-w-[400px] font-outfit">
+          {PRODUCT_LINKS.map((link) => (
+            <button
+              key={link.label}
+              type="button"
+              className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors text-left bg-transparent border-0 cursor-pointer w-full"
+              onClick={() => handleNav(link.href)}
+            >
+              <div
+                className="text-xl mt-0.5 w-8 h-8 rounded-lg flex items-center justify-center"
+                style={{
+                  backgroundColor: 'rgba(138,254,167,0.15)',
+                  color: '#8AFEA7',
+                }}
+              >
+                {link.icon}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="font-bold text-sm" style={{ color: '#1F2B5D' }}>
+                  {link.label}
+                </div>
+                <div
+                  className="text-xs leading-snug mt-1"
+                  style={{ color: 'rgba(31,43,93,0.6)' }}
+                >
+                  {link.desc}
+                </div>
+              </div>
+            </button>
+          ))}
         </div>
-        <div>
-          <div className="font-bold text-base" style={{ color: '#1F2B5D' }}>
-            {link.label}
-          </div>
-          <div
-            className="text-xs leading-snug mt-1"
-            style={{ color: 'rgba(31,43,93,0.6)' }}
-          >
-            {link.desc}
-          </div>
-        </div>
-      </div>
-    ),
-    onClick: () => handleNav(link.href),
-  }));
+      ),
+    },
+  ];
 
   return (
     <>
@@ -111,7 +127,7 @@ const Navbar: React.FC = () => {
                   <Dropdown
                     key={link.label}
                     menu={{ items: productItems }}
-                    placement="bottom"
+                    placement="bottomLeft"
                     arrow
                   >
                     <button
@@ -185,15 +201,15 @@ const Navbar: React.FC = () => {
 
           {/* CTA buttons */}
           <div className="flex items-center gap-2 md:gap-4">
-            <Link
+            {/* <Link
               to="/login"
               className="hidden md:block font-medium font-outfit transition-colors"
               style={{ color: '#1F2B5D', textDecoration: 'none' }}
             >
               Log In
-            </Link>
+            </Link> */}
             <Link
-              to="/pricing"
+              to="/contact"
               className="font-bold px-4 py-2 md:px-6 md:py-2.5 text-[13px] md:text-base rounded-full transition-all duration-300 shadow-sm font-outfit whitespace-nowrap"
               style={{
                 backgroundColor: '#1F2B5D',
@@ -333,7 +349,7 @@ const Navbar: React.FC = () => {
             Log In
           </a>
           <Link
-            to="/pricing"
+            to="/contact"
             className="text-center font-semibold py-3 rounded-full font-outfit transition-colors"
             style={{
               backgroundColor: '#1F2B5D',
