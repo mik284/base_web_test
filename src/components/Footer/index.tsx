@@ -34,26 +34,35 @@ const CONTACT = [
     icon: <EnvironmentOutlined style={{ fontSize: 18 }} />,
     content: (
       <>
-        Westlands, Nairobi
+        CMS Africa
         <br />
-        Kenya
+        Chania Avenue, Kilimani
       </>
     ),
   },
   {
     icon: <MailOutlined style={{ fontSize: 18 }} />,
     content: (
-      <a
-        href="mailto:hello@basepoint.cloud"
-        style={{ color: 'inherit', textDecoration: 'none' }}
-      >
-        hello@basepoint.cloud
-      </a>
+      <>
+        <a
+          href="mailto:info@basepoint.co.ke"
+          style={{ color: 'inherit', textDecoration: 'none' }}
+        >
+          info@basepoint.co.ke
+        </a>
+        <br />
+        <a
+          href="mailto:community@basepoint.co.ke"
+          style={{ color: 'inherit', textDecoration: 'none' }}
+        >
+          community@basepoint.co.ke
+        </a>
+      </>
     ),
   },
   {
     icon: <PhoneOutlined style={{ fontSize: 18 }} />,
-    content: '+254 700 000 000',
+    content: '+254 746 665 877',
   },
 ];
 

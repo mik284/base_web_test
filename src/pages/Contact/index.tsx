@@ -4,10 +4,49 @@ import {
   EnvironmentOutlined,
   MailOutlined,
   PhoneOutlined,
+  WhatsAppOutlined,
 } from '@ant-design/icons';
-import React from 'react';
+import React, { useState } from 'react';
 
 const ContactPage: React.FC = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
+  });
+
+  const handleWhatsAppSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const phoneNumber = '254746665877';
+    const text = `Hello BasepointCloud,
+
+*Name:* ${formData.firstName} ${formData.lastName}
+*Email:* ${formData.email}
+*Phone:* ${formData.phone}
+*Subject:* ${formData.subject}
+
+*Message:*
+${formData.message}`;
+
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      text,
+    )}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       {/* Hero Section */}
@@ -49,7 +88,7 @@ const ContactPage: React.FC = () => {
             </h3>
             <p className="text-gray-600 font-outfit">info@basepoint.co.ke</p>
             <p className="text-gray-600 font-outfit">
-              communityinfo@basepoint.co.ke
+              community@basepoint.co.ke
             </p>
           </div>
 
@@ -82,8 +121,8 @@ const ContactPage: React.FC = () => {
             >
               Visit Us
             </h3>
-            <p className="text-gray-600 font-outfit">Nairobi, Kenya</p>
-            <p className="text-gray-600 font-outfit">Westlands Business Park</p>
+            <p className="text-gray-600 font-outfit">CMS Africa</p>
+            <p className="text-gray-600 font-outfit">Chania Avenue, Kilimani</p>
           </div>
 
           <div className="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
@@ -122,7 +161,7 @@ const ContactPage: React.FC = () => {
                 hours
               </p>
             </div>
-            <form className="space-y-6">
+            <form onSubmit={handleWhatsAppSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label
@@ -133,6 +172,9 @@ const ContactPage: React.FC = () => {
                   </label>
                   <input
                     type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
                     className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#8AFEA7] focus:ring-4 focus:ring-[#8AFEA7]/10 font-outfit transition-all duration-300"
                     placeholder="John"
                   />
@@ -146,6 +188,9 @@ const ContactPage: React.FC = () => {
                   </label>
                   <input
                     type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
                     className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#8AFEA7] focus:ring-4 focus:ring-[#8AFEA7]/10 font-outfit transition-all duration-300"
                     placeholder="Doe"
                   />
@@ -161,6 +206,9 @@ const ContactPage: React.FC = () => {
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#8AFEA7] focus:ring-4 focus:ring-[#8AFEA7]/10 font-outfit transition-all duration-300"
                   placeholder="john@example.com"
                 />
@@ -175,6 +223,9 @@ const ContactPage: React.FC = () => {
                 </label>
                 <input
                   type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
                   className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#8AFEA7] focus:ring-4 focus:ring-[#8AFEA7]/10 font-outfit transition-all duration-300"
                   placeholder="+254 700 000 000"
                 />
@@ -187,7 +238,12 @@ const ContactPage: React.FC = () => {
                 >
                   Subject
                 </label>
-                <select className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#8AFEA7] focus:ring-4 focus:ring-[#8AFEA7]/10 font-outfit transition-all duration-300 bg-white">
+                <select
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#8AFEA7] focus:ring-4 focus:ring-[#8AFEA7]/10 font-outfit transition-all duration-300 bg-white"
+                >
                   <option value="">Select a topic</option>
                   <option value="sales">Sales Inquiry</option>
                   <option value="support">Technical Support</option>
@@ -205,6 +261,9 @@ const ContactPage: React.FC = () => {
                   Message
                 </label>
                 <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   rows={6}
                   className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#8AFEA7] focus:ring-4 focus:ring-[#8AFEA7]/10 font-outfit resize-none transition-all duration-300"
                   placeholder="Tell us about your needs..."
@@ -213,10 +272,11 @@ const ContactPage: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full py-4 px-8 rounded-xl font-bold text-white transition-all duration-300 font-outfit text-lg hover:shadow-lg hover:-translate-y-0.5"
-                style={{ backgroundColor: '#1F2B5D' }}
+                className="w-full py-4 px-8 rounded-xl font-bold text-white transition-all duration-300 font-outfit text-lg hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2"
+                style={{ backgroundColor: '#25D366' }}
               >
-                Send Message
+                <WhatsAppOutlined style={{ fontSize: 20 }} />
+                Send via WhatsApp
               </button>
             </form>
           </div>

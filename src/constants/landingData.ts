@@ -7,6 +7,7 @@ import {
   AppstoreOutlined,
   BarChartOutlined,
   CreditCardOutlined,
+  HomeOutlined,
   RocketOutlined,
   TeamOutlined,
   ToolOutlined,
@@ -50,6 +51,12 @@ export const PRODUCT_LINKS: ProductLink[] = [
     href: '/base-smart-reja',
     desc: 'Deepening value chain through data analytics.',
     icon: React.createElement(BarChartOutlined),
+  },
+  {
+    label: 'Base Dala',
+    href: '/base-dala',
+    desc: 'Property management solution for real estate.',
+    icon: React.createElement(HomeOutlined),
   },
   {
     label: 'Custom',
