@@ -59,7 +59,7 @@ ${formData.message}`;
         </div>
         <div className="relative max-w-7xl mx-auto px-4 py-24 md:py-32">
           <div className="text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-outfit mb-6 text-white">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-outfit mb-6 text-white">
               Let&apos;s Start a Conversation
             </h1>
             <p className="text-xl md:text-2xl text-white/90 font-outfit max-w-3xl mx-auto leading-relaxed">
@@ -73,7 +73,7 @@ ${formData.message}`;
       {/* Contact Information Cards */}
       <div className="max-w-7xl mx-auto px-4 -mt-16 relative z-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+          <div className="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
             <div
               className="w-14 h-14 rounded-xl flex items-center justify-center mb-5"
               style={{ backgroundColor: 'rgba(138,254,167,0.15)' }}
@@ -92,7 +92,7 @@ ${formData.message}`;
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+          <div className="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
             <div
               className="w-14 h-14 rounded-xl flex items-center justify-center mb-5"
               style={{ backgroundColor: 'rgba(138,254,167,0.15)' }}
@@ -108,7 +108,7 @@ ${formData.message}`;
             <p className="text-gray-600 font-outfit">+254 746 665 877</p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+          <div className="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
             <div
               className="w-14 h-14 rounded-xl flex items-center justify-center mb-5"
               style={{ backgroundColor: 'rgba(138,254,167,0.15)' }}
@@ -125,7 +125,7 @@ ${formData.message}`;
             <p className="text-gray-600 font-outfit">Chania Avenue, Kilimani</p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+          <div className="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
             <div
               className="w-14 h-14 rounded-xl flex items-center justify-center mb-5"
               style={{ backgroundColor: 'rgba(138,254,167,0.15)' }}
