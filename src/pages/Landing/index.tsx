@@ -27,6 +27,8 @@ const LandingPage: React.FC = () => {
       {/* 6. Use-case audience segments */}
       <UseCases />
 
+      {/* 2.3 Value Chain Block ("Trust Engine") */}
+      {/* <TrustEngine /> */}
       {/* 7. Stats + customer testimonials */}
       <SocialProof />
     </>

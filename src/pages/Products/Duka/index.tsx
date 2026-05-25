@@ -15,7 +15,8 @@ const DukaPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 text-center">
           <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-navy/5 border border-navy/10">
             <span className="text-xs font-bold uppercase tracking-widest text-navy opacity-80 font-outfit">
-              Duka
+              <span className="font-black">Base</span>{' '}
+              <span className="font-medium opacity-70">Duka</span>
             </span>
           </div>
           <h1 className="text-4xl md:text-7xl font-bold mb-6 text-navy font-outfit">
@@ -50,7 +51,7 @@ const DukaPage: React.FC = () => {
           {/* Visual Placeholder */}
           <div className="relative w-full max-w-4xl mx-auto rounded-3xl overflow-hidden border-4 border-white shadow-xl bg-gray-100 aspect-video flex items-center justify-center">
             <span className="text-gray-400 font-medium text-lg font-outfit">
-              Duka Dashboard Preview
+              Base Duka Dashboard Preview
             </span>
           </div>
         </div>
@@ -62,7 +63,7 @@ const DukaPage: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-outfit">
-                Why choose Duka?
+                Why choose Base Duka?
               </h2>
               <p className="text-lg text-navy/70 mb-8 font-outfit">
                 Built specifically for SME owners and retail chains looking to

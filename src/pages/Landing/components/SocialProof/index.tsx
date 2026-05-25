@@ -2,6 +2,7 @@ import { StarFilled } from '@ant-design/icons';
 import React from 'react';
 
 import { STATS, TESTIMONIALS } from '@/constants/landingData';
+import TrustEngine from '../TrustEngine';
 
 /** Five-star rating row */
 const StarRating: React.FC = () => (
@@ -14,9 +15,13 @@ const StarRating: React.FC = () => (
 
 const SocialProof: React.FC = () => {
   return (
-    <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#F0F3F8' }}>
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <section
+      className="py-24 relative overflow-hidden"
+      style={{ backgroundColor: '#F0F3F8' }}
+    >
+      <TrustEngine />
 
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* ── Stats row ─────────────────────────────────────────────── */}
         <div
           className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 text-center"
@@ -70,7 +75,10 @@ const SocialProof: React.FC = () => {
                 {/* Avatar */}
                 <div
                   className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg font-outfit"
-                  style={{ backgroundColor: t.avatarBg, color: t.avatarTextColor }}
+                  style={{
+                    backgroundColor: t.avatarBg,
+                    color: t.avatarTextColor,
+                  }}
                 >
                   {t.initials}
                 </div>
