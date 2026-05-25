@@ -26,9 +26,8 @@ const PesaPage: React.FC = () => {
             </span>
           </h1>
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-navy/70 font-outfit leading-relaxed mb-10">
-            Complete bookkeeping and payment solution like QuickBooks, tailored
-            for African businesses with MPesa integration and
-            auto-reconciliation.
+            Complete bookkeeping and payment solution tailored for African
+            businesses with automated reconciliation.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Button
@@ -67,14 +66,14 @@ const PesaPage: React.FC = () => {
                 Why choose Base Pesa?
               </h2>
               <p className="text-lg text-navy/70 mb-8 font-outfit">
-                A comprehensive accounting solution that combines the power of
-                QuickBooks with African payment systems. Manage your books,
-                track expenses, and reconcile payments automatically.
+                A comprehensive accounting solution for African businesses.
+                Manage your books, track expenses, and reconcile payments
+                automatically.
               </p>
               <div className="space-y-4">
                 {[
                   'Complete double-entry bookkeeping system',
-                  'Automated bank and MPesa reconciliation',
+                  'Automated bank reconciliation',
                   'Invoice generation and payment tracking',
                   'Tax compliance and financial reporting',
                   'Multi-currency and multi-account support',
