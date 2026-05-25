@@ -5,6 +5,7 @@
 
 import {
   AppstoreOutlined,
+  BarChartOutlined,
   CreditCardOutlined,
   RocketOutlined,
   TeamOutlined,
@@ -21,28 +22,34 @@ export interface ProductLink {
 
 export const PRODUCT_LINKS: ProductLink[] = [
   {
-    label: 'Duka',
-    href: '/duka',
+    label: 'Base Duka',
+    href: '/base-duka',
     desc: 'Digitize your ledger book and track inventory.',
     icon: React.createElement(AppstoreOutlined),
   },
   {
-    label: 'Pesa',
-    href: '/pesa',
+    label: 'Base Pesa',
+    href: '/base-pesa',
     desc: 'Seamless payments and auto-reconciliation.',
     icon: React.createElement(CreditCardOutlined),
   },
   {
-    label: 'Bandu',
-    href: '/bandu',
+    label: 'Base Bandu',
+    href: '/base-bandu',
     desc: 'Fulfill orders with advanced logistics.',
     icon: React.createElement(RocketOutlined),
   },
   {
-    label: 'Mteja',
-    href: '/mteja',
+    label: 'Base Mteja',
+    href: '/base-mteja',
     desc: 'Grow loyalty with our all-in-one CRM.',
     icon: React.createElement(TeamOutlined),
+  },
+  {
+    label: 'Base Smart Reja',
+    href: '/base-smart-reja',
+    desc: 'Deepening value chain through data analytics.',
+    icon: React.createElement(BarChartOutlined),
   },
   {
     label: 'Custom',
@@ -62,7 +69,7 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Products', href: '#', isDropdown: true },
   { label: 'Features', href: '/#features' },
   { label: 'About', href: '/#usecases' },
-  { label: 'Pricing', href: '/pricing' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 // ─── Features ────────────────────────────────────────────────────────────────
@@ -183,32 +190,32 @@ export interface Testimonial {
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    id: 'njeri',
+    id: 'Purity',
     quote:
-      '"Basepoint completely changed how we run our boutique. We used to lose track of inventory constantly. Now, I can see exactly what\'s in stock from my phone while at home."',
-    name: 'Njeri Kariuki',
-    role: 'Owner, Style Hub Nairobi',
-    initials: 'NJ',
+      '"I love how seamless the solution is. Managing inventory and sales has never been this effortless.\n#seamless"',
+    name: 'Purity',
+    role: 'Cashier, Yami Cosmetics',
+    initials: 'P',
     avatarBg: '#80E4F1',
     avatarTextColor: '#1F2B5D',
   },
   {
-    id: 'david',
+    id: 'Amanda',
     quote:
-      '"The M-Pesa integration in Duka is flawless. Reconciliation used to take us hours every evening. Now it\'s done automatically. Highly recommended for any growing retail chain."',
-    name: 'David Ochieng',
-    role: 'Manager, TechMart Ltd',
-    initials: 'DO',
+      '"The POS system has transformed how we handle transactions. It\'s fast, reliable, and incredibly easy to use.\n#reliable"',
+    name: 'Amanda',
+    role: 'Amanda, Nuba Spa',
+    initials: 'NS',
     avatarBg: '#F7B344',
     avatarTextColor: '#ffffff',
   },
   {
-    id: 'fatuma',
+    id: 'Robert',
     quote:
-      '"Setting up Duka1 was incredibly easy. We started selling online within a day, and the fact that it links directly to our physical store inventory is just magic."',
-    name: 'Fatuma Wanjiku',
-    role: 'Founder, Fresh Organic',
-    initials: 'FW',
+      '"The support team is always available, and the system itself is top-notch. Highly recommended!\n#top"',
+    name: 'Robert',
+    role: 'Robert, BK Phone Repair',
+    initials: 'BK',
     avatarBg: '#8AFEA7',
     avatarTextColor: '#1F2B5D',
   },
@@ -216,10 +223,10 @@ export const TESTIMONIALS: Testimonial[] = [
 
 // ─── Footer Links ────────────────────────────────────────────────────────────
 export const FOOTER_PRODUCTS = [
-  { label: 'Duka', href: '/duka' },
-  { label: 'Bandu', href: '/bandu' },
-  { label: 'Pesa', href: '/pesa' },
-  { label: 'Mteja', href: '/mteja' },
+  { label: 'Base Duka', href: '/base-duka' },
+  { label: 'Base Bandu', href: '/base-bandu' },
+  { label: 'Base Pesa', href: '/base-pesa' },
+  { label: 'Base Mteja', href: '/base-mteja' },
   { label: 'Custom Solutions', href: '/custom' },
 ];
 
