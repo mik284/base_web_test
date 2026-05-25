@@ -33,6 +33,10 @@ export const routes = [
         component: './Products/Mteja',
       },
       {
+        path: '/base-smart-reja',
+        component: './Products/SmartReja',
+      },
+      {
         path: '/base-custom',
         component: './Products/Custom',
       },
