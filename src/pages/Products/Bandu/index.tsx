@@ -20,20 +20,20 @@ const BanduPage: React.FC = () => {
             </span>
           </div>
           <h1 className="text-4xl md:text-7xl font-bold mb-6 text-navy font-outfit">
-            Fulfill orders{' '}
+            HR management,{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-navy via-electric to-mint-dark">
-              in record time.
+              simplified.
             </span>
           </h1>
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-navy/70 font-outfit leading-relaxed mb-10">
-            Advanced shipping logic, real-time rider dispatch, and robust
-            logistics tracking for modern e-commerce.
+            Complete HR solution for employee management, payroll processing,
+            and workforce analytics.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Button
               type="primary"
               size="large"
-              onClick={() => history.push('/pricing')}
+              onClick={() => history.push('/contact')}
               className="px-8 py-3.5 h-auto rounded-full font-bold font-outfit bg-navy border-navy hover:bg-navy/90 hover:border-navy/90 transition-all shadow-md"
             >
               Get Started
@@ -46,11 +46,11 @@ const BanduPage: React.FC = () => {
       <section className="py-16 bg-surfaceAlt/30">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-12 font-outfit">
-            End-to-end logistics coordination
+            Complete HR management
           </h2>
           <div className="relative w-full max-w-4xl mx-auto rounded-3xl overflow-hidden border-4 border-white shadow-xl bg-gray-100 aspect-video flex items-center justify-center">
             <span className="text-gray-400 font-medium text-lg font-outfit">
-              Base Bandu Logistics Map UI
+              Base Bandu HR Dashboard
             </span>
           </div>
         </div>
@@ -65,16 +65,17 @@ const BanduPage: React.FC = () => {
                 Why choose Base Bandu?
               </h2>
               <p className="text-lg text-navy/70 mb-8 font-outfit">
-                Make delivery a competitive advantage. Keep your customers
-                updated with live tracking and optimize rider routes
-                dynamically.
+                Streamline your HR operations with automated workflows, employee
+                self-service, and comprehensive workforce analytics.
               </p>
               <div className="space-y-4">
                 {[
-                  'Live map tracking for admins and end-customers',
-                  'Dynamic route optimization for your fleet',
-                  'Plug-and-play integrations with 3rd-party couriers',
-                  'Proof of delivery via signature or photo',
+                  'Employee onboarding and offboarding',
+                  'Automated payroll processing and tax compliance',
+                  'Leave management and attendance tracking',
+                  'Performance reviews and goal setting',
+                  'Employee self-service portal',
+                  'Organizational chart and reporting',
                 ].map((feature, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <CheckCircleFilled className="text-mint text-xl mt-1" />
@@ -88,12 +89,12 @@ const BanduPage: React.FC = () => {
             <div className="grid gap-6">
               {[
                 {
-                  title: 'E-commerce Brands',
-                  desc: 'Sync orders to deliveries, ensuring smooth operational handoffs.',
+                  title: 'SMEs & Startups',
+                  desc: 'Professional HR management without the complexity of enterprise systems.',
                 },
                 {
-                  title: 'Logistics Companies',
-                  desc: 'Offer modern tracking experiences to your clients easily.',
+                  title: 'Growing Companies',
+                  desc: 'Scale your workforce with automated HR processes and analytics.',
                 },
               ].map((useCase, i) => (
                 <div

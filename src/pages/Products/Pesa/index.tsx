@@ -20,20 +20,20 @@ const PesaPage: React.FC = () => {
             </span>
           </div>
           <h1 className="text-4xl md:text-7xl font-bold mb-6 text-navy font-outfit">
-            Seamless payments,{' '}
+            Accounting & payments,{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-navy via-electric to-mint-dark">
-              simplified.
+              unified.
             </span>
           </h1>
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-navy/70 font-outfit leading-relaxed mb-10">
-            Integrate MPesa and online card payments directly into your cash
-            flow with rapid auto-reconciliation.
+            Complete bookkeeping and payment solution tailored for African
+            businesses with automated reconciliation.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Button
               type="primary"
               size="large"
-              onClick={() => history.push('/pricing')}
+              onClick={() => history.push('/contact')}
               className="px-8 py-3.5 h-auto rounded-full font-bold font-outfit bg-navy border-navy hover:bg-navy/90 hover:border-navy/90 transition-all shadow-md"
             >
               Get Started
@@ -66,15 +66,18 @@ const PesaPage: React.FC = () => {
                 Why choose Base Pesa?
               </h2>
               <p className="text-lg text-navy/70 mb-8 font-outfit">
-                Say goodbye to manual checking. Let our robust payment gateway
-                integrate securely and smoothly handle all transaction records.
+                A comprehensive accounting solution for African businesses.
+                Manage your books, track expenses, and reconcile payments
+                automatically.
               </p>
               <div className="space-y-4">
                 {[
-                  'Instant Mobile Money (MPesa) integration',
-                  'Secure card payment links for customer invoices',
-                  'Automated accounting and tax ledger updates',
-                  'Fraud detection and transaction alerts',
+                  'Complete double-entry bookkeeping system',
+                  'Automated bank reconciliation',
+                  'Invoice generation and payment tracking',
+                  'Tax compliance and financial reporting',
+                  'Multi-currency and multi-account support',
+                  'Real-time profit & loss statements',
                 ].map((feature, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <CheckCircleFilled className="text-mint text-xl mt-1" />
@@ -88,12 +91,12 @@ const PesaPage: React.FC = () => {
             <div className="grid gap-6">
               {[
                 {
-                  title: 'Growing Businesses',
-                  desc: 'Accept payments 24/7 online or in-store without hiccups.',
+                  title: 'SMEs & Startups',
+                  desc: 'Professional bookkeeping without the complexity of traditional accounting software.',
                 },
                 {
-                  title: 'Enterprise Billing',
-                  desc: 'Manage bulk disbursements, automated recurring billing & payroll flows.',
+                  title: 'Growing Companies',
+                  desc: 'Scale your financial operations with automated reconciliation and reporting.',
                 },
               ].map((useCase, i) => (
                 <div
