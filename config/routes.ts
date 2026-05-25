@@ -37,6 +37,10 @@ export const routes = [
         component: './Products/SmartReja',
       },
       {
+        path: '/base-dala',
+        component: './Products/Dala',
+      },
+      {
         path: '/base-custom',
         component: './Products/Custom',
       },

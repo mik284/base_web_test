@@ -234,6 +234,7 @@ export const FOOTER_PRODUCTS = [
   { label: 'Base Bandu', href: '/base-bandu' },
   { label: 'Base Pesa', href: '/base-pesa' },
   { label: 'Base Mteja', href: '/base-mteja' },
+  { label: 'Base Dala', href: '/base-dala' },
   { label: 'Custom Solutions', href: '/custom' },
 ];
 
