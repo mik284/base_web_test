@@ -51,6 +51,7 @@ const CTASection: React.FC = () => {
             <Button
               type="primary"
               size="large"
+              onClick={() => history.push('/contact')}
               className="w-full sm:w-auto h-auto px-8 py-4 rounded-full font-bold font-outfit bg-mint border-mint text-navy hover:bg-white hover:border-white transition-all shadow-xl shadow-mint/20"
             >
               Create Free Account
