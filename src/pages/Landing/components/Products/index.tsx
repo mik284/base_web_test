@@ -1,5 +1,6 @@
 import {
   ArrowRightOutlined,
+  BarChartOutlined,
   CalculatorOutlined,
   GlobalOutlined,
   ShopOutlined,
@@ -15,6 +16,7 @@ const ICON_MAP: Record<string, React.ReactNode> = {
   Team: <TeamOutlined style={{ fontSize: 28 }} />,
   Global: <GlobalOutlined style={{ fontSize: 28 }} />,
   Star: <StarOutlined style={{ fontSize: 28 }} />,
+  Chart: <BarChartOutlined style={{ fontSize: 28 }} />,
 };
 
 /* ── Data ────────────────────────────────────────────────────────── */
@@ -33,11 +35,11 @@ interface ProductData {
 
 const PRODUCTS: ProductData[] = [
   {
-    id: 'duka',
-    name: 'Duka',
+    id: 'base-duka',
+    name: 'Base Duka',
     description:
       'Next-gen POS and multi-channel inventory management. Sell in-store, online, or on social media with one central inventory system.',
-    cta: 'Explore Duka',
+    cta: 'Explore Base Duka',
     iconKey: 'Shop',
     accentColor: 'rgba(247,179,68,0.1)',
     iconBorderColor: 'rgba(247,179,68,0.3)',
@@ -46,11 +48,11 @@ const PRODUCTS: ProductData[] = [
     isWide: true,
   },
   {
-    id: 'pesa',
-    name: 'Pesa',
+    id: 'base-pesa',
+    name: 'Base Pesa',
     description:
       'Automate accounting, invoicing, and tax calculations effortlessly. Stay compliant without the headache.',
-    cta: 'Explore Pesa',
+    cta: 'Explore Base Pesa',
     iconKey: 'Calculator',
     accentColor: 'rgba(138,254,167,0.2)',
     iconBorderColor: 'rgba(138,254,167,0.3)',
@@ -58,11 +60,11 @@ const PRODUCTS: ProductData[] = [
     ctaColor: '#5CE07A',
   },
   {
-    id: 'bandu',
-    name: 'Bandu',
+    id: 'base-bandu',
+    name: 'Base Bandu',
     description:
       'Empower your team with seamless communication and task management. Assign roles, track progress, and manage shifts effortlessly.',
-    cta: 'Explore Bandu',
+    cta: 'Explore Base Bandu',
     iconKey: 'Team',
     accentColor: 'rgba(8,0,240,0.1)',
     iconBorderColor: 'rgba(8,0,240,0.2)',
@@ -70,11 +72,11 @@ const PRODUCTS: ProductData[] = [
     ctaColor: '#0800F0',
   },
   {
-    id: 'mteja',
-    name: 'Mteja',
+    id: 'base-mteja',
+    name: 'Base Mteja',
     description:
       'Turn every transaction into a marketing opportunity. Track customer preferences, reward loyalty, and send targeted promotions that drive repeat business.',
-    cta: 'Explore Mteja',
+    cta: 'Explore Base Mteja',
     iconKey: 'Star',
     accentColor: 'rgba(128,228,241,0.2)',
     iconBorderColor: 'rgba(128,228,241,0.4)',
@@ -82,17 +84,29 @@ const PRODUCTS: ProductData[] = [
     ctaColor: '#0891b2',
   },
   {
-    id: 'custom',
-    name: 'Custom',
+    id: 'smart-reja',
+    name: 'Smart Reja',
     description:
-      'Tailored software solutions designed to meet your unique business needs. From custom integrations to bespoke features, we build technology that works the way you do.',
-    cta: 'Explore Custom',
-    iconKey: 'Global',
+      'Deepening the Value Chain through Data. Enabling Real-time visibility, Predictive analytics, Automated decision-making. Accelerating growth and profitability.',
+    cta: 'Explore Smart Reja',
+    iconKey: 'Chart',
     accentColor: 'rgba(255,231,0,0.2)',
     iconBorderColor: 'rgba(255,231,0,0.4)',
     iconTextColor: '#ca8a04',
     ctaColor: '#ca8a04',
   },
+  // {
+  //   id: 'custom',
+  //   name: 'Custom',
+  //   description:
+  //     'Tailored software solutions designed to meet your unique business needs. From custom integrations to bespoke features, we build technology that works the way you do.',
+  //   cta: 'Explore Custom',
+  //   iconKey: 'Global',
+  //   accentColor: 'rgba(255,231,0,0.2)',
+  //   iconBorderColor: 'rgba(255,231,0,0.4)',
+  //   iconTextColor: '#ca8a04',
+  //   ctaColor: '#ca8a04',
+  // },
 ];
 
 /* ── Single product card ─────────────────────────────────────────── */
@@ -103,7 +117,22 @@ const ProductCard: React.FC<{ product: ProductData }> = ({ product }) => {
 
   const handleCta = (e: React.MouseEvent) => {
     e.preventDefault();
-    history.push('/pricing');
+    // Route to specific product pages
+    const routeMap: Record<string, string> = {
+      'base-duka': '/base-duka',
+      'base-pesa': '/base-pesa',
+      'base-bandu': '/base-bandu',
+      'base-mteja': '/base-mteja',
+      'smart-reja': '/base-smart-reja',
+      custom: '/base-custom',
+    };
+
+    const route = routeMap[product.id];
+    if (route) {
+      history.push(route);
+    } else {
+      history.push('/pricing');
+    }
   };
 
   return (

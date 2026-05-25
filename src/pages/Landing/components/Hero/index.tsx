@@ -92,14 +92,14 @@ const Hero: React.FC = () => {
             className="text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6 font-outfit"
             style={{ color: '#1F2B5D', lineHeight: 1.1 }}
           >
-            One Platform to Run Your{' '}
+            The Foundation of African Trade.{' '}
             <span
               className="text-transparent bg-clip-text"
               style={{
                 backgroundImage: 'linear-gradient(to right, #0800F0, #80E4F1)',
               }}
             >
-              Entire Business
+              Built on Base.
             </span>
           </h1>
 

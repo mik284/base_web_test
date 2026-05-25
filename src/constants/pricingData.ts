@@ -24,8 +24,8 @@ export interface ProductPricing {
 
 export const PRODUCT_PRICING: ProductPricing[] = [
   {
-    id: 'duka',
-    name: 'Duka by Base',
+    id: 'base-duka',
+    name: 'Base Duka',
     shortDescription: 'Modern POS, inventory, and sales management',
     monthlyPrice: 2499,
     annualPrice: 24990,
@@ -91,8 +91,8 @@ export const PRODUCT_PRICING: ProductPricing[] = [
     ],
   },
   {
-    id: 'pesa',
-    name: 'Pesa by Base',
+    id: 'base-pesa',
+    name: 'Base Pesa',
     shortDescription: 'Automated accounting and financial management',
     monthlyPrice: 1999,
     annualPrice: 19990,
@@ -144,8 +144,8 @@ export const PRODUCT_PRICING: ProductPricing[] = [
     ],
   },
   {
-    id: 'bandu',
-    name: 'Bandu by Base',
+    id: 'base-bandu',
+    name: 'Base Bandu',
     shortDescription: 'HR, Payroll, and Employee Management',
     monthlyPrice: 1499,
     annualPrice: 14990,
@@ -207,8 +207,8 @@ export const PRODUCT_PRICING: ProductPricing[] = [
     ],
   },
   {
-    id: 'mteja',
-    name: 'Mteja by Base',
+    id: 'base-mteja',
+    name: 'Base Mteja',
     shortDescription: 'CRM, Loyalty, and Marketing Automation',
     monthlyPrice: 1299,
     annualPrice: 12990,
@@ -273,19 +273,19 @@ export const PRODUCT_PRICING: ProductPricing[] = [
 
 export const BUNDLES = [
   {
-    name: 'Duka + Pesa',
+    name: 'Base Duka + Base Pesa',
     price: 4498,
     bestFor: 'Restaurants, retail shops',
     discount: '10%',
   },
   {
-    name: 'Duka + Mteja',
+    name: 'Base Duka + Base Mteja',
     price: 3798,
     bestFor: 'Service businesses, salons',
     discount: '10%',
   },
   {
-    name: 'Duka + Bandu',
+    name: 'Base Duka + Base Bandu',
     price: 3998,
     bestFor: 'Businesses with 10+ staff',
     discount: '10%',
@@ -305,19 +305,19 @@ export const INDUSTRY_RECOMMENDATIONS = [
     tiers: [
       {
         size: 'Small Cafe',
-        products: ['Duka Basic', 'Mteja Basic'],
+        products: ['Base Duka Basic', 'Base Mteja Basic'],
         cost: 3798,
         features: 'POS + Customer loyalty',
       },
       {
         size: 'Restaurant',
-        products: ['Duka Pro', 'Pesa Basic', 'Bandu Basic'],
+        products: ['Base Duka Pro', 'Base Pesa Basic', 'Base Bandu Basic'],
         cost: 8497,
         features: 'Full operations + accounting',
       },
       {
         size: 'Restaurant Chain',
-        products: ['All Products Enterprise'],
+        products: ['All Base Products Enterprise'],
         cost: 15997,
         features: 'Complete business management',
       },
@@ -329,19 +329,19 @@ export const INDUSTRY_RECOMMENDATIONS = [
     tiers: [
       {
         size: 'Small Shop',
-        products: ['Duka Basic'],
+        products: ['Base Duka Basic'],
         cost: 2499,
         features: 'Essential POS functions',
       },
       {
         size: 'Medium Store',
-        products: ['Duka Pro', 'Pesa Basic'],
+        products: ['Base Duka Pro', 'Base Pesa Basic'],
         cost: 5998,
         features: 'POS + inventory accounting',
       },
       {
         size: 'Retail Chain',
-        products: ['All Products'],
+        products: ['All Base Products'],
         cost: 7296,
         features: 'Full retail management',
       },
