@@ -10,26 +10,34 @@ export const routes = [
       },
       {
         path: '/pricing',
-        component: './Pricing',
+        redirect: '/contact',
       },
       {
-        path: '/duka',
+        path: '/contact',
+        component: './Contact',
+      },
+      {
+        path: '/base-duka',
         component: './Products/Duka',
       },
       {
-        path: '/pesa',
+        path: '/base-pesa',
         component: './Products/Pesa',
       },
       {
-        path: '/bandu',
+        path: '/base-bandu',
         component: './Products/Bandu',
       },
       {
-        path: '/mteja',
+        path: '/base-mteja',
         component: './Products/Mteja',
       },
       {
-        path: '/custom',
+        path: '/base-smart-reja',
+        component: './Products/SmartReja',
+      },
+      {
+        path: '/base-custom',
         component: './Products/Custom',
       },
       {
