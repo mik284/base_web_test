@@ -1,3 +1,4 @@
+import { history } from '@umijs/max';
 import { Button } from 'antd';
 import React from 'react';
 
@@ -50,6 +51,7 @@ const CTASection: React.FC = () => {
             <Button
               type="primary"
               size="large"
+              onClick={() => history.push('/contact')}
               className="w-full sm:w-auto h-auto px-8 py-4 rounded-full font-bold font-outfit bg-mint border-mint text-navy hover:bg-white hover:border-white transition-all shadow-xl shadow-mint/20"
             >
               Create Free Account
@@ -57,6 +59,7 @@ const CTASection: React.FC = () => {
             <Button
               size="large"
               ghost
+              onClick={() => history.push('/contact')}
               className="w-full sm:w-auto h-auto px-8 py-4 rounded-full font-bold font-outfit text-white border-white/30 hover:border-white hover:bg-white/10 transition-all"
             >
               Talk to Sales
