@@ -45,6 +45,14 @@ export const routes = [
         component: './Products/Custom',
       },
       {
+        path: '/privacy',
+        component: './Privacy',
+      },
+      {
+        path: '/terms',
+        component: './Terms',
+      },
+      {
         path: '/*',
         component: './404',
       },
