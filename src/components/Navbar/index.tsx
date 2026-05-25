@@ -341,13 +341,13 @@ const Navbar: React.FC = () => {
           </div>
 
           <hr className="my-2" style={{ borderColor: '#F0F3F8' }} />
-          <a
+          {/* <a
             href="#"
             className="font-medium font-outfit"
             style={{ color: '#1F2B5D', textDecoration: 'none' }}
           >
             Log In
-          </a>
+          </a> */}
           <Link
             to="/contact"
             className="text-center font-semibold py-3 rounded-full font-outfit transition-colors"

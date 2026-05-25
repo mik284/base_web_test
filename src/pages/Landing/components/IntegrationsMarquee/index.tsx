@@ -156,7 +156,7 @@ const IntegrationsMarquee: React.FC = () => {
           className="text-sm font-semibold tracking-widest uppercase font-outfit"
           style={{ color: 'rgba(31,43,93,0.5)' }}
         >
-          Trusted by leading companies
+          Trusted by leading brands
         </p>
       </div>
 
