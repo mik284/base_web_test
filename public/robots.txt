@@ -1,0 +1,46 @@
+# Allow search engines and AI crawlers
+User-agent: *
+Allow: /
+
+# Google search crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+# OpenAI / ChatGPT crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic / Claude crawlers
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Perplexity crawler
+User-agent: PerplexityBot
+Allow: /
+
+# Google AI training crawler
+User-agent: Google-Extended
+Allow: /
+
+# ByteDance crawler
+User-agent: Bytespider
+Allow: /
+
+# Common Crawl
+User-agent: CCBot
+Allow: /
+
+# Sitemap reference
+Sitemap: https://basepoint.co.ke/sitemap.xml
