@@ -8,6 +8,8 @@ import {
 } from '@ant-design/icons';
 import React, { useState } from 'react';
 
+import SEO from '@/components/SEO';
+
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -49,6 +51,41 @@ ${formData.message}`;
   };
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+      <SEO
+        title="Contact BasepointCloud | Customer Support & Sales Inquiry"
+        description="Get in touch with BasepointCloud. Call +254 746 665 877, email info@basepoint.co.ke, or send a direct message on WhatsApp for sales and support."
+        canonical="/contact"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: [
+            {
+              '@type': 'Question',
+              name: 'How quickly can I get started with BasepointCloud?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Most businesses are up and running with BasepointCloud within 24-48 hours.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Do you offer staff training?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Yes, we provide comprehensive training for all our solutions.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'What payment methods do you accept?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'We accept M-Pesa, card payments, and bank transfers.',
+              },
+            },
+          ],
+        }}
+      />
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1F2B5D] via-[#1F2B5D]/95 to-[#0a0f2e]">

@@ -3,9 +3,31 @@ import { history } from '@umijs/max';
 import { Button } from 'antd';
 import React from 'react';
 
+import SEO from '@/components/SEO';
+
 const PesaPage: React.FC = () => {
   return (
     <>
+      <SEO
+        title="Base Pesa | Inventory-Backed Financing & Mobile Money Capital"
+        description="Convert data scarcity into creditworthiness. Mobile-first inventory-backed financing, supplier settlements, and automated reconciliation for African businesses."
+        keywords="Base Pesa, Inventory Backed Credit Kenya, Mobile Money Financing, Automated Reconciliation, Performance Based Lending"
+        canonical="/base-pesa"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'Base Pesa',
+          applicationCategory: 'FinanceApplication',
+          operatingSystem: 'Android, iOS, Web',
+          description:
+            'Capital that moves at the speed of Mobile Money with inventory-backed credit and reconciliation.',
+          offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'KES',
+          },
+        }}
+      />
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden bg-white">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-30 pointer-events-none">

@@ -3,9 +3,31 @@ import { history } from '@umijs/max';
 import { Button } from 'antd';
 import React from 'react';
 
+import SEO from '@/components/SEO';
+
 const DalaPage: React.FC = () => {
   return (
     <>
+      <SEO
+        title="Base Dala | Property & Real Estate Management Software"
+        description="Manage properties, track tenants, automate M-Pesa rent collection, and streamline real estate maintenance operations with Base Dala."
+        keywords="Base Dala, Property Management Software Kenya, Automated Rent Collection, Tenant Portal, Real Estate Management"
+        canonical="/base-dala"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'Base Dala',
+          applicationCategory: 'BusinessApplication',
+          operatingSystem: 'Android, iOS, Web',
+          description:
+            'Property management solution for real estate, landlords, and property managers.',
+          offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'KES',
+          },
+        }}
+      />
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden bg-white">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-30 pointer-events-none">

@@ -1,8 +1,15 @@
 import React from 'react';
 
+import SEO from '@/components/SEO';
+
 const TermsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title="Terms of Service | BasepointCloud"
+        description="BasepointCloud Terms of Service governing the access and usage of our commerce operating system products and services."
+        canonical="/terms"
+      />
       <div className="max-w-4xl mx-auto px-6 py-20">
         <h1
           className="text-4xl md:text-5xl font-bold mb-8 font-outfit"

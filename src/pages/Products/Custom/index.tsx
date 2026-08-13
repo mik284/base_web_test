@@ -3,9 +3,31 @@ import { history } from '@umijs/max';
 import { Button } from 'antd';
 import React from 'react';
 
+import SEO from '@/components/SEO';
+
 const CustomPage: React.FC = () => {
   return (
     <>
+      <SEO
+        title="Base Custom | Enterprise Supply Chain & Whitelabel Software"
+        description="Bespoke software development, custom API integrations, whitelabeling, and enterprise ERP integration built on the BasepointCloud engine."
+        keywords="Base Custom, Enterprise Software Development Kenya, Whitelabel Supply Chain POS, ERP Integration SAP Oracle, Bespoke Financial Technology"
+        canonical="/base-custom"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'Base Custom Solutions',
+          applicationCategory: 'BusinessApplication',
+          operatingSystem: 'Web, Cloud, Enterprise',
+          description:
+            'Tailor-made software solutions, whitelabeling, and complex API integrations.',
+          offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'KES',
+          },
+        }}
+      />
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden bg-white">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-30 pointer-events-none">

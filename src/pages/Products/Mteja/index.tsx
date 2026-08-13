@@ -3,9 +3,31 @@ import { history } from '@umijs/max';
 import { Button } from 'antd';
 import React from 'react';
 
+import SEO from '@/components/SEO';
+
 const MtejaPage: React.FC = () => {
   return (
     <>
+      <SEO
+        title="Base Mteja | Customer Loyalty & CRM Platform"
+        description="Turn transactions into repeat customers. Track customer preferences, automate loyalty rewards, and launch targeted SMS campaigns with Base Mteja."
+        keywords="Base Mteja, Customer Loyalty Software Kenya, SMS Marketing CRM, Retail Rewards Program, Customer Retention"
+        canonical="/base-mteja"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'Base Mteja',
+          applicationCategory: 'BusinessApplication',
+          operatingSystem: 'Android, iOS, Web',
+          description:
+            'All-in-one CRM for customer relationship management, loyalty programs, and personalized campaigns.',
+          offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'KES',
+          },
+        }}
+      />
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden bg-white">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-30 pointer-events-none">
