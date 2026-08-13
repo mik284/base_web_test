@@ -1,5 +1,6 @@
 import React from 'react';
 
+import SEO from '@/components/SEO';
 import Features from '@/pages/Landing/components/Features';
 import Hero from '@/pages/Landing/components/Hero';
 import IntegrationsMarquee from '@/pages/Landing/components/IntegrationsMarquee';
@@ -12,6 +13,24 @@ import './index.css';
 const LandingPage: React.FC = () => {
   return (
     <>
+      <SEO
+        title="BasepointCloud — The Operating System for African Commerce"
+        description="Modular operating system for African trade. Manage sales, inventory, accounting, mobile-money liquidity, and payments across your business ecosystem."
+        canonical="/"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: 'BasepointCloud',
+          url: 'https://basepoint.co.ke',
+          potentialAction: {
+            '@type': 'SearchAction',
+            target: 'https://basepoint.co.ke/contact?q={search_term_string}',
+            'query-input': 'required name=search_term_string',
+          },
+        }}
+      />
+
+      {/* 2. Hero — headline, CTA, animated dashboard mockup */}
       {/* 2. Hero — headline, CTA, animated dashboard mockup */}
       <Hero />
 

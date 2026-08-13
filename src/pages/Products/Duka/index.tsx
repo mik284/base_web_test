@@ -3,9 +3,31 @@ import { history } from '@umijs/max';
 import { Button } from 'antd';
 import React from 'react';
 
+import SEO from '@/components/SEO';
+
 const DukaPage: React.FC = () => {
   return (
     <>
+      <SEO
+        title="Base Duka | Mobile POS & Inventory Management System"
+        description="Digitize your store inventory, record daily sales accurately, print physical or digital receipts instantly, and stop losing stock with Base Duka."
+        keywords="Base Duka, Mobile POS Kenya, Retail Inventory Management, Bluetooth Receipt Printing, Store Ledger App"
+        canonical="/base-duka"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'Base Duka',
+          applicationCategory: 'BusinessApplication',
+          operatingSystem: 'Android, iOS, Web',
+          description:
+            'Digitize your ledger book, track store inventory, and process transactions effortlessly.',
+          offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'KES',
+          },
+        }}
+      />
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden bg-white">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-30 pointer-events-none">

@@ -1,8 +1,15 @@
 import React from 'react';
 
+import SEO from '@/components/SEO';
+
 const PrivacyPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title="Privacy Policy | BasepointCloud"
+        description="BasepointCloud Privacy Policy explaining how we collect, use, safeguard, and process your business and personal data."
+        canonical="/privacy"
+      />
       <div className="max-w-4xl mx-auto px-6 py-20">
         <h1
           className="text-4xl md:text-5xl font-bold mb-8 font-outfit"
