@@ -1,141 +1,133 @@
-import { CheckCircleFilled } from '@ant-design/icons';
+import { ArrowRightOutlined } from '@ant-design/icons';
 import { history } from '@umijs/max';
-import { Button } from 'antd';
+import { Button, Collapse } from 'antd';
 import React from 'react';
 
+import CTASection from '@/components/CTASection';
 import SEO from '@/components/SEO';
+
+const { Panel } = Collapse;
 
 const PesaPage: React.FC = () => {
   return (
-    <>
+    <div className="font-sans">
       <SEO
-        title="Base Pesa | Inventory-Backed Financing & Mobile Money Capital"
-        description="Convert data scarcity into creditworthiness. Mobile-first inventory-backed financing, supplier settlements, and automated reconciliation for African businesses."
-        keywords="Base Pesa, Inventory Backed Credit Kenya, Mobile Money Financing, Automated Reconciliation, Performance Based Lending"
-        canonical="/base-pesa"
-        jsonLd={{
-          '@context': 'https://schema.org',
-          '@type': 'SoftwareApplication',
-          name: 'Base Pesa',
-          applicationCategory: 'FinanceApplication',
-          operatingSystem: 'Android, iOS, Web',
-          description:
-            'Capital that moves at the speed of Mobile Money with inventory-backed credit and reconciliation.',
-          offers: {
-            '@type': 'Offer',
-            price: '0',
-            priceCurrency: 'KES',
-          },
-        }}
+        title="Pesa | Financial Records | Basepoint"
+        description="Explore Pesa, Basepoint's finance product. Discuss financial records and money questions with Basepoint to confirm availability and fit."
+        canonical="/products/pesa"
       />
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden bg-white">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-30 pointer-events-none">
-          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-mint/40 blur-[120px] rounded-full animate-float" />
-          <div className="absolute bottom-[20%] right-[-5%] w-[35%] h-[35%] bg-electric/10 blur-[100px] rounded-full animate-float-delayed" />
-        </div>
+
+      {/* Hero */}
+      <section className="pt-32 pb-20 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-navy/5 border border-navy/10">
-            <span className="text-xs font-bold uppercase tracking-widest text-navy opacity-80 font-outfit">
-              <span className="font-black">Base</span>{' '}
-              <span className="font-medium opacity-70">Pesa</span>
-            </span>
+          <div className="inline-block px-4 py-1.5 rounded-full bg-navy/5 text-navy font-bold text-xs uppercase tracking-wider mb-6">
+            PESA · FINANCIAL RECORDS
           </div>
-          <h1 className="text-4xl md:text-7xl font-bold mb-6 text-navy font-outfit">
-            Accounting & payments,{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-navy via-electric to-mint-dark">
-              unified.
-            </span>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-navy mb-6 max-w-4xl mx-auto leading-tight">
+            Bring your money questions into focus.
           </h1>
-          <p className="max-w-2xl mx-auto text-lg md:text-xl text-navy/70 font-outfit leading-relaxed mb-10">
-            Complete bookkeeping and payment solution tailored for African
-            businesses with automated reconciliation.
+          <p className="text-base sm:text-lg lg:text-xl text-navy/70 max-w-2xl mx-auto mb-10 leading-relaxed">
+            Explore Pesa, Basepoint&apos;s finance product. Tell us which
+            financial records and decisions you need to improve, and we&apos;ll
+            confirm its current availability and fit.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4">
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               type="primary"
               size="large"
-              onClick={() => history.push('/contact')}
-              className="px-8 py-3.5 h-auto rounded-full font-bold font-outfit bg-navy border-navy hover:bg-navy/90 hover:border-navy/90 transition-all shadow-md"
+              onClick={() => history.push('/demo?product=pesa')}
+              className="px-8 py-3.5 h-auto rounded-full font-bold bg-navy border-navy hover:bg-navy/90 text-base"
             >
-              Get Started
+              Ask about Pesa <ArrowRightOutlined className="ml-1" />
+            </Button>
+            <Button
+              size="large"
+              onClick={() => history.push('/platform')}
+              className="px-8 py-3.5 h-auto rounded-full font-semibold border-2 border-surfaceAlt text-navy hover:border-navy text-base"
+            >
+              Back to Base Platform
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Product Overview & Visual */}
-      <section className="py-16 bg-surfaceAlt/30">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-12 font-outfit">
-            Reconciliation made effortless
-          </h2>
-          {/* Visual Placeholder */}
-          <div className="relative w-full max-w-4xl mx-auto rounded-3xl overflow-hidden border-4 border-white shadow-xl bg-gray-100 aspect-video flex items-center justify-center">
-            <span className="text-gray-400 font-medium text-lg font-outfit">
-              Base Pesa Transactions Dashboard
-            </span>
+      {/* Questions Section */}
+      <section className="py-24 bg-surface">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-gray-100 shadow-sm mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-4">
+              Start with the question you need to answer.
+            </h2>
+            <p className="text-base text-navy/70 leading-relaxed m-0">
+              Are you trying to understand money received, money spent or the
+              records behind a business review? Describe your current process so
+              we can discuss the relevant product scope.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-gray-100 shadow-sm">
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-4">
+              Confirm the fit before changing your process.
+            </h2>
+            <p className="text-base text-navy/70 leading-relaxed m-0">
+              We&apos;ll discuss supported records, connections, access, setup
+              and pricing. Existing accounting and reporting obligations still
+              need the appropriate checks.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Key Features & Benefits */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-outfit">
-                Why choose Base Pesa?
-              </h2>
-              <p className="text-lg text-navy/70 mb-8 font-outfit">
-                A comprehensive accounting solution for African businesses.
-                Manage your books, track expenses, and reconcile payments
-                automatically.
+      {/* FAQs */}
+      <section className="py-20 bg-white border-t border-gray-100">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="text-2xl sm:text-3xl font-bold text-navy text-center mb-10">
+            Questions about Pesa
+          </h2>
+          <Collapse bordered={false} className="bg-transparent space-y-4">
+            <Panel
+              header={
+                <span className="font-bold text-navy text-base">
+                  Can Pesa connect to my bank or payment tools?
+                </span>
+              }
+              key="1"
+              className="bg-surface rounded-2xl border border-gray-100"
+            >
+              <p className="text-sm text-navy/70 m-0 py-2 leading-relaxed">
+                Tell us which tools you use. We&apos;ll confirm any supported
+                connections.
               </p>
-              <div className="space-y-4">
-                {[
-                  'Complete double-entry bookkeeping system',
-                  'Automated bank reconciliation',
-                  'Invoice generation and payment tracking',
-                  'Tax compliance and financial reporting',
-                  'Multi-currency and multi-account support',
-                  'Real-time profit & loss statements',
-                ].map((feature, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <CheckCircleFilled className="text-mint text-xl mt-1" />
-                    <span className="text-navy text-lg font-outfit">
-                      {feature}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="grid gap-6">
-              {[
-                {
-                  title: 'SMEs & Startups',
-                  desc: 'Professional bookkeeping without the complexity of traditional accounting software.',
-                },
-                {
-                  title: 'Growing Companies',
-                  desc: 'Scale your financial operations with automated reconciliation and reporting.',
-                },
-              ].map((useCase, i) => (
-                <div
-                  key={i}
-                  className="p-8 rounded-3xl bg-surface border border-surfaceAlt shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <h3 className="text-xl font-bold text-navy mb-2 font-outfit">
-                    {useCase.title}
-                  </h3>
-                  <p className="text-navy/70 font-outfit">{useCase.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+            </Panel>
+            <Panel
+              header={
+                <span className="font-bold text-navy text-base">
+                  Is Pesa included with Duka?
+                </span>
+              }
+              key="2"
+              className="bg-surface rounded-2xl border border-gray-100"
+            >
+              <p className="text-sm text-navy/70 m-0 py-2 leading-relaxed">
+                Access and bundling depend on the approved offer. Ask us about
+                your intended setup.
+              </p>
+            </Panel>
+          </Collapse>
         </div>
       </section>
-    </>
+
+      {/* Final Banner */}
+      <CTASection
+        title="Tell us what you need to understand about your money."
+        body="Discuss financial records, reconciliation and visibility for your business setup."
+        primaryText="Ask about Pesa"
+        primaryLink="/demo?product=pesa"
+        secondaryText="Explore Duka"
+        secondaryLink="/products/duka"
+      />
+    </div>
   );
 };
 
