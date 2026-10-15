@@ -1,430 +1,278 @@
 import {
-  ClockCircleOutlined,
-  CustomerServiceOutlined,
+  CheckCircleFilled,
   EnvironmentOutlined,
   MailOutlined,
   PhoneOutlined,
-  WhatsAppOutlined,
+  UserOutlined,
 } from '@ant-design/icons';
-import React, { useState } from 'react';
+import { history, useLocation } from '@umijs/max';
+import { Button, Form, Input, message, Select } from 'antd';
+import React, { useEffect, useState } from 'react';
 
 import SEO from '@/components/SEO';
 
+const { TextArea } = Input;
+const { Option } = Select;
+
 const ContactPage: React.FC = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
-  });
+  const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const location = useLocation();
 
-  const handleWhatsAppSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const phoneNumber = '254746665877';
-    const text = `Hello BasepointCloud,
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const intent = params.get('intent');
+    if (intent === 'referral') {
+      form.setFieldsValue({
+        category: 'partnership',
+        message:
+          'I would like to discuss introducing businesses to Basepoint and receiving an assigned referral link.',
+      });
+    } else if (intent === 'support') {
+      form.setFieldsValue({
+        category: 'support',
+      });
+    }
+  }, [location.search, form]);
 
-*Name:* ${formData.firstName} ${formData.lastName}
-*Email:* ${formData.email}
-*Phone:* ${formData.phone}
-*Subject:* ${formData.subject}
+  const onFinish = (values: any) => {
+    setLoading(true);
 
-*Message:*
-${formData.message}`;
+    const payload = {
+      ...values,
+      type: 'general_contact_message',
+      submitted_at: new Date().toISOString(),
+    };
 
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-      text,
-    )}`;
-    window.open(whatsappUrl, '_blank');
+    console.log('[Contact Event: message_submitted]', payload);
+
+    setTimeout(() => {
+      setLoading(false);
+      setSubmitted(true);
+      message.success('Your message has been received.');
+    }, 1000);
   };
 
-  const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >,
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div className="font-sans min-h-screen bg-surface py-28 px-4 sm:px-6 lg:px-8">
       <SEO
-        title="Contact BasepointCloud | Customer Support & Sales Inquiry"
-        description="Get in touch with BasepointCloud. Call +254 746 665 877, email info@basepoint.co.ke, or send a direct message on WhatsApp for sales and support."
+        title="Contact Basepoint | Support, Sales and Partnerships"
+        description="Tell us what you need help with. Choose a product question, setup request, partnership enquiry or support issue so we can direct your message."
         canonical="/contact"
-        jsonLd={{
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: [
-            {
-              '@type': 'Question',
-              name: 'How quickly can I get started with BasepointCloud?',
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'Most businesses are up and running with BasepointCloud within 24-48 hours.',
-              },
-            },
-            {
-              '@type': 'Question',
-              name: 'Do you offer staff training?',
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'Yes, we provide comprehensive training for all our solutions.',
-              },
-            },
-            {
-              '@type': 'Question',
-              name: 'What payment methods do you accept?',
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'We accept M-Pesa, card payments, and bank transfers.',
-              },
-            },
-          ],
-        }}
       />
-      {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1F2B5D] via-[#1F2B5D]/95 to-[#0a0f2e]">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-[#8AFEA7] rounded-full filter blur-3xl" />
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#8AFEA7] rounded-full filter blur-3xl" />
-          </div>
+
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-12">
+          <span className="text-xs font-bold uppercase tracking-wider text-navy/60 block mb-3">
+            CONTACT BASEPOINT
+          </span>
+          <h1 className="text-3xl sm:text-5xl font-bold text-navy mb-4">
+            Tell us what you need help with.
+          </h1>
+          <p className="text-base sm:text-lg text-navy/70 max-w-xl mx-auto leading-relaxed">
+            Choose a product question, setup request, partnership enquiry or
+            support issue so we can direct your message.
+          </p>
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 py-24 md:py-32">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-outfit mb-6 text-white">
-              Let&apos;s Start a Conversation
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 font-outfit max-w-3xl mx-auto leading-relaxed">
-              Have questions about our solutions? We&apos;re here to help you
-              transform your business with BasepointCloud
-            </p>
-          </div>
-        </div>
-      </div>
 
-      {/* Contact Information Cards */}
-      <div className="max-w-7xl mx-auto px-4 -mt-16 relative z-10">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
-            <div
-              className="w-14 h-14 rounded-xl flex items-center justify-center mb-5"
-              style={{ backgroundColor: 'rgba(138,254,167,0.15)' }}
-            >
-              <MailOutlined style={{ fontSize: 28, color: '#8AFEA7' }} />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm text-center">
+            <div className="w-12 h-12 rounded-2xl bg-surface flex items-center justify-center mx-auto mb-4 text-navy">
+              <MailOutlined className="text-xl" />
             </div>
-            <h3
-              className="font-bold text-xl mb-3 font-outfit"
-              style={{ color: '#1F2B5D' }}
-            >
-              Email Us
-            </h3>
-            <p className="text-gray-600 font-outfit">info@basepoint.co.ke</p>
-            <p className="text-gray-600 font-outfit">
-              community@basepoint.co.ke
-            </p>
-          </div>
-
-          <div className="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
-            <div
-              className="w-14 h-14 rounded-xl flex items-center justify-center mb-5"
-              style={{ backgroundColor: 'rgba(138,254,167,0.15)' }}
-            >
-              <PhoneOutlined style={{ fontSize: 28, color: '#8AFEA7' }} />
-            </div>
-            <h3
-              className="font-bold text-xl mb-3 font-outfit"
-              style={{ color: '#1F2B5D' }}
-            >
-              Call Us
-            </h3>
-            <p className="text-gray-600 font-outfit">+254 746 665 877</p>
-          </div>
-
-          <div className="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
-            <div
-              className="w-14 h-14 rounded-xl flex items-center justify-center mb-5"
-              style={{ backgroundColor: 'rgba(138,254,167,0.15)' }}
-            >
-              <EnvironmentOutlined style={{ fontSize: 28, color: '#8AFEA7' }} />
-            </div>
-            <h3
-              className="font-bold text-xl mb-3 font-outfit"
-              style={{ color: '#1F2B5D' }}
-            >
-              Visit Us
-            </h3>
-            <p className="text-gray-600 font-outfit">CMS Africa</p>
-            <p className="text-gray-600 font-outfit">Chania Avenue, Kilimani</p>
-          </div>
-
-          <div className="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
-            <div
-              className="w-14 h-14 rounded-xl flex items-center justify-center mb-5"
-              style={{ backgroundColor: 'rgba(138,254,167,0.15)' }}
-            >
-              <ClockCircleOutlined style={{ fontSize: 28, color: '#8AFEA7' }} />
-            </div>
-            <h3
-              className="font-bold text-xl mb-3 font-outfit"
-              style={{ color: '#1F2B5D' }}
-            >
-              Working Hours
-            </h3>
-            <p className="text-gray-600 font-outfit">Mon - Fri: 8AM - 6PM</p>
-            <p className="text-gray-600 font-outfit">Sat: 9AM - 1PM</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content Section */}
-      <div className="max-w-7xl mx-auto px-4 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Contact Form */}
-          <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-gray-100">
-            <div className="mb-8">
-              <h2
-                className="text-3xl md:text-4xl font-bold font-outfit mb-4"
-                style={{ color: '#1F2B5D' }}
+            <h3 className="font-bold text-navy text-base mb-2">Email</h3>
+            <p className="text-sm text-navy/70 m-0">
+              <a
+                href="mailto:info@basepoint.co.ke"
+                className="text-navy hover:underline"
               >
-                Send us a message
-              </h2>
-              <p className="text-gray-600 font-outfit text-lg">
-                Fill out the form below and we&apos;ll get back to you within 24
-                hours
-              </p>
-            </div>
-            <form onSubmit={handleWhatsAppSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label
-                    className="block text-sm font-semibold mb-3 font-outfit"
-                    style={{ color: '#1F2B5D' }}
-                  >
-                    First Name
-                  </label>
-                  <input
-                    type="text"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#8AFEA7] focus:ring-4 focus:ring-[#8AFEA7]/10 font-outfit transition-all duration-300"
-                    placeholder="John"
-                  />
-                </div>
-                <div>
-                  <label
-                    className="block text-sm font-semibold mb-3 font-outfit"
-                    style={{ color: '#1F2B5D' }}
-                  >
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                    className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#8AFEA7] focus:ring-4 focus:ring-[#8AFEA7]/10 font-outfit transition-all duration-300"
-                    placeholder="Doe"
-                  />
-                </div>
-              </div>
+                info@basepoint.co.ke
+              </a>
+              <br />
+              <a
+                href="mailto:community@basepoint.co.ke"
+                className="text-navy hover:underline"
+              >
+                community@basepoint.co.ke
+              </a>
+            </p>
+          </div>
 
-              <div>
-                <label
-                  className="block text-sm font-semibold mb-3 font-outfit"
-                  style={{ color: '#1F2B5D' }}
+          <div className="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm text-center">
+            <div className="w-12 h-12 rounded-2xl bg-surface flex items-center justify-center mx-auto mb-4 text-navy">
+              <PhoneOutlined className="text-xl" />
+            </div>
+            <h3 className="font-bold text-navy text-base mb-2">Telephone</h3>
+            <p className="text-sm text-navy/70 m-0">
+              <a href="tel:+254746665877" className="text-navy hover:underline">
+                +254 746 665 877
+              </a>
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm text-center">
+            <div className="w-12 h-12 rounded-2xl bg-surface flex items-center justify-center mx-auto mb-4 text-navy">
+              <EnvironmentOutlined className="text-xl" />
+            </div>
+            <h3 className="font-bold text-navy text-base mb-2">Location</h3>
+            <p className="text-sm text-navy/70 m-0">
+              CMS Africa, Chania Avenue
+              <br />
+              Kilimani, Nairobi, Kenya
+            </p>
+          </div>
+        </div>
+
+        {/* Contact Form */}
+        <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-gray-100 max-w-2xl mx-auto">
+          {!submitted ? (
+            <Form
+              form={form}
+              layout="vertical"
+              onFinish={onFinish}
+              size="large"
+              requiredMark={false}
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Form.Item
+                  name="name"
+                  label={
+                    <span className="font-semibold text-navy text-sm">
+                      Your Name
+                    </span>
+                  }
+                  rules={[
+                    { required: true, message: 'Please enter your name' },
+                  ]}
                 >
-                  Email Address
-                </label>
-                <input
-                  type="email"
+                  <Input
+                    prefix={<UserOutlined className="text-navy/40 mr-1" />}
+                    placeholder="e.g. Kelvin Mutua"
+                    className="rounded-xl"
+                  />
+                </Form.Item>
+
+                <Form.Item
                   name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#8AFEA7] focus:ring-4 focus:ring-[#8AFEA7]/10 font-outfit transition-all duration-300"
-                  placeholder="john@example.com"
-                />
-              </div>
-
-              <div>
-                <label
-                  className="block text-sm font-semibold mb-3 font-outfit"
-                  style={{ color: '#1F2B5D' }}
+                  label={
+                    <span className="font-semibold text-navy text-sm">
+                      Email Address
+                    </span>
+                  }
+                  rules={[
+                    { required: true, message: 'Please enter your email' },
+                    { type: 'email', message: 'Enter a valid email' },
+                  ]}
                 >
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#8AFEA7] focus:ring-4 focus:ring-[#8AFEA7]/10 font-outfit transition-all duration-300"
-                  placeholder="+254 700 000 000"
-                />
-              </div>
-
-              <div>
-                <label
-                  className="block text-sm font-semibold mb-3 font-outfit"
-                  style={{ color: '#1F2B5D' }}
-                >
-                  Subject
-                </label>
-                <select
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleInputChange}
-                  className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#8AFEA7] focus:ring-4 focus:ring-[#8AFEA7]/10 font-outfit transition-all duration-300 bg-white"
-                >
-                  <option value="">Select a topic</option>
-                  <option value="sales">Sales Inquiry</option>
-                  <option value="support">Technical Support</option>
-                  <option value="partnership">Partnership</option>
-                  <option value="careers">Careers</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label
-                  className="block text-sm font-semibold mb-3 font-outfit"
-                  style={{ color: '#1F2B5D' }}
-                >
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  rows={6}
-                  className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#8AFEA7] focus:ring-4 focus:ring-[#8AFEA7]/10 font-outfit resize-none transition-all duration-300"
-                  placeholder="Tell us about your needs..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-4 px-8 rounded-xl font-bold text-white transition-all duration-300 font-outfit text-lg hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2"
-                style={{ backgroundColor: '#25D366' }}
-              >
-                <WhatsAppOutlined style={{ fontSize: 20 }} />
-                Send via WhatsApp
-              </button>
-            </form>
-          </div>
-
-          {/* Side Content */}
-          <div className="space-y-8">
-            {/* Why Contact Us */}
-            <div className="bg-gradient-to-br from-[#1F2B5D] to-[#0a0f2e] rounded-3xl p-8 md:p-10 text-white relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#8AFEA7] rounded-full filter blur-3xl opacity-10" />
-              <div className="relative z-10">
-                <div
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ backgroundColor: 'rgba(138,254,167,0.2)' }}
-                >
-                  <CustomerServiceOutlined
-                    style={{ fontSize: 32, color: '#8AFEA7' }}
+                  <Input
+                    prefix={<MailOutlined className="text-navy/40 mr-1" />}
+                    placeholder="kelvin@example.com"
+                    className="rounded-xl"
                   />
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold font-outfit mb-4">
-                  Why Choose BasepointCloud?
-                </h3>
-                <ul className="space-y-4 font-outfit">
-                  <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#8AFEA7] flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-[#1F2B5D] text-sm font-bold">
-                        ✓
-                      </span>
-                    </div>
-                    <span className="text-white/90">
-                      24/7 customer support available
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#8AFEA7] flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-[#1F2B5D] text-sm font-bold">
-                        ✓
-                      </span>
-                    </div>
-                    <span className="text-white/90">
-                      Tailored solutions for your business
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#8AFEA7] flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-[#1F2B5D] text-sm font-bold">
-                        ✓
-                      </span>
-                    </div>
-                    <span className="text-white/90">
-                      Expert team with local knowledge
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#8AFEA7] flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-[#1F2B5D] text-sm font-bold">
-                        ✓
-                      </span>
-                    </div>
-                    <span className="text-white/90">
-                      Quick response within 24 hours
-                    </span>
-                  </li>
-                </ul>
+                </Form.Item>
               </div>
-            </div>
 
-            {/* FAQ Preview */}
-            <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
-              <h3
-                className="text-2xl font-bold font-outfit mb-6"
-                style={{ color: '#1F2B5D' }}
-              >
-                Frequently Asked Questions
-              </h3>
-              <div className="space-y-4">
-                <div className="p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer">
-                  <h4
-                    className="font-semibold font-outfit"
-                    style={{ color: '#1F2B5D' }}
-                  >
-                    How quickly can I get started?
-                  </h4>
-                  <p className="text-gray-600 font-outfit text-sm mt-2">
-                    Most businesses are up and running within 24-48 hours
-                  </p>
-                </div>
-                <div className="p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer">
-                  <h4
-                    className="font-semibold font-outfit"
-                    style={{ color: '#1F2B5D' }}
-                  >
-                    Do you offer training?
-                  </h4>
-                  <p className="text-gray-600 font-outfit text-sm mt-2">
-                    Yes, we provide comprehensive training for all our solutions
-                  </p>
-                </div>
-                <div className="p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer">
-                  <h4
-                    className="font-semibold font-outfit"
-                    style={{ color: '#1F2B5D' }}
-                  >
-                    What payment methods do you accept?
-                  </h4>
-                  <p className="text-gray-600 font-outfit text-sm mt-2">
-                    We accept M-Pesa, card payments, and bank transfers
-                  </p>
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Form.Item
+                  name="category"
+                  label={
+                    <span className="font-semibold text-navy text-sm">
+                      Enquiry Category
+                    </span>
+                  }
+                  rules={[
+                    { required: true, message: 'Select enquiry category' },
+                  ]}
+                >
+                  <Select placeholder="Select category" className="rounded-xl">
+                    <Option value="product_question">Product Question</Option>
+                    <Option value="setup_request">Setup Request</Option>
+                    <Option value="partnership">Partnership Enquiry</Option>
+                    <Option value="support">Technical Support</Option>
+                    <Option value="other">Other</Option>
+                  </Select>
+                </Form.Item>
+
+                <Form.Item
+                  name="phone"
+                  label={
+                    <span className="font-semibold text-navy text-sm">
+                      Phone Number (Optional)
+                    </span>
+                  }
+                >
+                  <Input
+                    prefix={<PhoneOutlined className="text-navy/40 mr-1" />}
+                    placeholder="07XX XXX XXX"
+                    className="rounded-xl"
+                  />
+                </Form.Item>
               </div>
+
+              <Form.Item
+                name="business_name"
+                label={
+                  <span className="font-semibold text-navy text-sm">
+                    Business Name (Optional)
+                  </span>
+                }
+              >
+                <Input
+                  placeholder="e.g. Apex Hardware Ltd"
+                  className="rounded-xl"
+                />
+              </Form.Item>
+
+              <Form.Item
+                name="message"
+                label={
+                  <span className="font-semibold text-navy text-sm">
+                    Your Message
+                  </span>
+                }
+                rules={[
+                  { required: true, message: 'Please enter your message' },
+                ]}
+              >
+                <TextArea
+                  rows={5}
+                  placeholder="Tell us what you need help with..."
+                  className="rounded-xl"
+                />
+              </Form.Item>
+
+              <Button
+                type="primary"
+                htmlType="submit"
+                loading={loading}
+                block
+                className="h-14 rounded-full font-bold text-base bg-navy border-navy hover:bg-navy/90 shadow-md"
+              >
+                Send message
+              </Button>
+            </Form>
+          ) : (
+            <div className="text-center py-6">
+              <div className="w-16 h-16 rounded-full bg-mint/30 text-navy flex items-center justify-center mx-auto mb-6 text-3xl">
+                <CheckCircleFilled style={{ color: '#1F2B5D' }} />
+              </div>
+              <h2 className="text-2xl font-bold text-navy mb-3">
+                Your message has been received.
+              </h2>
+              <p className="text-sm text-navy/70 leading-relaxed mb-8 max-w-md mx-auto">
+                We&apos;ll direct your message to the relevant team and respond
+                to you directly.
+              </p>
+              <Button
+                type="primary"
+                onClick={() => history.push('/')}
+                className="px-8 py-3.5 h-auto rounded-full font-bold bg-navy border-navy text-white"
+              >
+                Return to Homepage
+              </Button>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
