@@ -1,36 +1,24 @@
 import { DownOutlined, MenuOutlined } from '@ant-design/icons';
-import { Drawer, Dropdown, MenuProps, Space } from 'antd';
+import { history, Link, useLocation } from '@umijs/max';
+import { Drawer, Dropdown, MenuProps, Tag } from 'antd';
 import React, { useEffect, useState } from 'react';
 
-import { NAV_LINKS, PRODUCT_LINKS } from '@/constants/landingData';
-
-import { history, Link } from '@umijs/max';
+import {
+  LEARN_LINKS,
+  NAV_LINKS,
+  PARTNER_LINKS,
+  PRODUCT_LINKS,
+  ProductLink,
+  SOLUTION_LINKS,
+} from '@/constants/landingData';
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState('Kenya');
+  const location = useLocation();
 
-  const countries = [
-    { key: 'kenya', label: 'Kenya', flag: '🇰🇪' },
-    { key: 'tanzania', label: 'Tanzania', flag: '🇹🇿' },
-    { key: 'uganda', label: 'Uganda', flag: '🇺🇬' },
-    { key: 'rwanda', label: 'Rwanda', flag: '🇷🇼' },
-    { key: 'burundi', label: 'Burundi', flag: '🇧🇮' },
-  ];
+  const isBiasharaAI = location.pathname === '/solutions/biashara-ai';
 
-  const countryItems: MenuProps['items'] = countries.map((c) => ({
-    key: c.key,
-    label: (
-      <Space>
-        <span>{c.flag}</span>
-        <span>{c.label}</span>
-      </Space>
-    ),
-    onClick: () => setSelectedCountry(c.label),
-  }));
-
-  // Add shadow/bg on scroll
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll);
@@ -39,70 +27,101 @@ const Navbar: React.FC = () => {
 
   const handleNav = (href: string) => {
     setMobileOpen(false);
+    if (href.startsWith('http')) {
+      window.open(href, '_blank', 'noopener,noreferrer');
+      return;
+    }
 
-    if (href.startsWith('/#')) {
-      const anchor = href.substring(1);
-      if (window.location.pathname === '/') {
-        const el = document.querySelector(anchor);
+    if (href.includes('#')) {
+      const [path, hash] = href.split('#');
+      if (
+        location.pathname === path ||
+        (path === '' && location.pathname === '/')
+      ) {
+        const el = document.getElementById(hash);
         el?.scrollIntoView({ behavior: 'smooth' });
       } else {
-        history.push('/');
-        setTimeout(() => {
-          const el = document.querySelector(anchor);
-          el?.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
+        history.push(href);
       }
     } else {
       history.push(href);
     }
   };
 
-  const productItems: MenuProps['items'] = [
-    {
-      key: 'products-grid',
-      label: (
-        <div className="grid grid-cols-2 gap-4 p-4 min-w-[400px] font-outfit">
-          {PRODUCT_LINKS.map((link) => (
-            <button
-              key={link.label}
-              type="button"
-              className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors text-left bg-transparent border-0 cursor-pointer w-full"
-              onClick={() => handleNav(link.href)}
+  const renderDropdownContent = (links: ProductLink[]) => (
+    <div className="p-3 bg-white rounded-2xl shadow-xl border border-gray-100 min-w-[340px] max-w-[420px] font-sans">
+      <div className="flex flex-col gap-1">
+        {links.map((link) => (
+          <button
+            key={link.label}
+            type="button"
+            className="flex items-start gap-3 p-3 rounded-xl hover:bg-surface transition-colors text-left bg-transparent border-0 cursor-pointer w-full group"
+            onClick={() => handleNav(link.href)}
+          >
+            <div
+              className="text-lg mt-0.5 w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-transform group-hover:scale-105"
+              style={{
+                backgroundColor: 'rgba(31,43,93,0.06)',
+                color: '#1F2B5D',
+              }}
             >
-              <div
-                className="text-xl mt-0.5 w-8 h-8 rounded-lg flex items-center justify-center"
-                style={{
-                  backgroundColor: 'rgba(138,254,167,0.15)',
-                  color: '#8AFEA7',
-                }}
-              >
-                {link.icon}
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="font-bold text-sm" style={{ color: '#1F2B5D' }}>
+              {link.icon}
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-sm text-navy">
                   {link.label}
-                </div>
-                <div
-                  className="text-xs leading-snug mt-1"
-                  style={{ color: 'rgba(31,43,93,0.6)' }}
-                >
-                  {link.desc}
-                </div>
+                </span>
+                {link.status && (
+                  <Tag
+                    bordered={false}
+                    className="text-[10px] px-1.5 py-0 font-medium m-0"
+                    style={{
+                      backgroundColor:
+                        link.status === 'Available'
+                          ? '#8AFEA7'
+                          : link.status === 'Early access'
+                          ? '#80E4F1'
+                          : '#F0F3F8',
+                      color: '#1F2B5D',
+                    }}
+                  >
+                    {link.status}
+                  </Tag>
+                )}
               </div>
-            </button>
-          ))}
-        </div>
-      ),
-    },
-  ];
+              <div className="text-xs text-navy/70 leading-snug mt-1 line-clamp-2">
+                {link.desc}
+              </div>
+            </div>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+
+  const getDropdownItems = (type?: string): MenuProps['items'] => {
+    let links: ProductLink[] = [];
+    if (type === 'products') links = PRODUCT_LINKS;
+    else if (type === 'solutions') links = SOLUTION_LINKS;
+    else if (type === 'partners') links = PARTNER_LINKS;
+    else if (type === 'learn') links = LEARN_LINKS;
+
+    return [
+      {
+        key: type || 'items',
+        label: renderDropdownContent(links),
+      },
+    ];
+  };
 
   return (
     <>
       <nav
-        className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+        className={`fixed w-full top-0 z-50 transition-all duration-300 font-sans ${
           scrolled
             ? 'bg-white/95 backdrop-blur-md shadow-card border-b border-surfaceAlt'
-            : 'bg-white/80 backdrop-blur-md border-b border-gray-100'
+            : 'bg-white/90 backdrop-blur-md border-b border-gray-100'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 lg:px-6 h-20 flex items-center justify-between">
@@ -114,34 +133,25 @@ const Navbar: React.FC = () => {
           >
             <img
               src="/logo.png"
-              alt="BasepointCloud Logo"
-              className="w-20 h-20 lg:w-16 lg:h-16 object-contain"
+              alt="Basepoint Logo"
+              className="w-16 h-16 object-contain"
             />
           </Link>
 
           {/* Desktop nav links */}
-          <div className="hidden md:flex items-center gap-4 lg:gap-8">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {NAV_LINKS.map((link) => {
-              if (link.isDropdown) {
+              if (link.dropdownType) {
                 return (
                   <Dropdown
                     key={link.label}
-                    menu={{ items: productItems }}
+                    menu={{ items: getDropdownItems(link.dropdownType) }}
                     placement="bottomLeft"
                     arrow
                   >
                     <button
                       type="button"
-                      className="font-medium font-outfit transition-colors bg-transparent border-0 cursor-pointer flex items-center gap-1.5 text-sm lg:text-base"
-                      style={{ color: 'rgba(31,43,93,0.7)' }}
-                      onMouseEnter={(e) =>
-                        ((e.currentTarget as HTMLElement).style.color =
-                          '#1F2B5D')
-                      }
-                      onMouseLeave={(e) =>
-                        ((e.currentTarget as HTMLElement).style.color =
-                          'rgba(31,43,93,0.7)')
-                      }
+                      className="font-medium transition-colors bg-transparent border-0 cursor-pointer flex items-center gap-1.5 text-sm lg:text-base text-navy/80 hover:text-navy py-2"
                     >
                       {link.label}
                       <DownOutlined style={{ fontSize: 10 }} />
@@ -155,76 +165,54 @@ const Navbar: React.FC = () => {
                   type="button"
                   key={link.label}
                   onClick={() => handleNav(link.href)}
-                  className="font-medium font-outfit transition-colors bg-transparent border-0 cursor-pointer text-sm lg:text-base"
-                  style={{ color: 'rgba(31,43,93,0.7)' }}
-                  onMouseEnter={(e) =>
-                    ((e.target as HTMLElement).style.color = '#1F2B5D')
-                  }
-                  onMouseLeave={(e) =>
-                    ((e.target as HTMLElement).style.color =
-                      'rgba(31,43,93,0.7)')
-                  }
+                  className="font-medium transition-colors bg-transparent border-0 cursor-pointer text-sm lg:text-base text-navy/80 hover:text-navy py-2"
                 >
                   {link.label}
                 </button>
               );
             })}
-
-            {/* Country Dropdown */}
-            <Dropdown
-              menu={{ items: countryItems }}
-              placement="bottomRight"
-              arrow
-            >
-              <button
-                type="button"
-                className="font-medium font-outfit transition-colors bg-transparent border-0 cursor-pointer flex items-center gap-1.5 text-sm lg:text-base"
-                style={{ color: 'rgba(31,43,93,0.7)' }}
-                onMouseEnter={(e) =>
-                  ((e.currentTarget as HTMLElement).style.color = '#1F2B5D')
-                }
-                onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLElement).style.color =
-                    'rgba(31,43,93,0.7)')
-                }
-              >
-                <Space>
-                  <span>
-                    {countries.find((c) => c.label === selectedCountry)?.flag}
-                  </span>
-                  <span className="hidden xl:inline">{selectedCountry}</span>
-                  <DownOutlined style={{ fontSize: 10 }} />
-                </Space>
-              </button>
-            </Dropdown>
           </div>
 
           {/* CTA buttons */}
-          <div className="flex items-center gap-2 md:gap-4">
-            {/* <Link
-              to="/login"
-              className="hidden md:block font-medium font-outfit transition-colors"
-              style={{ color: '#1F2B5D', textDecoration: 'none' }}
+          <div className="flex items-center gap-3 md:gap-4">
+            <a
+              href="https://app.basepoint.co.ke"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:inline-block font-semibold text-sm lg:text-base text-navy hover:text-navy/80 transition-colors"
+              style={{ textDecoration: 'none' }}
             >
-              Log In
-            </Link> */}
-            <Link
-              to="/contact"
-              className="font-bold px-4 py-2 md:px-6 md:py-2.5 text-[13px] md:text-base rounded-full transition-all duration-300 shadow-sm font-outfit whitespace-nowrap"
-              style={{
-                backgroundColor: '#1F2B5D',
-                color: '#fff',
-                textDecoration: 'none',
-              }}
-            >
-              Get Started
-            </Link>
+              Log in
+            </a>
+
+            {isBiasharaAI ? (
+              <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById('waitlist-form');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  else history.push('/solutions/biashara-ai#waitlist-form');
+                }}
+                className="font-bold px-5 py-2.5 text-sm lg:text-base rounded-full transition-all duration-200 shadow-sm bg-navy text-white hover:bg-navy/90 border-0 cursor-pointer whitespace-nowrap"
+              >
+                Join the waitlist
+              </button>
+            ) : (
+              <Link
+                to="/start"
+                className="font-bold px-5 py-2.5 text-sm lg:text-base rounded-full transition-all duration-200 shadow-sm bg-navy text-white hover:bg-navy/90 whitespace-nowrap"
+                style={{ textDecoration: 'none' }}
+              >
+                Start with Duka
+              </Link>
+            )}
+
             {/* Mobile menu trigger */}
             <button
               type="button"
-              className="md:hidden bg-transparent border-0 cursor-pointer flex items-center justify-center p-2"
+              className="md:hidden bg-transparent border-0 cursor-pointer flex items-center justify-center p-2 text-navy"
               onClick={() => setMobileOpen(true)}
-              style={{ color: '#1F2B5D' }}
+              aria-label="Open menu"
             >
               <MenuOutlined style={{ fontSize: 22 }} />
             </button>
@@ -237,129 +225,162 @@ const Navbar: React.FC = () => {
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
         placement="right"
-        width={280}
+        width={320}
         title={
           <div className="flex items-center gap-2">
             <img
               src="/logo.png"
-              alt="Base Logo"
-              className="w-20 h-20 object-contain"
+              alt="Basepoint Logo"
+              className="w-12 h-12 object-contain"
             />
+            <span className="font-bold text-navy text-lg">Basepoint</span>
           </div>
         }
       >
-        <div className="flex flex-col gap-5 pt-2">
-          {NAV_LINKS.map((link) => {
-            if (link.isDropdown) {
-              return (
-                <div key={link.label} className="flex flex-col gap-2">
-                  <span
-                    className="text-lg text-left font-medium font-outfit p-0"
-                    style={{ color: 'rgba(31,43,93,0.5)' }}
-                  >
-                    {link.label}
-                  </span>
-                  <div className="flex flex-col gap-3 pl-4">
-                    {PRODUCT_LINKS.map((prod) => (
-                      <button
-                        type="button"
-                        key={prod.label}
-                        onClick={() => handleNav(prod.href)}
-                        className="flex items-start gap-3 text-left bg-transparent border-0 cursor-pointer p-0 transition-colors"
-                      >
-                        <div
-                          className="text-xl mt-0.5"
-                          style={{ color: '#8AFEA7' }}
-                        >
-                          {prod.icon}
-                        </div>
-                        <div>
-                          <div
-                            className="text-base font-bold font-outfit"
-                            style={{ color: '#1F2B5D' }}
-                          >
-                            {prod.label}
-                          </div>
-                          <div
-                            className="text-xs font-outfit leading-snug"
-                            style={{ color: 'rgba(31,43,93,0.6)' }}
-                          >
-                            {prod.desc}
-                          </div>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              );
-            }
-
-            return (
-              <button
-                type="button"
-                key={link.label}
-                onClick={() => handleNav(link.href)}
-                className="text-lg text-left bg-transparent border-0 cursor-pointer font-medium font-outfit p-0 transition-colors"
-                style={{ color: '#1F2B5D' }}
-              >
-                {link.label}
-              </button>
-            );
-          })}
-          <hr className="my-2" style={{ borderColor: '#F0F3F8' }} />
-
-          <div className="flex flex-col gap-3">
-            <span className="text-xs font-bold uppercase tracking-wider opacity-50 font-outfit">
-              Select Country
+        <div className="flex flex-col gap-6 pt-2 font-sans">
+          {/* Products Section */}
+          <div className="flex flex-col gap-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-navy/50">
+              Products
             </span>
-            {countries.map((c) => (
-              <button
-                type="button"
-                key={c.key}
-                onClick={() => {
-                  setSelectedCountry(c.label);
-                  setMobileOpen(false);
-                }}
-                className="flex items-center gap-3 bg-transparent border-0 cursor-pointer font-medium font-outfit p-1 transition-colors"
-                style={{
-                  color:
-                    selectedCountry === c.label
-                      ? '#1F2B5D'
-                      : 'rgba(31,43,93,0.6)',
-                }}
-              >
-                <span className="text-xl">{c.flag}</span>
-                <span>{c.label}</span>
-                {selectedCountry === c.label && (
-                  <div
-                    className="ml-auto w-1.5 h-1.5 rounded-full"
-                    style={{ backgroundColor: '#8AFEA7' }}
-                  />
-                )}
-              </button>
-            ))}
+            <div className="flex flex-col gap-2.5 pl-2">
+              {PRODUCT_LINKS.map((prod) => (
+                <button
+                  type="button"
+                  key={prod.label}
+                  onClick={() => handleNav(prod.href)}
+                  className="flex items-center justify-between text-left bg-transparent border-0 cursor-pointer p-1 text-navy hover:text-navy/80"
+                >
+                  <span className="font-semibold text-sm">{prod.label}</span>
+                  {prod.status && (
+                    <Tag
+                      bordered={false}
+                      className="text-[10px] px-1.5 py-0 font-medium m-0"
+                      style={{
+                        backgroundColor:
+                          prod.status === 'Available' ? '#8AFEA7' : '#F0F3F8',
+                        color: '#1F2B5D',
+                      }}
+                    >
+                      {prod.status}
+                    </Tag>
+                  )}
+                </button>
+              ))}
+            </div>
           </div>
 
-          <hr className="my-2" style={{ borderColor: '#F0F3F8' }} />
-          {/* <a
-            href="#"
-            className="font-medium font-outfit"
-            style={{ color: '#1F2B5D', textDecoration: 'none' }}
-          >
-            Log In
-          </a> */}
-          <Link
-            to="/contact"
-            className="text-center font-semibold py-3 rounded-full font-outfit transition-colors"
-            style={{
-              backgroundColor: '#1F2B5D',
-              color: '#fff',
-              textDecoration: 'none',
-              display: 'block',
-            }}
-          >
-            Get Started
-          </Link>
+          {/* Solutions Section */}
+          <div className="flex flex-col gap-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-navy/50">
+              Solutions
+            </span>
+            <div className="flex flex-col gap-2.5 pl-2">
+              {SOLUTION_LINKS.map((sol) => (
+                <button
+                  type="button"
+                  key={sol.label}
+                  onClick={() => handleNav(sol.href)}
+                  className="flex items-center justify-between text-left bg-transparent border-0 cursor-pointer p-1 text-navy hover:text-navy/80"
+                >
+                  <span className="font-semibold text-sm">{sol.label}</span>
+                  {sol.status && (
+                    <Tag
+                      bordered={false}
+                      className="text-[10px] px-1.5 py-0 font-medium m-0"
+                      style={{
+                        backgroundColor:
+                          sol.status === 'Early access' ? '#80E4F1' : '#F0F3F8',
+                        color: '#1F2B5D',
+                      }}
+                    >
+                      {sol.status}
+                    </Tag>
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Partners Section */}
+          <div className="flex flex-col gap-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-navy/50">
+              Partners
+            </span>
+            <div className="flex flex-col gap-2.5 pl-2">
+              {PARTNER_LINKS.map((partner) => (
+                <button
+                  type="button"
+                  key={partner.label}
+                  onClick={() => handleNav(partner.href)}
+                  className="text-left bg-transparent border-0 cursor-pointer p-1 font-semibold text-sm text-navy hover:text-navy/80"
+                >
+                  {partner.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Learn & Pricing */}
+          <div className="flex flex-col gap-2.5 pt-2 border-t border-gray-100">
+            <button
+              type="button"
+              onClick={() => handleNav('/resources')}
+              className="text-left bg-transparent border-0 cursor-pointer p-1 font-semibold text-base text-navy hover:text-navy/80"
+            >
+              Basepoint Learn
+            </button>
+            <button
+              type="button"
+              onClick={() => handleNav('/pricing')}
+              className="text-left bg-transparent border-0 cursor-pointer p-1 font-semibold text-base text-navy hover:text-navy/80"
+            >
+              Pricing
+            </button>
+            <button
+              type="button"
+              onClick={() => handleNav('/demo')}
+              className="text-left bg-transparent border-0 cursor-pointer p-1 font-semibold text-base text-navy hover:text-navy/80"
+            >
+              Get setup help
+            </button>
+            <a
+              href="https://app.basepoint.co.ke"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-left p-1 font-semibold text-base text-navy hover:text-navy/80"
+              style={{ textDecoration: 'none' }}
+            >
+              Log in
+            </a>
+          </div>
+
+          <hr className="my-2 border-gray-100" />
+
+          {/* Primary Mobile CTA */}
+          {isBiasharaAI ? (
+            <button
+              type="button"
+              onClick={() => {
+                setMobileOpen(false);
+                const el = document.getElementById('waitlist-form');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                else history.push('/solutions/biashara-ai#waitlist-form');
+              }}
+              className="text-center font-bold py-3.5 rounded-full bg-navy text-white border-0 cursor-pointer w-full text-base"
+            >
+              Join the waitlist
+            </button>
+          ) : (
+            <Link
+              to="/start"
+              onClick={() => setMobileOpen(false)}
+              className="text-center font-bold py-3.5 rounded-full bg-navy text-white text-base block"
+              style={{ textDecoration: 'none' }}
+            >
+              Start with Duka
+            </Link>
+          )}
         </div>
       </Drawer>
     </>
