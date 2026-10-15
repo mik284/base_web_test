@@ -143,10 +143,6 @@ const Footer: React.FC = () => {
           <p className="m-0 text-center md:text-left">
             © {new Date().getFullYear()} Basepoint Cloud Technologies. All
             rights reserved.
-            <span className="block sm:inline sm:ml-2 text-navy/40">
-              Basepoint Cloud Technologies is a trading name of Relia
-              Technologies.
-            </span>
           </p>
 
           <div className="flex items-center gap-6">

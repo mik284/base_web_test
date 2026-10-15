@@ -128,11 +128,6 @@ const CompanyPage: React.FC = () => {
             resellers into the network. Biashara AI represents the commercial
             intelligence concepts we are developing.
           </p>
-
-          <div className="p-6 rounded-2xl bg-surfaceAlt/60 text-xs text-navy/60 max-w-xl mx-auto mb-8 border border-surfaceAlt">
-            Basepoint Cloud Technologies is a trading name of Relia
-            Technologies.
-          </div>
         </div>
       </section>
 

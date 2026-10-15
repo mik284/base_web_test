@@ -67,23 +67,6 @@ const Hero: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16 relative z-10">
         {/* ── Left: Text ─────────────────────────────────────────────── */}
         <div className="w-full lg:w-1/2 flex flex-col items-start text-left">
-          {/* Kicker */}
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-            style={{
-              background: 'rgba(31,43,93,0.05)',
-              border: '1px solid rgba(31,43,93,0.1)',
-            }}
-          >
-            <span
-              className="flex h-2 w-2 rounded-full"
-              style={{ backgroundColor: '#8AFEA7' }}
-            />
-            <span className="text-xs font-bold uppercase tracking-wider font-sans text-navy">
-              BUSINESS SOFTWARE FOR YOUR EVERYDAY OPERATIONS
-            </span>
-          </div>
-
           {/* Headline */}
           <h1
             className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6 font-sans text-navy"
