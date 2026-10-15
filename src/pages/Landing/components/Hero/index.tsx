@@ -67,9 +67,9 @@ const Hero: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16 relative z-10">
         {/* ── Left: Text ─────────────────────────────────────────────── */}
         <div className="w-full lg:w-1/2 flex flex-col items-start text-left">
-          {/* Badge */}
+          {/* Kicker */}
           <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
             style={{
               background: 'rgba(31,43,93,0.05)',
               border: '1px solid rgba(31,43,93,0.1)',
@@ -79,88 +79,64 @@ const Hero: React.FC = () => {
               className="flex h-2 w-2 rounded-full"
               style={{ backgroundColor: '#8AFEA7' }}
             />
-            <span
-              className="text-sm font-semibold tracking-wide font-outfit"
-              style={{ color: '#1F2B5D' }}
-            >
-              Achieve More™
+            <span className="text-xs font-bold uppercase tracking-wider font-sans text-navy">
+              BUSINESS SOFTWARE FOR YOUR EVERYDAY OPERATIONS
             </span>
           </div>
 
           {/* Headline */}
           <h1
-            className="text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6 font-outfit"
-            style={{ color: '#1F2B5D', lineHeight: 1.1 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6 font-sans text-navy"
+            style={{ lineHeight: 1.1 }}
           >
-            The Foundation of African Trade.{' '}
+            Know what sold.{' '}
             <span
               className="text-transparent bg-clip-text"
               style={{
                 backgroundImage: 'linear-gradient(to right, #0800F0, #80E4F1)',
               }}
             >
-              Built on Base.
-            </span>
+              Know what&apos;s left.
+            </span>{' '}
+            Know your next move.
           </h1>
 
           {/* Subtitle */}
           <p
-            className="text-lg lg:text-xl mb-10 max-w-lg leading-relaxed font-outfit"
-            style={{ color: 'rgba(31,43,93,0.7)' }}
+            className="text-base sm:text-lg lg:text-xl mb-8 max-w-lg leading-relaxed font-sans"
+            style={{ color: 'rgba(31,43,93,0.75)' }}
           >
-            Manage sales, inventory, accounting, and payments from a single,
-            unified dashboard built specifically for African businesses to scale
-            effortlessly.
+            Start with Duka to record sales, track stock and issue receipts.
+            Build a clearer picture of your business, then explore more of Base
+            as your needs grow.
           </p>
 
-          {/* CTA buttons */}
+          {/* Dual CTA buttons */}
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             <Button
               type="primary"
               size="large"
-              onClick={() => {
-                const el = document.querySelector('#products');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="w-full sm:w-auto h-auto px-8 py-4 rounded-full font-bold font-outfit bg-navy border-navy hover:bg-navy/90 hover:border-navy/90 transition-all shadow-lg"
+              onClick={() => history.push('/start')}
+              className="w-full sm:w-auto h-auto px-8 py-3.5 rounded-full font-bold font-sans bg-navy border-navy hover:bg-navy/90 hover:border-navy/90 transition-all shadow-lg text-base"
             >
-              Get Started for Free
+              Start with Duka
             </Button>
             <Button
               size="large"
-              onClick={() => history.push('/pricing')}
-              className="w-full sm:w-auto h-auto px-8 py-4 rounded-full font-bold font-outfit bg-white border-2 border-surfaceAlt text-navy hover:border-navy hover:text-navy transition-all"
+              onClick={() => history.push('/demo')}
+              className="w-full sm:w-auto h-auto px-8 py-3.5 rounded-full font-bold font-sans bg-white border-2 border-surfaceAlt text-navy hover:border-navy hover:text-navy transition-all text-base"
             >
-              View Pricing
+              Get setup help
             </Button>
           </div>
 
-          {/* Social proof */}
-          <div className="mt-10 flex items-center gap-4">
-            <div className="flex -space-x-3">
-              {[
-                { initials: 'AM', bg: '#F7B344', color: '#fff' },
-                { initials: 'JO', bg: '#0800F0', color: '#fff' },
-                { initials: 'EW', bg: '#8AFEA7', color: '#1F2B5D' },
-              ].map(({ initials, bg, color }) => (
-                <div
-                  key={initials}
-                  className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs"
-                  style={{
-                    backgroundColor: bg,
-                    color,
-                    border: '2px solid #fff',
-                  }}
-                >
-                  {initials}
-                </div>
-              ))}
-            </div>
+          {/* Master Promise & Brand Line */}
+          <div className="mt-8 flex items-center gap-2">
             <span
-              className="text-sm font-medium font-outfit"
-              style={{ color: 'rgba(31,43,93,0.6)' }}
+              className="text-sm font-semibold font-sans"
+              style={{ color: 'rgba(31,43,93,0.7)' }}
             >
-              Joined by 10,000+ businesses
+              Know what matters. Before it matters.
             </span>
           </div>
         </div>
@@ -365,6 +341,18 @@ const Hero: React.FC = () => {
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* Illustrative data caption (Section 3.2 compliance) */}
+            <div
+              className="py-1.5 px-4 text-center text-xs font-medium font-sans border-t"
+              style={{
+                backgroundColor: 'rgba(248,249,250,0.85)',
+                color: 'rgba(31,43,93,0.6)',
+                borderColor: '#F0F3F8',
+              }}
+            >
+              Product screen with illustrative data
             </div>
           </div>
 

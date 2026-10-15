@@ -1,12 +1,16 @@
 import React from 'react';
 
+import CTASection from '@/components/CTASection';
 import SEO from '@/components/SEO';
-import Features from '@/pages/Landing/components/Features';
+import BiasharaTeaser from '@/pages/Landing/components/BiasharaTeaser';
+import Expansion from '@/pages/Landing/components/Expansion';
 import Hero from '@/pages/Landing/components/Hero';
-import IntegrationsMarquee from '@/pages/Landing/components/IntegrationsMarquee';
-import Products from '@/pages/Landing/components/Products';
-import SocialProof from '@/pages/Landing/components/SocialProof';
-import UseCases from '@/pages/Landing/components/UseCases';
+import HomepageFAQs from '@/pages/Landing/components/HomepageFAQs';
+import HumanSupport from '@/pages/Landing/components/HumanSupport';
+import LearnTeaser from '@/pages/Landing/components/LearnTeaser';
+import OperatingRoutine from '@/pages/Landing/components/OperatingRoutine';
+import PracticalProblem from '@/pages/Landing/components/PracticalProblem';
+import TwoWaysToBegin from '@/pages/Landing/components/TwoWaysToBegin';
 
 import './index.css';
 
@@ -14,13 +18,13 @@ const LandingPage: React.FC = () => {
   return (
     <>
       <SEO
-        title="BasepointCloud — The Operating System for African Commerce"
-        description="Modular operating system for African trade. Manage sales, inventory, accounting, mobile-money liquidity, and payments across your business ecosystem."
+        title="Basepoint | Sales, Stock and Business Clarity"
+        description="Start with Duka for sales, stock and receipts. Explore Base products, practical guides and setup support for your business."
         canonical="/"
         jsonLd={{
           '@context': 'https://schema.org',
           '@type': 'WebSite',
-          name: 'BasepointCloud',
+          name: 'Basepoint',
           url: 'https://basepoint.co.ke',
           potentialAction: {
             '@type': 'SearchAction',
@@ -30,26 +34,43 @@ const LandingPage: React.FC = () => {
         }}
       />
 
-      {/* 2. Hero — headline, CTA, animated dashboard mockup */}
-      {/* 2. Hero — headline, CTA, animated dashboard mockup */}
+      {/* 6.1 Hero — Verified Duka focus, Dual CTAs, illustrative caption */}
       <Hero />
 
-      {/* 3. Payment integrations scrolling marquee */}
-      <IntegrationsMarquee />
+      {/* 6.2 Practical problem — Record sale, Track stock, Issue receipt */}
+      <PracticalProblem />
 
-      {/* 4. Product cards (BasePesa, Duka1, Bandu, Duka1, Loyalty) */}
-      <Products />
+      {/* 6.3 Operating routine — 4-step suggested review */}
+      <OperatingRoutine />
 
-      {/* 5. Enterprise features (dark navy section) */}
-      <Features />
+      {/* 6.5 Two ways to begin — Self-serve vs Assisted Intake */}
+      <TwoWaysToBegin />
 
-      {/* 6. Use-case audience segments */}
-      <UseCases />
+      {/* 6.6 Expansion — Pesa, Mteja, Bandu */}
+      <Expansion />
 
-      {/* 2.3 Value Chain Block ("Trust Engine") */}
-      {/* <TrustEngine /> */}
-      {/* 7. Stats + customer testimonials */}
-      <SocialProof />
+      {/* 6.7 Human support — Base Collabs network */}
+      <HumanSupport />
+
+      {/* 6.8 Biashara AI teaser — Concept in development */}
+      <BiasharaTeaser />
+
+      {/* 6.9 Learn launch guides */}
+      <LearnTeaser />
+
+      {/* 6.9 Final CTA Banner */}
+      <CTASection
+        title="Make the business clearer. Start with Duka."
+        body="Start with Duka to record sales, track stock and issue receipts. Build a clearer picture of your business, then explore more of Base as your needs grow."
+        primaryText="Start with Duka"
+        primaryLink="/start"
+        secondaryText="Get setup help"
+        secondaryLink="/demo"
+        note="Availability, scope and any fees are confirmed before support begins."
+      />
+
+      {/* 6.10 Homepage FAQs */}
+      <HomepageFAQs />
     </>
   );
 };

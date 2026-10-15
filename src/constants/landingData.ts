@@ -1,16 +1,22 @@
 /**
- * Static data for the BasepointCloud landing page.
- * Keeping data separate from UI makes it easy to update content without touching components.
+ * Static data for Basepoint website.
+ * Grounded in Basepoint Website Specification (10 October 2026).
  */
 
 import {
   AppstoreOutlined,
-  BarChartOutlined,
-  CreditCardOutlined,
-  HomeOutlined,
-  RocketOutlined,
+  BookOutlined,
+  BranchesOutlined,
+  CoffeeOutlined,
+  DeploymentUnitOutlined,
+  DollarOutlined,
+  FundProjectionScreenOutlined,
+  GlobalOutlined,
+  RobotOutlined,
+  ShopOutlined,
+  ShoppingOutlined,
   TeamOutlined,
-  ToolOutlined,
+  UsergroupAddOutlined,
 } from '@ant-design/icons';
 import React, { ReactNode } from 'react';
 
@@ -18,230 +24,294 @@ export interface ProductLink {
   label: string;
   href: string;
   desc: string;
+  status?: string;
   icon: ReactNode;
 }
 
 export const PRODUCT_LINKS: ProductLink[] = [
   {
-    label: 'Base Duka',
-    href: '/base-duka',
-    desc: 'Digitize your ledger book and track inventory.',
-    icon: React.createElement(AppstoreOutlined),
+    label: 'Duka',
+    href: '/products/duka',
+    desc: 'Sales, stock and receipts for everyday retail.',
+    status: 'Available',
+    icon: React.createElement(ShopOutlined),
   },
   {
-    label: 'Base Pesa',
-    href: '/base-pesa',
-    desc: 'Seamless payments and auto-reconciliation.',
-    icon: React.createElement(CreditCardOutlined),
+    label: 'Pesa',
+    href: '/products/pesa',
+    desc: 'Money and financial records.',
+    status: 'In development',
+    icon: React.createElement(DollarOutlined),
   },
   {
-    label: 'Base Bandu',
-    href: '/base-bandu',
-    desc: 'Fulfill orders with advanced logistics.',
-    icon: React.createElement(RocketOutlined),
-  },
-  {
-    label: 'Base Mteja',
-    href: '/base-mteja',
-    desc: 'Grow loyalty with our all-in-one CRM.',
+    label: 'Mteja',
+    href: '/products/mteja',
+    desc: 'Customer records and relationships.',
+    status: 'In development',
     icon: React.createElement(TeamOutlined),
   },
   {
-    label: 'Base Smart Reja',
-    href: '/base-smart-reja',
-    desc: 'Deepening value chain through data analytics.',
-    icon: React.createElement(BarChartOutlined),
+    label: 'Bandu',
+    href: '/products/bandu',
+    desc: 'People and team administration.',
+    status: 'In development',
+    icon: React.createElement(UsergroupAddOutlined),
   },
   {
-    label: 'Base Dala',
-    href: '/base-dala',
-    desc: 'Property management solution for real estate.',
-    icon: React.createElement(HomeOutlined),
+    label: 'Base Platform',
+    href: '/platform',
+    desc: 'Business software for clearer daily operations.',
+    status: 'Ecosystem',
+    icon: React.createElement(AppstoreOutlined),
+  },
+];
+
+export const SOLUTION_LINKS: ProductLink[] = [
+  {
+    label: 'Retailers',
+    href: '/solutions/retailers',
+    desc: 'Clear view of the shop, from first sale to daily review.',
+    icon: React.createElement(ShoppingOutlined),
   },
   {
-    label: 'Custom',
-    href: '/custom',
-    desc: 'Tailor-made solutions to fit your workflows.',
-    icon: React.createElement(ToolOutlined),
+    label: 'Distributors',
+    href: '/solutions/distributors',
+    desc: 'Commercial questions across distribution networks.',
+    icon: React.createElement(BranchesOutlined),
+  },
+  {
+    label: 'Growing Operations',
+    href: '/solutions/enterprise',
+    desc: 'Coordinating multiple locations, people, and tools.',
+    icon: React.createElement(DeploymentUnitOutlined),
+  },
+  {
+    label: 'Hospitality',
+    href: '/products/duka/hospitality',
+    desc: 'Shape Duka for restaurants, cafés, bars and hotels.',
+    status: 'Early access',
+    icon: React.createElement(CoffeeOutlined),
+  },
+  {
+    label: 'Biashara AI',
+    href: '/solutions/biashara-ai',
+    desc: 'From business records to better commercial decisions.',
+    status: 'In development',
+    icon: React.createElement(RobotOutlined),
+  },
+];
+
+export const PARTNER_LINKS: ProductLink[] = [
+  {
+    label: 'Base Collabs',
+    href: '/collabs',
+    desc: 'Experts, advisors and resellers helping businesses adopt Base.',
+    icon: React.createElement(TeamOutlined),
+  },
+  {
+    label: 'Refer a Business',
+    href: '/refer',
+    desc: 'Introduce Basepoint with attributable links and clear terms.',
+    icon: React.createElement(GlobalOutlined),
+  },
+  {
+    label: 'Strategic Partnerships',
+    href: '/partners',
+    desc: 'Distribution, business support, and workflow collaboration.',
+    icon: React.createElement(FundProjectionScreenOutlined),
+  },
+];
+
+export const LEARN_LINKS: ProductLink[] = [
+  {
+    label: 'Basepoint Learn',
+    href: '/resources',
+    desc: 'Practical guides and operating routines.',
+    icon: React.createElement(BookOutlined),
+  },
+  {
+    label: 'Daily Close Guide',
+    href: '/resources/daily-close',
+    desc: 'A simple daily review for your shop.',
+    icon: React.createElement(ShopOutlined),
+  },
+  {
+    label: 'Stock Count Guide',
+    href: '/resources/stock-count',
+    desc: 'Make a physical stock count useful.',
+    icon: React.createElement(AppstoreOutlined),
+  },
+  {
+    label: 'Second Outlet Guide',
+    href: '/resources/second-outlet',
+    desc: 'Questions to answer before opening a second outlet.',
+    icon: React.createElement(BranchesOutlined),
   },
 ];
 
 export interface NavLink {
   label: string;
   href: string;
-  isDropdown?: boolean;
+  dropdownType?: 'products' | 'solutions' | 'partners' | 'learn';
 }
 
 export const NAV_LINKS: NavLink[] = [
-  { label: 'Products', href: '#', isDropdown: true },
-  { label: 'Features', href: '/#features' },
-  { label: 'About', href: '/#usecases' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Products', href: '#', dropdownType: 'products' },
+  { label: 'Solutions', href: '#', dropdownType: 'solutions' },
+  { label: 'Learn', href: '/resources', dropdownType: 'learn' },
+  { label: 'Partners', href: '#', dropdownType: 'partners' },
+  { label: 'Pricing', href: '/pricing' },
 ];
 
-// ─── Features ────────────────────────────────────────────────────────────────
-export interface Feature {
-  id: string;
-  title: string;
-  description: string;
-  iconKey: string;
-  iconBg: string; // rgba CSS value
-  iconColor: string; // hex CSS value
-}
+// ─── Homepage Content Blocks (Section 6) ─────────────────────────────────────
 
-export const FEATURES: Feature[] = [
+export const HOMEPAGE_PROBLEM_CARDS = [
   {
-    id: 'dashboard',
-    title: 'Unified Dashboard',
-    description:
-      'Control every aspect of your operations from a single pane of glass. Stop switching between 5 different apps.',
-    iconKey: 'Appstore',
+    id: 'record-sale',
+    title: 'Record the sale.',
+    description: 'Keep a record of what was sold.',
     iconBg: 'rgba(138,254,167,0.2)',
-    iconColor: '#8AFEA7',
+    iconColor: '#1F2B5D',
   },
   {
-    id: 'analytics',
-    title: 'Real-time Analytics',
+    id: 'track-stock',
+    title: 'Track the stock.',
     description:
-      'Make decisions based on facts. View live sales data, stock levels, and staff performance instantly.',
-    iconKey: 'Rise',
+      'Review your recorded stock and compare it with what is on the shelf.',
     iconBg: 'rgba(247,179,68,0.2)',
     iconColor: '#F7B344',
   },
   {
-    id: 'multitenant',
-    title: 'Multi-tenant Architecture',
-    description:
-      'Manage multiple branches, warehouses, or entirely different businesses under one master account securely.',
-    iconKey: 'Bank',
+    id: 'issue-receipt',
+    title: 'Issue the receipt.',
+    description: 'Give customers a receipt for their purchase.',
     iconBg: 'rgba(128,228,241,0.2)',
-    iconColor: '#80E4F1',
-  },
-  {
-    id: 'security',
-    title: 'Secure Infrastructure',
-    description:
-      'Bank-grade encryption, automated backups, and 99.9% uptime SLA ensures your data is always safe.',
-    iconKey: 'Safety',
-    iconBg: 'rgba(255,231,0,0.2)',
-    iconColor: '#FFE700',
+    iconColor: '#0800F0',
   },
 ];
 
-// ─── Use Cases ───────────────────────────────────────────────────────────────
-export interface UseCase {
-  id: string;
-  title: string;
-  description: string;
-  iconKey: string;
-  iconBg: string; // hex colour for the icon circle background
-  hoverBorder: string; // Tailwind class for hover border colour
-}
-
-export const USE_CASES: UseCase[] = [
+export const HOMEPAGE_ROUTINE_STEPS = [
   {
-    id: 'sme',
-    title: 'SME Duka Owners',
-    description:
-      'Digitize your ledger book. Track inventory, record daily sales accurately, and print physical or digital receipts instantly from your phone.',
-    iconKey: 'Shop',
-    iconBg: '#8AFEA7',
-    hoverBorder: 'hover:border-mint/50',
+    step: '1',
+    title: 'See where you stand.',
+    description: 'Review the records you have and check what needs attention.',
   },
   {
-    id: 'retail',
-    title: 'Retail Chains',
+    step: '2',
+    title: 'Choose one priority.',
     description:
-      'Sync inventory across multiple physical locations in real-time. Transfer stock easily and get consolidated reports for the whole group.',
-    iconKey: 'Bank',
-    iconBg: '#0800F0',
-    hoverBorder: 'hover:border-electric/50',
+      'Focus on a practical question: a stock gap, missing records or a setup task.',
   },
   {
-    id: 'online',
-    title: 'Online Businesses',
+    step: '3',
+    title: 'Take the next step.',
     description:
-      'Connect your Instagram sales to your central inventory. Create a professional web storefront (Duka1) and process payments securely online.',
-    iconKey: 'Global',
-    iconBg: '#F7B344',
-    hoverBorder: 'hover:border-orange/50',
+      'Use your records and a relevant Learn guide to work through it.',
   },
   {
-    id: 'wholesale',
-    title: 'Wholesale & Enterprise',
+    step: '4',
+    title: 'Review what changed.',
     description:
-      'Manage complex pricing tiers, generate pro-forma invoices, handle bulk orders, and utilize our robust API to connect to your existing ERP.',
-    iconKey: 'Wallet',
-    iconBg: '#1F2B5D',
-    hoverBorder: 'hover:border-navy/50',
+      'Return to the records and decide what to keep doing or improve.',
   },
 ];
 
-// ─── Stats ───────────────────────────────────────────────────────────────────
-export const STATS = [
-  { value: '10k+', label: 'Active Businesses' },
-  { value: '5M+', label: 'Transactions Processed' },
-  { value: '99.9%', label: 'Uptime Guarantee' },
+export const HOMEPAGE_EXPANSION_CARDS = [
+  {
+    name: 'Duka',
+    role: 'Sales and stock',
+    description: 'Record sales, track stock and issue receipts.',
+    status: 'Available',
+    href: '/products/duka',
+  },
+  {
+    name: 'Pesa',
+    role: 'Financial records',
+    description: 'Explore Pesa’s approach to money and financial records.',
+    status: 'In development',
+    href: '/products/pesa',
+  },
+  {
+    name: 'Mteja',
+    role: 'Customer relationships',
+    description:
+      'Explore Mteja’s approach to customer records and relationships.',
+    status: 'In development',
+    href: '/products/mteja',
+  },
+  {
+    name: 'Bandu',
+    role: 'People administration',
+    description: 'Explore Bandu’s approach to people and team administration.',
+    status: 'In development',
+    href: '/products/bandu',
+  },
 ];
 
-// ─── Testimonials ────────────────────────────────────────────────────────────
-export interface Testimonial {
-  id: string;
-  quote: string;
-  name: string;
-  role: string;
-  initials: string;
-  avatarBg: string;
-  avatarTextColor: string;
-}
-
-export const TESTIMONIALS: Testimonial[] = [
+export const HOMEPAGE_FAQS = [
   {
-    id: 'Purity',
-    quote:
-      '"I love how seamless the solution is. Managing inventory and sales has never been this effortless.\n#seamless"',
-    name: 'Purity',
-    role: 'Cashier, Yami Cosmetics',
-    initials: 'P',
-    avatarBg: '#80E4F1',
-    avatarTextColor: '#1F2B5D',
+    question: 'Where should I begin?',
+    answer:
+      'Start with Duka if you need sales, stock and receipts for a retail business. If your needs are more complex, tell us about your setup.',
   },
   {
-    id: 'Amanda',
-    quote:
-      '"The POS system has transformed how we handle transactions. It\'s fast, reliable, and incredibly easy to use.\n#reliable"',
-    name: 'Amanda',
-    role: 'Amanda, Nuba Spa',
-    initials: 'NS',
-    avatarBg: '#F7B344',
-    avatarTextColor: '#ffffff',
+    question: 'Can I get help setting up?',
+    answer:
+      'You can request help. We’ll confirm the available support, scope and any fees before work begins.',
   },
   {
-    id: 'Robert',
-    quote:
-      '"The support team is always available, and the system itself is top-notch. Highly recommended!\n#top"',
-    name: 'Robert',
-    role: 'Robert, BK Phone Repair',
-    initials: 'BK',
-    avatarBg: '#8AFEA7',
-    avatarTextColor: '#1F2B5D',
+    question: 'Is Biashara AI available?',
+    answer:
+      'No. It is in development. You can join the waitlist for updates and potential opportunities to contribute to its development.',
+  },
+  {
+    question: 'Does Base guarantee business growth?',
+    answer:
+      'No. Base provides tools and information. Business outcomes depend on many factors, including the quality of your records and the decisions you make.',
   },
 ];
 
 // ─── Footer Links ────────────────────────────────────────────────────────────
+
 export const FOOTER_PRODUCTS = [
-  { label: 'Base Duka', href: '/base-duka' },
-  { label: 'Base Bandu', href: '/base-bandu' },
-  { label: 'Base Pesa', href: '/base-pesa' },
-  { label: 'Base Mteja', href: '/base-mteja' },
-  { label: 'Base Dala', href: '/base-dala' },
-  { label: 'Custom Solutions', href: '/custom' },
+  { label: 'Duka', href: '/products/duka' },
+  { label: 'Pesa', href: '/products/pesa' },
+  { label: 'Mteja', href: '/products/mteja' },
+  { label: 'Bandu', href: '/products/bandu' },
+  { label: 'Base Platform', href: '/platform' },
+];
+
+export const FOOTER_SOLUTIONS = [
+  { label: 'Retailers', href: '/solutions/retailers' },
+  { label: 'Distributors', href: '/solutions/distributors' },
+  { label: 'Growing Operations', href: '/solutions/enterprise' },
+  { label: 'Hospitality (Early access)', href: '/products/duka/hospitality' },
+  { label: 'Biashara AI (In development)', href: '/solutions/biashara-ai' },
+];
+
+export const FOOTER_LEARN = [
+  { label: 'Basepoint Learn', href: '/resources' },
+  { label: 'Daily Review Guide', href: '/resources/daily-close' },
+  { label: 'Stock Count Guide', href: '/resources/stock-count' },
+  { label: 'Second Outlet Guide', href: '/resources/second-outlet' },
+];
+
+export const FOOTER_PARTNERS = [
+  { label: 'Base Collabs', href: '/collabs' },
+  { label: 'Apply as a Collab', href: '/collabs/apply' },
+  { label: 'Refer a Business', href: '/refer' },
+  { label: 'Referral Terms', href: '/refer/terms' },
+  { label: 'Strategic Partnerships', href: '/partners' },
 ];
 
 export const FOOTER_COMPANY = [
-  { label: 'About Us', href: '/about' },
-  { label: 'Careers', href: '/careers' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
-  { label: 'Partners', href: '/partners' },
+  { label: 'Company Overview', href: '/company' },
+  { label: 'Contact & Support', href: '/contact' },
+  {
+    label: 'Product Documentation',
+    href: 'https://basepoint.mintlify.app',
+    isExternal: true,
+  },
+  { label: 'Privacy Policy', href: '/privacy' },
+  { label: 'Terms of Service', href: '/terms' },
 ];
