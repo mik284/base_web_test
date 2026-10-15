@@ -2,19 +2,19 @@ import { defineConfig } from '@umijs/max';
 import { routes } from './routes';
 
 export default defineConfig({
-  title: 'BasepointCloud — The Operating System for African Commerce',
+  title: 'Basepoint | Sales, Stock and Business Clarity',
   metas: [
     {
       name: 'description',
       content:
-        'Modular operating system for African trade. Manage sales, inventory, accounting, mobile-money liquidity, and payments across your business ecosystem.',
+        'Start with Duka for sales, stock and receipts. Explore Base products, practical guides and setup support for your business.',
     },
     {
       name: 'keywords',
       content:
-        'BasepointCloud, Base Duka, Base Pesa, Base Smart Reja, Base Bandu, Base Mteja, Base Dala, Mobile Money POS, Inventory Financing Kenya, POS System Kenya',
+        'Basepoint, Base, Duka, POS Kenya, Retail Inventory Management, Biashara AI, Base Collabs',
     },
-    { property: 'og:site_name', content: 'BasepointCloud' },
+    { property: 'og:site_name', content: 'Basepoint' },
     { property: 'og:type', content: 'website' },
     { property: 'og:image', content: 'https://basepoint.co.ke/logo.png' },
     { name: 'twitter:card', content: 'summary_large_image' },
@@ -34,11 +34,12 @@ gtag('config', 'G-BHYMHYB41H');`,
     theme: {
       token: {
         colorPrimary: '#1F2B5D', // navy
-        colorSuccess: '#8AFEA7', // mint
-        colorInfo: '#0800F0', // electric
+        colorSuccess: '#8AFEA7', // digital green
+        colorInfo: '#0800F0', // secondary accent
         colorWarning: '#F7B344', // orange
         colorError: '#ff4d4f',
-        fontFamily: 'Outfit, sans-serif',
+        fontFamily:
+          'Montserrat, Outfit, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
         borderRadius: 12,
         colorTextBase: '#1F2B5D',
         colorBgBase: '#ffffff',
@@ -82,7 +83,7 @@ gtag('config', 'G-BHYMHYB41H');`,
   initialState: {},
   request: {},
   layout: {
-    title: 'BasepointCloud',
+    title: 'Basepoint',
     locale: 'en-US',
   },
   links: [
@@ -90,7 +91,7 @@ gtag('config', 'G-BHYMHYB41H');`,
     { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
     {
       rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap',
+      href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap',
     },
   ],
   routes: routes,

@@ -27,6 +27,8 @@ module.exports = {
       },
       fontFamily: {
         outfit: ['Outfit', 'sans-serif'],
+        montserrat: ['Montserrat', 'Outfit', 'sans-serif'],
+        sans: ['Montserrat', 'Outfit', 'sans-serif'],
       },
       boxShadow: {
         soft: '0 20px 40px -15px rgba(31, 43, 93, 0.08)',
@@ -34,11 +36,11 @@ module.exports = {
         card: '0 4px 20px rgba(0, 0, 0, 0.03)',
       },
       fontSize: {
-        'xs': ['0.75rem', { lineHeight: '1.5' }],
-        'sm': ['0.875rem', { lineHeight: '1.5' }],
-        'base': ['1rem', { lineHeight: '1.5' }], // 16px base, 1.5 line-height
-        'lg': ['1.25rem', { lineHeight: '1.4', letterSpacing: '-0.01em' }], // 20px (H6)
-        'xl': ['1.563rem', { lineHeight: '1.3', letterSpacing: '-0.01em' }], // 25px (H5)
+        xs: ['0.75rem', { lineHeight: '1.5' }],
+        sm: ['0.875rem', { lineHeight: '1.5' }],
+        base: ['1rem', { lineHeight: '1.5' }], // 16px base, 1.5 line-height
+        lg: ['1.25rem', { lineHeight: '1.4', letterSpacing: '-0.01em' }], // 20px (H6)
+        xl: ['1.563rem', { lineHeight: '1.3', letterSpacing: '-0.01em' }], // 25px (H5)
         '2xl': ['1.953rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }], // 31.25px (H4)
         '3xl': ['2.441rem', { lineHeight: '1.1', letterSpacing: '-0.025em' }], // 39.06px (H3)
         '4xl': ['3.052rem', { lineHeight: '1.1', letterSpacing: '-0.03em' }], // 48.83px (H2)
