@@ -4,6 +4,7 @@ module.exports = {
     './src/pages/**/*.{tsx,ts}',
     './src/components/**/*.{tsx,ts}',
     './src/layouts/**/*.{tsx,ts}',
+    './src/*.{tsx,ts}',
   ],
   corePlugins: {
     // Disable Tailwind's preflight reset to avoid conflicts with Ant Design
