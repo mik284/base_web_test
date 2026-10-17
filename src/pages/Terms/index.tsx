@@ -6,22 +6,22 @@ const TermsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO
-        title="Terms of Service | BasepointCloud"
+        title="Terms of Service | Basepoint"
         description="BasepointCloud Terms of Service governing the access and usage of our commerce operating system products and services."
         canonical="/terms"
       />
       <div className="max-w-4xl mx-auto px-6 py-20">
         <h1
-          className="text-4xl md:text-5xl font-bold mb-8 font-outfit"
+          className="text-4xl md:text-5xl font-bold mb-8"
           style={{ color: '#1F2B5D' }}
         >
           Terms of Service
         </h1>
-        <p className="text-gray-600 mb-8 font-outfit leading-relaxed">
+        <p className="text-gray-600 mb-8 leading-relaxed">
           Last updated: {new Date().toLocaleDateString()}
         </p>
 
-        <div className="space-y-8 font-outfit">
+        <div className="space-y-8">
           <section>
             <h2
               className="text-2xl font-bold mb-4"
