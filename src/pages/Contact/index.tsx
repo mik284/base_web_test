@@ -73,7 +73,7 @@ const ContactPage: React.FC = () => {
     <>
       <SEO
         title="Contact Basepoint"
-        description="Contact Basepoint about a product question, setup request, partnership enquiry or support issue. Email info@basepoint.co.ke or call +254 746 665 877."
+        description="Contact Basepoint about a product question, setup request, partnership enquiry or support issue. Email info@basepoint.co.ke or call +254 183 240756."
         canonical="/contact"
       />
       <HeroSection>
