@@ -1,281 +1,158 @@
 import {
-  CheckCircleFilled,
   EnvironmentOutlined,
   MailOutlined,
   PhoneOutlined,
-  UserOutlined,
+  WhatsAppOutlined,
 } from '@ant-design/icons';
-import { history, useLocation } from '@umijs/max';
-import { Button, Form, Input, message, Select } from 'antd';
-import React, { useEffect, useState } from 'react';
+import { useSearchParams } from '@umijs/max';
+import React, { ReactNode } from 'react';
 
+import {
+  EmailField,
+  FormCard,
+  FormShell,
+  NameField,
+  PhoneField,
+  PhonePermissionField,
+  PrivacyNotice,
+  SelectField,
+  TextAreaField,
+  TextField,
+} from '@/components/Forms';
+import { Container, HERO_H1, HeroSection } from '@/components/Page';
 import SEO from '@/components/SEO';
+import { SITE } from '@/constants/site';
+import { JourneyType } from '@/services/forms';
 
-const { TextArea } = Input;
-const { Option } = Select;
+const CATEGORIES: { label: string; intent: string; journey: JourneyType }[] = [
+  { label: 'Product question', intent: 'product', journey: 'merchant' },
+  { label: 'Setup request', intent: 'setup', journey: 'merchant' },
+  {
+    label: 'Partnership enquiry',
+    intent: 'partnership',
+    journey: 'strategic_partnership',
+  },
+  {
+    label: 'Introducing a business',
+    intent: 'referral',
+    journey: 'referral_introduction',
+  },
+  { label: 'Support issue', intent: 'support', journey: 'support' },
+];
+
+const CHANNELS: { icon: ReactNode; label: string; content: ReactNode }[] = [
+  {
+    icon: <MailOutlined />,
+    label: 'Email',
+    content: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>,
+  },
+  {
+    icon: <PhoneOutlined />,
+    label: 'Phone',
+    content: <a href={SITE.phoneHref}>{SITE.phone}</a>,
+  },
+  {
+    icon: <WhatsAppOutlined />,
+    label: 'WhatsApp',
+    content: <a href={SITE.whatsappHref}>{SITE.phone}</a>,
+  },
+  {
+    icon: <EnvironmentOutlined />,
+    label: 'Office',
+    content: SITE.address.join(', '),
+  },
+];
 
 const ContactPage: React.FC = () => {
-  const [form] = Form.useForm();
-  const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const location = useLocation();
-
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const intent = params.get('intent');
-    if (intent === 'referral') {
-      form.setFieldsValue({
-        category: 'partnership',
-        message:
-          'I would like to discuss introducing businesses to Basepoint and receiving an assigned referral link.',
-      });
-    } else if (intent === 'support') {
-      form.setFieldsValue({
-        category: 'support',
-      });
-    }
-  }, [location.search, form]);
-
-  const onFinish = (values: any) => {
-    setLoading(true);
-
-    const payload = {
-      ...values,
-      type: 'general_contact_message',
-      submitted_at: new Date().toISOString(),
-    };
-
-    console.log('[Contact Event: message_submitted]', payload);
-
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-      message.success('Your message has been received.');
-    }, 1000);
-  };
+  const [params] = useSearchParams();
+  const initialCategory = CATEGORIES.find(
+    (category) => category.intent === params.get('intent'),
+  )?.label;
 
   return (
-    <div className="font-sans min-h-screen bg-surface py-28 px-4 sm:px-6 lg:px-8">
+    <>
       <SEO
-        title="Contact Basepoint | Support, Sales and Partnerships"
-        description="Tell us what you need help with. Choose a product question, setup request, partnership enquiry or support issue so we can direct your message."
+        title="Contact Basepoint"
+        description="Contact Basepoint about a product question, setup request, partnership enquiry or support issue. Email info@basepoint.co.ke or call +254 746 665 877."
         canonical="/contact"
       />
+      <HeroSection>
+        <Container>
+          <div className="max-w-3xl">
+            <h1 className={HERO_H1}>Tell us what you need help with.</h1>
+            <p className="m-0 mt-6 text-base md:text-lg leading-relaxed text-navy/80">
+              Choose a product question, setup request, partnership enquiry or
+              support issue so we can direct your message.
+            </p>
+          </div>
 
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <span className="text-xs font-bold uppercase tracking-wider text-navy/60 block mb-3">
-            CONTACT BASEPOINT
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-bold text-navy mb-4">
-            Tell us what you need help with.
-          </h1>
-          <p className="text-base sm:text-lg text-navy/70 max-w-xl mx-auto leading-relaxed">
-            Choose a product question, setup request, partnership enquiry or
-            support issue so we can direct your message.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          <div className="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm text-center">
-            <div className="w-12 h-12 rounded-2xl bg-surface flex items-center justify-center mx-auto mb-4 text-navy">
-              <MailOutlined className="text-xl" />
-            </div>
-            <h3 className="font-bold text-navy text-base mb-2">Email</h3>
-            <p className="text-sm text-navy/70 m-0">
-              <a
-                href="mailto:info@basepoint.co.ke"
-                className="text-navy hover:underline"
+          <div className="mt-12 grid gap-10 lg:grid-cols-[1.5fr_1fr] items-start">
+            <FormCard>
+              <FormShell
+                form="contact"
+                journeyType={(values) =>
+                  CATEGORIES.find((c) => c.label === values.category)
+                    ?.journey ?? 'merchant'
+                }
+                entryMotion="assisted"
+                event="contact_message_submitted"
+                submitLabel="Send message"
+                confirmation="Your message has been received. We'll direct it to the relevant team."
+                initialValues={{ category: initialCategory }}
+                notice={<PrivacyNotice />}
               >
-                info@basepoint.co.ke
-              </a>
-              <br />
-              <a
-                href="mailto:community@basepoint.co.ke"
-                className="text-navy hover:underline"
-              >
-                community@basepoint.co.ke
-              </a>
-            </p>
-          </div>
-
-          <div className="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm text-center">
-            <div className="w-12 h-12 rounded-2xl bg-surface flex items-center justify-center mx-auto mb-4 text-navy">
-              <PhoneOutlined className="text-xl" />
-            </div>
-            <h3 className="font-bold text-navy text-base mb-2">Telephone</h3>
-            <p className="text-sm text-navy/70 m-0">
-              <a href="tel:+254746665877" className="text-navy hover:underline">
-                +254 746 665 877
-              </a>
-            </p>
-          </div>
-
-          <div className="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm text-center">
-            <div className="w-12 h-12 rounded-2xl bg-surface flex items-center justify-center mx-auto mb-4 text-navy">
-              <EnvironmentOutlined className="text-xl" />
-            </div>
-            <h3 className="font-bold text-navy text-base mb-2">Location</h3>
-            <p className="text-sm text-navy/70 m-0">
-              CMS Africa, Chania Avenue
-              <br />
-              Kilimani, Nairobi, Kenya
-            </p>
-          </div>
-        </div>
-
-        {/* Contact Form */}
-        <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-gray-100 max-w-2xl mx-auto">
-          {!submitted ? (
-            <Form
-              form={form}
-              layout="vertical"
-              onFinish={onFinish}
-              size="large"
-              requiredMark={false}
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Form.Item
-                  name="name"
-                  label={
-                    <span className="font-semibold text-navy text-sm">
-                      Your Name
-                    </span>
-                  }
-                  rules={[
-                    { required: true, message: 'Please enter your name' },
-                  ]}
-                >
-                  <Input
-                    prefix={<UserOutlined className="text-navy/40 mr-1" />}
-                    placeholder="e.g. Kelvin Mutua"
-                    className="rounded-xl"
-                  />
-                </Form.Item>
-
-                <Form.Item
-                  name="email"
-                  label={
-                    <span className="font-semibold text-navy text-sm">
-                      Email Address
-                    </span>
-                  }
-                  rules={[
-                    { required: true, message: 'Please enter your email' },
-                    { type: 'email', message: 'Enter a valid email' },
-                  ]}
-                >
-                  <Input
-                    prefix={<MailOutlined className="text-navy/40 mr-1" />}
-                    placeholder="kelvin@example.com"
-                    className="rounded-xl"
-                  />
-                </Form.Item>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Form.Item
+                <NameField />
+                <EmailField />
+                <SelectField
                   name="category"
-                  label={
-                    <span className="font-semibold text-navy text-sm">
-                      Enquiry Category
-                    </span>
-                  }
-                  rules={[
-                    { required: true, message: 'Select enquiry category' },
-                  ]}
-                >
-                  <Select placeholder="Select category" className="rounded-xl">
-                    <Option value="product_question">Product Question</Option>
-                    <Option value="setup_request">Setup Request</Option>
-                    <Option value="partnership">Partnership Enquiry</Option>
-                    <Option value="support">Technical Support</Option>
-                    <Option value="other">Other</Option>
-                  </Select>
-                </Form.Item>
-
-                <Form.Item
-                  name="phone"
-                  label={
-                    <span className="font-semibold text-navy text-sm">
-                      Phone Number (Optional)
-                    </span>
-                  }
-                >
-                  <Input
-                    prefix={<PhoneOutlined className="text-navy/40 mr-1" />}
-                    placeholder="07XX XXX XXX"
-                    className="rounded-xl"
-                  />
-                </Form.Item>
-              </div>
-
-              <Form.Item
-                name="business_name"
-                label={
-                  <span className="font-semibold text-navy text-sm">
-                    Business Name (Optional)
-                  </span>
-                }
-              >
-                <Input
-                  placeholder="e.g. Apex Hardware Ltd"
-                  className="rounded-xl"
+                  label="What is your message about?"
+                  options={CATEGORIES.map((category) => category.label)}
                 />
-              </Form.Item>
-
-              <Form.Item
-                name="message"
-                label={
-                  <span className="font-semibold text-navy text-sm">
-                    Your Message
-                  </span>
-                }
-                rules={[
-                  { required: true, message: 'Please enter your message' },
-                ]}
-              >
-                <TextArea
-                  rows={5}
-                  placeholder="Tell us what you need help with..."
-                  className="rounded-xl"
+                <TextAreaField name="message" label="Message" />
+                <PhoneField />
+                <PhonePermissionField />
+                <TextField
+                  name="business"
+                  label="Business name"
+                  optional
+                  autoComplete="organization"
                 />
-              </Form.Item>
+                <TextField
+                  name="account_reference"
+                  label="Existing account reference"
+                  optional
+                />
+                <p className="m-0 mb-6 text-sm text-navy/80">
+                  Never share a password or payment details in this form.
+                </p>
+              </FormShell>
+            </FormCard>
 
-              <Button
-                type="primary"
-                htmlType="submit"
-                loading={loading}
-                block
-                className="h-14 rounded-full font-bold text-base bg-navy border-navy hover:bg-navy/90 shadow-md"
-              >
-                Send message
-              </Button>
-            </Form>
-          ) : (
-            <div className="text-center py-6">
-              <div className="w-16 h-16 rounded-full bg-mint/30 text-navy flex items-center justify-center mx-auto mb-6 text-3xl">
-                <CheckCircleFilled style={{ color: '#1F2B5D' }} />
-              </div>
-              <h2 className="text-2xl font-bold text-navy mb-3">
-                Your message has been received.
+            <aside className="rounded-3xl bg-surface p-6 md:p-8">
+              <h2 className="m-0 mb-6 text-xl font-bold">
+                Other ways to reach us
               </h2>
-              <p className="text-sm text-navy/70 leading-relaxed mb-8 max-w-md mx-auto">
-                We&apos;ll direct your message to the relevant team and respond
-                to you directly.
-              </p>
-              <Button
-                type="primary"
-                onClick={() => history.push('/')}
-                className="px-8 py-3.5 h-auto rounded-full font-bold bg-navy border-navy text-white"
-              >
-                Return to Homepage
-              </Button>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
+              <ul className="list-none m-0 p-0 space-y-5">
+                {CHANNELS.map((channel) => (
+                  <li key={channel.label} className="flex gap-4">
+                    <span
+                      aria-hidden="true"
+                      className="text-xl text-navy mt-0.5"
+                    >
+                      {channel.icon}
+                    </span>
+                    <div>
+                      <p className="m-0 font-semibold">{channel.label}</p>
+                      <p className="m-0 text-navy/80">{channel.content}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          </div>
+        </Container>
+      </HeroSection>
+    </>
   );
 };
 
