@@ -57,6 +57,8 @@ module.exports = {
         'float-delayed': 'float 6s ease-in-out 3s infinite',
         marquee: 'marquee 25s linear infinite',
         'fade-in': 'fadeIn 0.8s ease-out forwards',
+        'route-progress':
+          'routeProgress 8s cubic-bezier(0.1, 0.7, 0.2, 1) forwards',
       },
       keyframes: {
         float: {
@@ -70,6 +72,11 @@ module.exports = {
         fadeIn: {
           '0%': { opacity: '0', transform: 'translateY(10px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        // Fast start that eases towards 90%; it never claims to have finished.
+        routeProgress: {
+          '0%': { transform: 'scaleX(0)' },
+          '100%': { transform: 'scaleX(0.9)' },
         },
       },
     },
