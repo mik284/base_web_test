@@ -1,52 +1,44 @@
-import CTASection from '@/components/CTASection';
+import CookieBanner from '@/components/CookieBanner';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
-import PageLoader from '@/components/PageLoader';
+import { track } from '@/utils/analytics';
+import { captureAttribution } from '@/utils/attribution';
 import { Outlet, useLocation } from '@umijs/max';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const LandingLayout: React.FC = () => {
   const { pathname } = useLocation();
-  const [initialLoading, setInitialLoading] = useState(true);
+  const firstRender = useRef(true);
 
-  // Initial mount loading
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setInitialLoading(false);
-    }, 1200); // 1.2s for the brand to "pop"
-    return () => clearTimeout(timer);
+    captureAttribution();
   }, []);
 
-  // Scroll to top on route change
+  // Scroll to top and record a page view on client-side route changes.
+  // The initial page view is sent by the gtag config.
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    if (!window.location.hash) window.scrollTo(0, 0);
+    track('page_view', { page_path: pathname });
   }, [pathname]);
 
-  if (initialLoading) {
-    return <PageLoader />;
-  }
-
   return (
-    <div
-      className="antialiased w-full min-h-screen relative overflow-x-hidden font-outfit"
-      style={{
-        backgroundColor: '#ffffff',
-        color: '#1F2B5D',
-        fontFamily: "'Outfit', sans-serif",
-      }}
-    >
-      {/* Shared Navigation */}
+    <div className="antialiased w-full min-h-screen relative overflow-x-hidden font-sans bg-white text-navy">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-white focus:text-navy focus:px-4 focus:py-2 focus:rounded-lg"
+      >
+        Skip to content
+      </a>
       <Navbar />
-
-      {/* Page Content */}
-      <main className="animate-fade-in">
+      <main id="main">
         <Outlet />
-        {/* Shared CTA Section */}
-        <CTASection />
       </main>
-
-      {/* Shared Footer */}
       <Footer />
+      <CookieBanner />
     </div>
   );
 };
