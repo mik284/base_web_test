@@ -3,9 +3,71 @@
 @tailwind utilities;
 
 @layer base {
+  /* The part of Tailwind's preflight we need: border utilities draw only
+     the sides they name (preflight is off to avoid clashing with antd). */
+  *,
+  ::before,
+  ::after {
+    border-width: 0;
+    border-style: solid;
+  }
+
   html {
     scroll-behavior: smooth;
   }
+
+  body {
+    font-family: Outfit, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    color: #1f2b5d;
+    background-color: #fff;
+  }
+
+  ::selection {
+    background-color: #8afea7;
+    color: #1f2b5d;
+  }
+
+  /* Keep anchor targets clear of the fixed header. */
+  [id] {
+    scroll-margin-top: 96px;
+  }
+
+  a {
+    color: #0800f0;
+  }
+
+  :focus-visible {
+    outline: 3px solid #0800f0;
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Visually hide <details> markers; the FAQ renders its own indicator. */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Form labels and help text use the brand navy. */
+.bp-form .ant-form-item-label > label {
+  font-weight: 600;
+  color: #1f2b5d;
+}
+
+.bp-form .ant-form-item-extra {
+  color: rgba(31, 43, 93, 80%);
 }
 
 @layer utilities {
@@ -24,8 +86,37 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
+
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }
 }
 
+/* Choice cards (ChoiceField). */
+.bp-choice .ant-radio-wrapper,
+.bp-choice .ant-checkbox-wrapper {
+  margin: 0;
+  padding: 14px 16px;
+  border: 1.5px solid rgba(31, 43, 93, 15%);
+  border-radius: 16px;
+  background: #fff;
+  align-items: flex-start;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.bp-choice .ant-radio-wrapper:hover,
+.bp-choice .ant-checkbox-wrapper:hover {
+  border-color: rgba(31, 43, 93, 30%);
+}
+
+.bp-choice .ant-radio-wrapper-checked,
+.bp-choice .ant-checkbox-wrapper-checked {
+  border-color: #1f2b5d;
+  background: rgba(138, 254, 167, 15%);
+}
+
+.bp-choice .ant-radio,
+.bp-choice .ant-checkbox {
+  align-self: flex-start;
+  margin-top: 3px;
+}

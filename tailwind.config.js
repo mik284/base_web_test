@@ -26,9 +26,13 @@ module.exports = {
         surfaceAlt: '#F0F3F8',
       },
       fontFamily: {
-        outfit: ['Outfit', 'sans-serif'],
-        montserrat: ['Montserrat', 'Outfit', 'sans-serif'],
-        sans: ['Montserrat', 'Outfit', 'sans-serif'],
+        sans: [
+          'Outfit',
+          'system-ui',
+          '-apple-system',
+          'Segoe UI',
+          'sans-serif',
+        ],
       },
       boxShadow: {
         soft: '0 20px 40px -15px rgba(31, 43, 93, 0.08)',

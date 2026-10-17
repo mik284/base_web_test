@@ -23,7 +23,7 @@ export const antd = {
       colorInfo: '#0800F0', // electric
       colorWarning: '#F7B344', // orange
       colorError: '#ff4d4f',
-      fontFamily: 'Outfit, sans-serif',
+      fontFamily: "Outfit, system-ui, -apple-system, 'Segoe UI', sans-serif",
       borderRadius: 12,
       colorTextBase: '#1F2B5D',
       colorBgBase: '#ffffff',
