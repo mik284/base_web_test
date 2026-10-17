@@ -4,156 +4,63 @@ export const routes = [
     component: '@/layouts/LandingLayout',
     layout: false,
     routes: [
-      {
-        path: '/',
-        component: './Landing',
-      },
-      {
-        path: '/platform',
-        component: './Platform',
-      },
-      {
-        path: '/products/duka',
-        component: './Products/Duka',
-      },
-      {
-        path: '/products/pesa',
-        component: './Products/Pesa',
-      },
-      {
-        path: '/products/mteja',
-        component: './Products/Mteja',
-      },
-      {
-        path: '/products/bandu',
-        component: './Products/Bandu',
-      },
+      { path: '/', component: './Home' },
+      { path: '/platform', component: './Platform' },
+
+      // Products
+      { path: '/products/duka', component: './Products/Duka' },
       {
         path: '/products/duka/hospitality',
-        component: './Products/Duka/Hospitality',
+        component: './Products/Hospitality',
       },
-      {
-        path: '/solutions/retailers',
-        component: './Solutions/Retailers',
-      },
+      { path: '/products/pesa', component: './Products/Pesa' },
+      { path: '/products/mteja', component: './Products/Mteja' },
+      { path: '/products/bandu', component: './Products/Bandu' },
+
+      // Solutions
+      { path: '/solutions/retailers', component: './Solutions/Retailers' },
       {
         path: '/solutions/distributors',
         component: './Solutions/Distributors',
       },
-      {
-        path: '/solutions/enterprise',
-        component: './Solutions/Enterprise',
-      },
-      {
-        path: '/solutions/biashara-ai',
-        component: './Solutions/BiasharaAI',
-      },
-      {
-        path: '/start',
-        component: './Start',
-      },
-      {
-        path: '/demo',
-        component: './Demo',
-      },
-      {
-        path: '/pricing',
-        component: './Pricing',
-      },
-      {
-        path: '/collabs',
-        component: './Collabs',
-      },
-      {
-        path: '/collabs/apply',
-        component: './Collabs/Apply',
-      },
-      {
-        path: '/refer',
-        component: './Refer',
-      },
-      {
-        path: '/refer/terms',
-        component: './Refer/Terms',
-      },
-      {
-        path: '/partners',
-        component: './Partners',
-      },
-      {
-        path: '/partners/apply',
-        component: './Partners/Apply',
-      },
-      {
-        path: '/resources',
-        component: './Resources',
-      },
-      {
-        path: '/resources/daily-close',
-        component: './Resources/Guides/DailyClose',
-      },
-      {
-        path: '/resources/stock-count',
-        component: './Resources/Guides/StockCount',
-      },
-      {
-        path: '/resources/second-outlet',
-        component: './Resources/Guides/SecondOutlet',
-      },
-      {
-        path: '/company',
-        component: './Company',
-      },
-      {
-        path: '/contact',
-        component: './Contact',
-      },
-      {
-        path: '/privacy',
-        component: './Privacy',
-      },
-      {
-        path: '/terms',
-        component: './Terms',
-      },
+      { path: '/solutions/enterprise', component: './Solutions/Enterprise' },
+      { path: '/solutions/biashara-ai', component: './Solutions/BiasharaAI' },
 
-      // Legacy backwards-compatible redirects
-      {
-        path: '/base-duka',
-        redirect: '/products/duka',
-      },
-      {
-        path: '/base-pesa',
-        redirect: '/products/pesa',
-      },
-      {
-        path: '/base-bandu',
-        redirect: '/products/bandu',
-      },
-      {
-        path: '/base-mteja',
-        redirect: '/products/mteja',
-      },
-      {
-        path: '/base-smart-reja',
-        redirect: '/solutions/distributors',
-      },
-      {
-        path: '/base-dala',
-        redirect: '/platform',
-      },
-      {
-        path: '/base-custom',
-        redirect: '/platform',
-      },
-      {
-        path: '/custom',
-        redirect: '/platform',
-      },
-      {
-        path: '/*',
-        component: './404',
-      },
+      // Conversion
+      { path: '/start', component: './Start' },
+      { path: '/demo', component: './Demo' },
+      { path: '/pricing', component: './Pricing' },
+      { path: '/contact', component: './Contact' },
+
+      // Network and partnerships
+      { path: '/collabs', component: './Collabs' },
+      { path: '/collabs/apply', component: './CollabsApply' },
+      { path: '/refer', component: './Refer' },
+      { path: '/partners', component: './Partners' },
+      { path: '/partners/apply', component: './PartnersApply' },
+
+      // Basepoint Learn
+      { path: '/resources', component: './Resources' },
+      { path: '/resources/daily-close', component: './Resources/Guide' },
+      { path: '/resources/stock-count', component: './Resources/Guide' },
+      { path: '/resources/second-outlet', component: './Resources/Guide' },
+
+      // Company and legal
+      { path: '/company', component: './Company' },
+      { path: '/privacy', component: './Privacy' },
+      { path: '/terms', component: './Terms' },
+      { path: '/cookies', component: './Cookies' },
+
+      // Previous URLs
+      { path: '/base-duka', redirect: '/products/duka' },
+      { path: '/base-pesa', redirect: '/products/pesa' },
+      { path: '/base-mteja', redirect: '/products/mteja' },
+      { path: '/base-bandu', redirect: '/products/bandu' },
+      { path: '/base-smart-reja', redirect: '/platform' },
+      { path: '/base-dala', redirect: '/platform' },
+      { path: '/base-custom', redirect: '/solutions/enterprise' },
+
+      { path: '/*', component: './404' },
     ],
   },
 ];
