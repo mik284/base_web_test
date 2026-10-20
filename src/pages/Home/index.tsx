@@ -29,8 +29,10 @@ import {
   SectionHeading,
 } from '@/components/Page';
 import ProductCards from '@/components/ProductCards';
+import ProductShot from '@/components/ProductShot';
 import SEO from '@/components/SEO';
 import { GUIDES } from '@/constants/guides';
+import { HOME_MEDIA, MediaAsset } from '@/constants/media';
 import { SITE } from '@/constants/site';
 
 const FAQS: FAQItem[] = [
@@ -51,6 +53,9 @@ const FAQS: FAQItem[] = [
     a: 'No. Base provides tools and information. Business outcomes depend on many factors, including the quality of your records and the decisions you make.',
   },
 ];
+
+const stepMedia = (asset: MediaAsset | null) =>
+  asset ? <ProductShot asset={asset} /> : undefined;
 
 const HomePage: React.FC = () => (
   <>
@@ -78,49 +83,63 @@ const HomePage: React.FC = () => (
           <span className="text-navy">{SITE.masterPromise}</span>
         </p>
       }
-      aside={<HeroIllustration />}
+      aside={
+        HOME_MEDIA.heroScreen ? (
+          <ProductShot asset={HOME_MEDIA.heroScreen} priority />
+        ) : (
+          <HeroIllustration />
+        )
+      }
     />
 
     <Section>
-      <SectionHeading
-        center
-        kicker="Start with Duka"
-        title="A busy day should leave you with clear records."
-        body="When sales and stock live in different places, reviewing the day takes more work. Duka gives you a practical place to start: record what you sell, keep stock records and issue receipts."
-      />
+      {HOME_MEDIA.shopPhoto ? (
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center mb-12 md:mb-16">
+          <SectionHeading
+            kicker="Start with Duka"
+            title="Sales in one book, stock in another. Your records shouldn't be scattered."
+            body="When sales and stock live in different places, reviewing the day takes more work. Duka gives you a practical place to start: record what you sell, keep stock records and issue receipts."
+          />
+          <ProductShot asset={HOME_MEDIA.shopPhoto} framed={false} />
+        </div>
+      ) : (
+        <SectionHeading
+          center
+          kicker="Start with Duka"
+          title="Sales in one book, stock in another. Your records shouldn't be scattered."
+          body="When sales and stock live in different places, reviewing the day takes more work. Duka gives you a practical place to start: record what you sell, keep stock records and issue receipts."
+        />
+      )}
       <CardGrid
         items={[
           {
             icon: <ShoppingCartOutlined />,
             title: 'Record the sale.',
             body: 'Keep a record of what was sold.',
+            media: stepMedia(HOME_MEDIA.steps.sale),
           },
           {
             icon: <InboxOutlined />,
             title: 'Track the stock.',
             body: 'Review your recorded stock and compare it with what is on the shelf.',
+            media: stepMedia(HOME_MEDIA.steps.stock),
           },
           {
             icon: <FileTextOutlined />,
             title: 'Issue the receipt.',
             body: 'Give customers a receipt for their purchase.',
+            media: stepMedia(HOME_MEDIA.steps.receipt),
           },
         ]}
       />
     </Section>
 
     <Section tone="navy">
-      <div className="flex flex-col md:flex-row justify-between md:items-end gap-6 mb-12 md:mb-16">
-        <div className="max-w-2xl">
-          <Kicker onDark>A suggested routine</Kicker>
-          <h2 className="m-0 text-3xl lg:text-5xl font-bold tracking-[-0.03em] leading-[1.1]">
-            Build a clearer routine, one day at a time.
-          </h2>
-        </div>
-        <p className="m-0 max-w-md text-lg text-white/75">
-          A suggested operating routine. Planning and review remain your
-          responsibility.
-        </p>
+      <div className="max-w-2xl mb-12 md:mb-16">
+        <Kicker onDark>A suggested routine</Kicker>
+        <h2 className="m-0 text-3xl lg:text-5xl font-bold tracking-[-0.03em] leading-[1.1]">
+          Build a clearer routine, one day at a time.
+        </h2>
       </div>
       <CardGrid
         onDark
@@ -152,6 +171,10 @@ const HomePage: React.FC = () => (
           },
         ]}
       />
+      <p className="m-0 mt-8 text-sm text-white/70">
+        A suggested operating routine. Planning and review remain your
+        responsibility.
+      </p>
     </Section>
 
     <Section>
@@ -275,7 +298,7 @@ const HomePage: React.FC = () => (
     <FAQ items={FAQS} />
 
     <FinalBanner
-      title="Make the business clearer."
+      title="Close the day knowing what sold."
       highlight="Start with Duka."
       actions={
         <>

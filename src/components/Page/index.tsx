@@ -298,6 +298,8 @@ export interface CardItem {
   badge?: ReactNode;
   footer?: ReactNode;
   wide?: boolean;
+  /** Product screen or photo shown in place of the icon tile. */
+  media?: ReactNode;
 }
 
 export const IconTile: React.FC<{
@@ -362,7 +364,8 @@ export const CardGrid: React.FC<{
               />
             )}
             <div className="relative z-10 flex flex-col h-full">
-              {item.icon && (
+              {item.media && <div className="mb-6 -mx-2">{item.media}</div>}
+              {item.icon && !item.media && (
                 <div className="mb-6">
                   <IconTile icon={item.icon} accent={accent} onDark={onDark} />
                 </div>

@@ -234,7 +234,7 @@ Use a verified Duka screen with the required data caption. Product image alt tex
 
 ### 6.2 Practical problem
 
-H2: **A busy day should leave you with clear records.**
+H2: **Sales in one book, stock in another. Your records shouldn't be scattered.**
 
 Body: **When sales and stock live in different places, reviewing the day takes more work. Duka gives you a practical place to start: record what you sell, keep stock records and issue receipts.**
 
@@ -253,7 +253,7 @@ H2: **Build a clearer routine, one day at a time.**
 3. **Take the next step.** Use your records and a relevant Learn guide to work through it.
 4. **Review what changed.** Return to the records and decide what to keep doing or improve.
 
-Caption: **A suggested operating routine. Planning and review remain your responsibility.**
+Caption (below the steps): **A suggested operating routine. Planning and review remain your responsibility.**
 
 This is educational content. Do not render a goal planner, automated action plan or accountability dashboard as a shipping feature.
 
@@ -309,7 +309,7 @@ H2: **Make your next business review more useful.**
 
 Body: **Start with practical guides to reviewing daily records, counting stock and preparing for another outlet.**
 
-Display the three launch guides. Final banner: **Make the business clearer. Start with Duka.** Primary Duka CTA and **Get setup help**.
+Display the three launch guides. Final banner: **Close the day knowing what sold. Start with Duka.** Primary Duka CTA and **Get setup help**.
 
 ### 6.10 Homepage FAQs
 
