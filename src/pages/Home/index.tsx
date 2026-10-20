@@ -11,6 +11,7 @@ import {
 } from '@ant-design/icons';
 import React from 'react';
 
+import CutoutFigure from '@/components/CutoutFigure';
 import HeroIllustration from '@/components/HeroIllustration';
 import {
   ArrowLink,
@@ -93,14 +94,20 @@ const HomePage: React.FC = () => (
     />
 
     <Section>
-      {HOME_MEDIA.shopPhoto ? (
+      {HOME_MEDIA.shopCutout || HOME_MEDIA.shopPhoto ? (
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center mb-12 md:mb-16">
           <SectionHeading
             kicker="Start with Duka"
             title="Sales in one book, stock in another. Your records shouldn't be scattered."
             body="When sales and stock live in different places, reviewing the day takes more work. Duka gives you a practical place to start: record what you sell, keep stock records and issue receipts."
           />
-          <ProductShot asset={HOME_MEDIA.shopPhoto} framed={false} />
+          {HOME_MEDIA.shopCutout ? (
+            <CutoutFigure asset={HOME_MEDIA.shopCutout} panel="mint" />
+          ) : (
+            HOME_MEDIA.shopPhoto && (
+              <ProductShot asset={HOME_MEDIA.shopPhoto} framed={false} />
+            )
+          )}
         </div>
       ) : (
         <SectionHeading

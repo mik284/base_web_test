@@ -23,7 +23,9 @@ export interface MediaAsset {
 export const HOME_MEDIA: {
   /** Verified Duka screen, shown in the hero in place of the illustration. */
   heroScreen: MediaAsset | null;
-  /** Owner at a shop counter, beside the practical-problem section. */
+  /** Background-removed trader beside the practical-problem section. */
+  shopCutout: MediaAsset | null;
+  /** Owner at a shop counter; used when no cut-out is set. */
   shopPhoto: MediaAsset | null;
   /** Photo strip of everyday counters; the section is omitted when empty. */
   counters: MediaAsset[];
@@ -37,6 +39,13 @@ export const HOME_MEDIA: {
   heroScreen: null,
   // Placeholder stock photography (Unsplash License). Replace with an owned
   // shoot with signed releases before launch (spec §2.3).
+  shopCutout: {
+    src: '/images/fruit-seller-cutout',
+    alt: 'A trader in an orange dress smiling and holding a phone',
+    width: 800,
+    height: 1017,
+    credit: 'Ali Mkumbwa, Unsplash (5dFuO02OHh0), background removed',
+  },
   shopPhoto: {
     src: '/images/duka-owner-counter',
     alt: 'A shop owner behind her counter, with stocked shelves behind her and a phone on the counter',
@@ -53,11 +62,11 @@ export const HOME_MEDIA: {
       credit: 'Ali Mkumbwa, Unsplash (uk3ey_vhDKA)',
     },
     {
-      src: '/images/fruit-seller',
-      alt: 'A fruit seller at her stall holding a phone',
+      src: '/images/duka-owner-counter-4x3',
+      alt: 'A shop owner behind her counter, with stocked shelves behind her and a phone on the counter',
       width: 1200,
       height: 900,
-      credit: 'Ali Mkumbwa, Unsplash (5dFuO02OHh0)',
+      credit: 'Ali Mkumbwa, Unsplash (EOkN2pRjFsg)',
     },
     {
       src: '/images/cafe-barista',

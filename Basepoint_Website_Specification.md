@@ -244,7 +244,7 @@ Cards:
 - **Track the stock.** Review your recorded stock and compare it with what is on the shelf.
 - **Issue the receipt.** Give customers a receipt for their purchase.
 
-Image: one photo of an owner at a shop counter beside the heading. Until an owned shoot with signed releases exists, licensed stock photography may stand in and is recorded in `src/constants/media.ts`.
+Image: one background-removed photo of a trader beside the heading, standing on a brand-colour panel (falls back to an in-context shop photo). Until an owned shoot with signed releases exists, licensed stock photography may stand in and is recorded in `src/constants/media.ts`.
 
 ### 6.2a Everyday counters
 
