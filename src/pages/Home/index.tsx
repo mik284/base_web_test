@@ -134,6 +134,24 @@ const HomePage: React.FC = () => (
       />
     </Section>
 
+    {HOME_MEDIA.counters.length > 0 && (
+      <Section tone="muted">
+        <SectionHeading
+          center
+          kicker="Everyday businesses"
+          title="Every sale starts at a counter."
+          body="Kiosks, butcheries, cafés and fruit stalls: busy counters where clear records make the end of the day easier."
+        />
+        <ul className="list-none m-0 p-0 grid gap-6 grid-cols-2 lg:grid-cols-4">
+          {HOME_MEDIA.counters.map((asset) => (
+            <li key={asset.src}>
+              <ProductShot asset={asset} framed={false} />
+            </li>
+          ))}
+        </ul>
+      </Section>
+    )}
+
     <Section tone="navy">
       <div className="max-w-2xl mb-12 md:mb-16">
         <Kicker onDark>A suggested routine</Kicker>

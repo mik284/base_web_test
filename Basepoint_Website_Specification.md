@@ -244,6 +244,16 @@ Cards:
 - **Track the stock.** Review your recorded stock and compare it with what is on the shelf.
 - **Issue the receipt.** Give customers a receipt for their purchase.
 
+Image: one photo of an owner at a shop counter beside the heading. Until an owned shoot with signed releases exists, licensed stock photography may stand in and is recorded in `src/constants/media.ts`.
+
+### 6.2a Everyday counters
+
+Kicker: **EVERYDAY BUSINESSES**  
+H2: **Every sale starts at a counter.**  
+Body: **Kiosks, butcheries, cafés and fruit stalls: busy counters where clear records make the end of the day easier.**
+
+A strip of four photos of real counters. Omit the section when no approved photos exist. The photos illustrate the setting only; they do not claim that the people shown use Duka.
+
 ### 6.3 How to use the information
 
 H2: **Build a clearer routine, one day at a time.**
